@@ -1,6 +1,6 @@
 #include "Note.h"
 
-Note::Note(Resources& resources)
+Note::Note(AssetManager& assetManager)
 {
 	switch (rand() % 4)
 	{
@@ -19,7 +19,7 @@ Note::Note(Resources& resources)
 	}
 
 	note.setSize({ 100, 100 });
-	note.setTexture(&resources.getArrow(noteType));
+	note.setTexture(&assetManager.GetTexture(noteType));
 }
 
 void Note::DrawArrow(sf::RenderWindow& window)

@@ -2,14 +2,14 @@
 
 int main()
 {
-    Resources resources;
+    AssetManager assetManager;
     srand(time(NULL));
 
     sf::RenderWindow window(sf::VideoMode(1200, 800), "SFML works!");
     //sf::RectangleShape shape;
     //shape.setSize({ 200,200 });
 
-    Note n(resources);
+    Note n(assetManager);
 
     while (window.isOpen())
     {

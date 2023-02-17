@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <SFML/Graphics.hpp>
-#include "Resources.h"
+#include "AssetManager.h"
 
 class Note
 {
@@ -12,7 +12,7 @@ private:
 	sf::RectangleShape note;
 
 public:
-	Note(Resources& resources);
+	Note(AssetManager& assetManager);
 
 	void DrawArrow(sf::RenderWindow& window);
 };

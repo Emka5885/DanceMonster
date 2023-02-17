@@ -3,10 +3,15 @@
 #include <map>
 #include <SFML/Graphics.hpp>
 
+#define RIGHT "right"
+#define LEFT "left"
+#define UP "up"
+#define DOWN "down"
+
 class AssetManager
 {
 public:
-	AssetManager() { }
+	AssetManager();
 	~AssetManager() { }
 
 	void LoadTexture(std::string name, std::string fileName);

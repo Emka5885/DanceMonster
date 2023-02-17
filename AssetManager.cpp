@@ -1,5 +1,13 @@
 #include "AssetManager.h"
 
+AssetManager::AssetManager()
+{
+	LoadTexture("left", "resources/arrows/LeftArrow.png");
+	LoadTexture("right", "resources/arrows/RightArrow.png");
+	LoadTexture("down", "resources/arrows/DownArrow.png");
+	LoadTexture("up", "resources/arrows/UpArrow.png");
+}
+
 void AssetManager::LoadTexture(std::string name, std::string fileName)
 {
 	sf::Texture texture;
