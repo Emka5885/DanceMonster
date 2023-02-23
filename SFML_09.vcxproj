@@ -148,12 +148,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="BarOfNotes.cpp" />
     <ClCompile Include="Note.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetManager.h" />
-    <ClInclude Include="Resources.h" />
+    <ClInclude Include="BarOfNotes.h" />
     <ClInclude Include="Note.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

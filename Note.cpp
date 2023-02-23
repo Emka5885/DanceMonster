@@ -19,6 +19,7 @@ Note::Note(AssetManager& assetManager)
 	}
 
 	note.setSize({ 100, 100 });
+	note.setPosition(550, 650);
 	note.setTexture(&assetManager.GetTexture(noteType));
 }
 
