@@ -12,7 +12,7 @@ int main()
     //sf::RectangleShape shape;
     //shape.setSize({ 200,200 });
 
-    BarOfNotes b(WIDTH, HEIGHT);
+    BarOfNotes b(WIDTH, HEIGHT, window, assetManager);
     Note n(assetManager);
 
     while (window.isOpen())
@@ -26,8 +26,8 @@ int main()
 
         window.clear(sf::Color::Red);
         //window.draw(shape);
-        b.DrawBar(window);
-        n.DrawArrow(window);
+        b.DrawBar();
+        //n.DrawArrow(window);
         window.display();
     }
 

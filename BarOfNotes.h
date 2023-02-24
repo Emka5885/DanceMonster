@@ -6,9 +6,15 @@ class BarOfNotes
 {
 private:
 	std::vector<sf::RectangleShape> bar;
+	std::vector<Note> notes;
+	sf::RenderWindow& window;
+	AssetManager& assetManager;
+	sf::Clock clock;
 
 public:
-	BarOfNotes(float width, float height);
+	BarOfNotes(float width, float height, sf::RenderWindow& window, AssetManager& assetManager);
 
-	void DrawBar(sf::RenderWindow& window);
+	void DrawBar();
+	void NewNote();
+	void Update();
 };
