@@ -15,4 +15,6 @@ public:
 	Note(AssetManager& assetManager);
 
 	void DrawArrow(sf::RenderWindow& window);
+	float PositionX();
+	void NoteMove(sf::Vector2f move);
 };

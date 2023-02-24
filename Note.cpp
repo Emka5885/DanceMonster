@@ -19,12 +19,22 @@ Note::Note(AssetManager& assetManager)
 	}
 
 	note.setSize({ 100, 100 });
-	note.setPosition(550, 650);
+	note.setPosition(1200, 650);
 	note.setTexture(&assetManager.GetTexture(noteType));
 }
 
 void Note::DrawArrow(sf::RenderWindow& window)
 {
 	window.draw(note);
+}
+
+float Note::PositionX()
+{
+	return note.getPosition().x;
+}
+
+void Note::NoteMove(sf::Vector2f move)
+{
+	note.move(move);
 }
 

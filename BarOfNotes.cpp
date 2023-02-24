@@ -27,11 +27,30 @@ void BarOfNotes::DrawBar()
 	{
 		window.draw(bar[i]);
 	}
-	notes[0].DrawArrow(window);
+	for (int i = 0; i < notes.size(); i++)
+	{
+		notes[i].DrawArrow(window);
+	}
 }
 
 void BarOfNotes::NewNote()
 {
 	Note n(assetManager);
 	notes.push_back(n);
+}
+
+void BarOfNotes::Update(float dt)
+{
+	if (notes.back().PositionX() <= 1050)
+	{
+		NewNote();
+	}
+	if (notes[0].PositionX() <= -100)
+	{
+		notes.erase(notes.begin());
+	}
+	for (int i = 0; i < notes.size(); i++)
+	{
+		notes[i].NoteMove({ dt * -SPEED, 0.0f });
+	}
 }

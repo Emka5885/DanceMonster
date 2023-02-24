@@ -7,6 +7,7 @@
 #define LEFT "left"
 #define UP "up"
 #define DOWN "down"
+#define SPEED 200
 
 class AssetManager
 {

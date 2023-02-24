@@ -16,5 +16,5 @@ public:
 
 	void DrawBar();
 	void NewNote();
-	void Update();
+	void Update(float dt);
 };
