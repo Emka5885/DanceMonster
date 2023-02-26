@@ -17,4 +17,8 @@ public:
 	void DrawArrow(sf::RenderWindow& window);
 	float PositionX();
 	void NoteMove(sf::Vector2f move);
+	bool CheckType(std::string type);
+	float GetSizeX();
+	void t();
+	void s();
 };

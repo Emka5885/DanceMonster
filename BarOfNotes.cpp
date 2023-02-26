@@ -23,13 +23,17 @@ BarOfNotes::BarOfNotes(float width, float height, sf::RenderWindow& window, Asse
 
 void BarOfNotes::DrawBar()
 {
-	for (int i = 0; i < bar.size(); i++)
+	for (int i = 0; i < bar.size() - 2; i++)
 	{
 		window.draw(bar[i]);
 	}
 	for (int i = 0; i < notes.size(); i++)
 	{
 		notes[i].DrawArrow(window);
+	}
+	for (int i = bar.size() - 2; i < bar.size(); i++)
+	{
+		window.draw(bar[i]);
 	}
 }
 
@@ -52,5 +56,21 @@ void BarOfNotes::Update(float dt)
 	for (int i = 0; i < notes.size(); i++)
 	{
 		notes[i].NoteMove({ dt * -SPEED, 0.0f });
+	}
+}
+
+void BarOfNotes::Check(std::string noteType)
+{
+	for (int i = 0; i < notes.size(); i++)
+	{
+		notes[i].s();
+		if (notes[i].PositionX() >= bar[bar.size()-2].getPosition().x && notes[i].PositionX() <= bar.back().getPosition().x - notes[i].GetSizeX() + bar.back().getSize().x)
+		{
+			notes[i].t();
+			if (notes[i].CheckType(noteType))
+			{
+				std::cout << "Correct\n";
+			}
+		}
 	}
 }

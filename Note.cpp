@@ -18,7 +18,14 @@ Note::Note(AssetManager& assetManager)
 		break;
 	}
 
-	note.setSize({ 100, 100 });
+	if (noteType == UP || noteType == DOWN)
+	{
+		note.setSize({ 60, 104 });
+	}
+	else
+	{
+		note.setSize({ 104, 104 });
+	}
 	note.setPosition(1200, 650);
 	note.setTexture(&assetManager.GetTexture(noteType));
 }
@@ -36,5 +43,29 @@ float Note::PositionX()
 void Note::NoteMove(sf::Vector2f move)
 {
 	note.move(move);
+}
+
+bool Note::CheckType(std::string type)
+{
+	if (type == noteType)
+	{
+		return true;
+	}
+	return false;
+}
+
+float Note::GetSizeX()
+{
+	return note.getSize().x;
+}
+
+void Note::t()
+{
+	note.setFillColor(sf::Color::Red);
+}
+
+void Note::s()
+{
+	note.setFillColor(sf::Color::White);
 }
 

@@ -22,7 +22,25 @@ int main()
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
+            {
                 window.close();
+            }
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+            {
+                b.Check(LEFT);
+            }
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+            {
+                b.Check(RIGHT);
+            }
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+            {
+                b.Check(UP);
+            }
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+            {
+                b.Check(DOWN);
+            }
         }
 
         window.clear(sf::Color::Red);

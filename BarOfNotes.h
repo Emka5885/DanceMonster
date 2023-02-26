@@ -17,4 +17,5 @@ public:
 	void DrawBar();
 	void NewNote();
 	void Update(float dt);
+	void Check(std::string noteType);
 };
