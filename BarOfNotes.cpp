@@ -64,7 +64,7 @@ void BarOfNotes::Check(std::string noteType)
 	for (int i = 0; i < notes.size(); i++)
 	{
 		notes[i].s();
-		if (notes[i].PositionX() >= bar[bar.size()-2].getPosition().x && notes[i].PositionX() <= bar.back().getPosition().x - notes[i].GetSizeX() + bar.back().getSize().x)
+		if (notes[i].PositionX()-notes[i].GetSizeX()/2 >= bar[bar.size() - 2].getPosition().x && notes[i].PositionX() <= bar.back().getPosition().x - notes[i].GetSizeX()/2 + bar.back().getSize().x)
 		{
 			notes[i].t();
 			if (notes[i].CheckType(noteType))

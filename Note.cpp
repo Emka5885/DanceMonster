@@ -28,6 +28,7 @@ Note::Note(AssetManager& assetManager)
 	}
 	note.setPosition(1200, 650);
 	note.setTexture(&assetManager.GetTexture(noteType));
+	note.setOrigin(note.getSize().x / 2, 0);
 }
 
 void Note::DrawArrow(sf::RenderWindow& window)
