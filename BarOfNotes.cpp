@@ -1,21 +1,21 @@
 #include "BarOfNotes.h"
 
-BarOfNotes::BarOfNotes(float width, float height, sf::RenderWindow& window, AssetManager& assetManager) : window(window), assetManager(assetManager)
+BarOfNotes::BarOfNotes(sf::RenderWindow& window, AssetManager& assetManager) : window(window), assetManager(assetManager)
 {
 	sf::RectangleShape rect;
-	rect.setSize({ width, 120 });
-	rect.setPosition(0, height - 160);
+	rect.setSize({ WIDTH, 120 });
+	rect.setPosition(0, HEIGHT - 160);
 	rect.setFillColor(sf::Color::Black);
 	bar.push_back(rect);
-	rect.setSize({ width, 100 });
-	rect.setPosition(0, height - 150);
+	rect.setSize({ WIDTH, 100 });
+	rect.setPosition(0, HEIGHT - 150);
 	rect.setFillColor(sf::Color::White);
 	bar.push_back(rect);
 	rect.setSize({ 10, 100 });
-	rect.setPosition(width/2 - 75, height - 150);
+	rect.setPosition(WIDTH /2 - 75, HEIGHT - 150);
 	rect.setFillColor(sf::Color::Black);
 	bar.push_back(rect);
-	rect.setPosition(width/2 + 65, height - 150);
+	rect.setPosition(WIDTH /2 + 65, HEIGHT - 150);
 	bar.push_back(rect);
 
 	NewNote();

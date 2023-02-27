@@ -12,7 +12,7 @@ private:
 	sf::Clock clock;
 
 public:
-	BarOfNotes(float width, float height, sf::RenderWindow& window, AssetManager& assetManager);
+	BarOfNotes(sf::RenderWindow& window, AssetManager& assetManager);
 
 	void DrawBar();
 	void NewNote();

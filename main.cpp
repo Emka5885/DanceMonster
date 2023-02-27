@@ -1,7 +1,5 @@
 ﻿#include "BarOfNotes.h"
-
-#define WIDTH 1200
-#define HEIGHT 800
+#include "Monster.h"
 
 int main()
 {
@@ -13,8 +11,9 @@ int main()
     //sf::RectangleShape shape;
     //shape.setSize({ 200,200 });
 
-    BarOfNotes b(WIDTH, HEIGHT, window, assetManager);
+    BarOfNotes b(window, assetManager);
     Note n(assetManager);
+    Monster m(assetManager);
 
     while (window.isOpen())
     {
@@ -43,9 +42,10 @@ int main()
             }
         }
 
-        window.clear(sf::Color::Red);
+        window.clear(sf::Color::Green);
         //window.draw(shape);
         b.DrawBar();
+        m.DrawMonster(window);
         b.Update(dtClock.restart().asSeconds());
         //n.DrawArrow(window);
         window.display();

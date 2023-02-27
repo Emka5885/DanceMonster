@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <vector>
-#include <SFML/Graphics.hpp>
 #include "AssetManager.h"
 
 class Note
