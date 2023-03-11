@@ -1,5 +1,5 @@
 #pragma once
-#include "AssetManager.h"
+#include "MonsterAnimation.h"
 
 class Monster
 {
@@ -7,6 +7,9 @@ private:
 	
 	sf::RectangleShape body;
 	std::string currentType;
+	AssetManager& assetManager;
+	int currentFrame;
+	MonsterAnimation animation;
 
 public:
 	Monster(AssetManager& assetManager);

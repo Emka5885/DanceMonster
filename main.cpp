@@ -5,6 +5,7 @@ int main()
 {
     AssetManager assetManager;
     sf::Clock dtClock;
+    sf::Clock frameClock;
     srand(time(NULL));
 
     sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "SFML works!");
@@ -41,6 +42,13 @@ int main()
                 b.Check(DOWN);
             }
         }
+
+        if (frameClock.getElapsedTime() >= sf::seconds(0.5))
+        {
+            m.Update(LEFT);
+            frameClock.restart();
+        }
+
 
         window.clear(sf::Color(0x1A1A1Aff));
         //window.draw(shape);
