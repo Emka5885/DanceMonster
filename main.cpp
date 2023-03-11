@@ -42,7 +42,7 @@ int main()
             }
         }
 
-        window.clear(sf::Color::Green);
+        window.clear(sf::Color(0x1A1A1Aff));
         //window.draw(shape);
         b.DrawBar();
         m.DrawMonster(window);

@@ -7,8 +7,6 @@ private:
 	
 	sf::RectangleShape body;
 	std::string currentType;
-	float totalTime;
-	float switchTime;
 
 public:
 	Monster(AssetManager& assetManager);

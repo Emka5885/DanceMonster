@@ -7,6 +7,7 @@
 #define LEFT "left"
 #define UP "up"
 #define DOWN "down"
+#define NORMAL "normal"
 #define SPEED 200
 #define WIDTH 1200
 #define HEIGHT 800
