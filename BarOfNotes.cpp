@@ -59,7 +59,7 @@ void BarOfNotes::Update(float dt)
 	}
 }
 
-void BarOfNotes::Check(std::string noteType)
+bool BarOfNotes::Check(std::string noteType)
 {
 	for (int i = 0; i < notes.size(); i++)
 	{
@@ -70,7 +70,9 @@ void BarOfNotes::Check(std::string noteType)
 			if (notes[i].CheckType(noteType))
 			{
 				std::cout << "Correct\n";
+				return true;
 			}
 		}
 	}
+	return false;
 }

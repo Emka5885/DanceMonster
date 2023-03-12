@@ -6,6 +6,8 @@ int main()
     AssetManager assetManager;
     sf::Clock dtClock;
     sf::Clock frameClock;
+    sf::Clock startClock;
+    bool start = true;
     srand(time(NULL));
 
     sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "SFML works!");
@@ -27,25 +29,31 @@ int main()
             }
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             {
-                b.Check(LEFT);
+                m.Error(!b.Check(LEFT));
             }
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
             {
-                b.Check(RIGHT);
+                m.Error(!b.Check(RIGHT));
             }
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
             {
-                b.Check(UP);
+                m.Error(!b.Check(UP));
             }
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
             {
-                b.Check(DOWN);
+                m.Error(!b.Check(DOWN));
             }
         }
 
-        if (frameClock.getElapsedTime() >= sf::seconds(0.5))
+        if (start && startClock.getElapsedTime() >= sf::seconds(3))
         {
-            m.Update(LEFT);
+            start = false;
+            m.Start();
+        }
+
+        if (frameClock.getElapsedTime() >= sf::seconds(0.3))
+        {
+            m.Update();
             frameClock.restart();
         }
 

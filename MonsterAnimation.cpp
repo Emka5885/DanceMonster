@@ -27,10 +27,6 @@ void MonsterAnimation::ChangeFrame(std::string currentType, int& frame, AssetMan
 			body.setTexture(&assetManager.GetTexture("monster_r4"));
 			break;
 		case 4:
-			frame = 5;
-			body.setTexture(&assetManager.GetTexture("monster_r5"));
-			break;
-		case 5:
 			frame = 1;
 			body.setTexture(&assetManager.GetTexture("monster_r1"));
 			break;

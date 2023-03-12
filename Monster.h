@@ -10,9 +10,14 @@ private:
 	AssetManager& assetManager;
 	int currentFrame;
 	MonsterAnimation animation;
+	bool changeType;
+	bool error;
 
 public:
 	Monster(AssetManager& assetManager);
 	void DrawMonster(sf::RenderWindow& window);
-	void Update(std::string type);
+	void Update();
+
+	void Error(bool isWrong);
+	void Start();
 };

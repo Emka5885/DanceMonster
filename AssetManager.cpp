@@ -20,13 +20,13 @@ AssetManager::AssetManager()
 	LoadTexture("monster_r2", "resources/monster/Right/r_monster_02.png");
 	LoadTexture("monster_r3", "resources/monster/Right/r_monster_03.png");
 	LoadTexture("monster_r4", "resources/monster/Right/r_monster_04.png");
-	LoadTexture("monster_r5", "resources/monster/Right/r_monster_05.png");
 	LoadTexture("monster_u1", "resources/monster/Up/u_monster_01.png");
 	LoadTexture("monster_u2", "resources/monster/Up/u_monster_02.png");
 	LoadTexture("monster_u3", "resources/monster/Up/u_monster_03.png");
 	LoadTexture("monster_u4", "resources/monster/Up/u_monster_04.png");
 	LoadTexture("monster_u5", "resources/monster/Up/u_monster_05.png");
 	LoadTexture("monster_u6", "resources/monster/Up/u_monster_06.png");
+	LoadTexture("monster_error", "resources/monster/monster_error.png");
 }
 
 void AssetManager::LoadTexture(std::string name, std::string fileName)
