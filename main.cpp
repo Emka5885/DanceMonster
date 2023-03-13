@@ -8,6 +8,7 @@ int main()
     sf::Clock frameClock;
     sf::Clock startClock;
     bool start = true;
+    bool errorStart = false;
     srand(time(NULL));
 
     sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "SFML works!");
@@ -27,26 +28,30 @@ int main()
             {
                 window.close();
             }
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+            if (errorStart)
             {
-                m.Error(!b.Check(LEFT));
-            }
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-            {
-                m.Error(!b.Check(RIGHT));
-            }
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-            {
-                m.Error(!b.Check(UP));
-            }
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-            {
-                m.Error(!b.Check(DOWN));
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+                {
+                    m.Error(!b.Check(LEFT));
+                }
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+                {
+                    m.Error(!b.Check(RIGHT));
+                }
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+                {
+                    m.Error(!b.Check(UP));
+                }
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+                {
+                    m.Error(!b.Check(DOWN));
+                }
             }
         }
 
         if (start && startClock.getElapsedTime() >= sf::seconds(3))
         {
+            errorStart = true;
             start = false;
             m.Start();
         }

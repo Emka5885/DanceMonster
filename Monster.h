@@ -12,6 +12,9 @@ private:
 	MonsterAnimation animation;
 	bool changeType;
 	bool error;
+	int random;
+	int counter;
+	int randomNumber;
 
 public:
 	Monster(AssetManager& assetManager);
