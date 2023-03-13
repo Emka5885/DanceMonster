@@ -15,6 +15,7 @@ private:
 	int random;
 	int counter;
 	int randomNumber;
+	std::string newType;
 
 public:
 	Monster(AssetManager& assetManager);

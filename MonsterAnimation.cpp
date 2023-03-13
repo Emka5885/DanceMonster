@@ -122,52 +122,18 @@ void MonsterAnimation::ChangeFrame(std::string& currentType, int& frame, AssetMa
 
 void MonsterAnimation::ChangeType(std::string& currentType, std::string type, int& frame, AssetManager& assetManager, sf::RectangleShape& body, bool& change, int& randomNumber)
 {
-	if (currentType == RIGHT || currentType == LEFT)
+	if (currentType != NORMAL)
 	{
 		body.setTexture(&assetManager.GetTexture("monster"));
 		currentType = type;
 		change = false;
 		frame = 0;
-		randomNumber = rand() % 5 + 1;
-	}
-	else if (currentType == DOWN)
-	{
-		switch (frame)
-		{
-		case 1:
-			frame = 6;
-			body.setTexture(&assetManager.GetTexture("monster_d6"));
-			break;
-		case 6:
-			frame = 0;
-			currentType = type;
-			change = false;
-			body.setTexture(&assetManager.GetTexture("monster"));
-			randomNumber = rand() % 5 + 1;
-			break;
-		}
-	}
-	else if (currentType == UP)
-	{
-		switch (frame)
-		{
-		case 1:
-			frame = 6;
-			body.setTexture(&assetManager.GetTexture("monster_u6"));
-			break;
-		case 6:
-			frame = 0;
-			currentType = type;
-			change = false;
-			body.setTexture(&assetManager.GetTexture("monster"));
-			randomNumber = rand() % 5 + 1;
-			break;
-		}
+		randomNumber = rand() % 12 + 5;
 	}
 	else
 	{
 		frame = 0;
-		randomNumber = rand() % 5 + 1;
+		randomNumber = rand() % 12 + 5;
 		change = false;
 
 		int num = rand() % 4;
