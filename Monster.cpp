@@ -1,5 +1,4 @@
 #include "Monster.h"
-#include <iostream>
 
 Monster::Monster(AssetManager& assetManager) : assetManager(assetManager)
 {

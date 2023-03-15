@@ -153,6 +153,7 @@
     <ClCompile Include="MonsterAnimation.cpp" />
     <ClCompile Include="Note.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="StateMachine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetManager.h" />
@@ -160,6 +161,8 @@
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MonsterAnimation.h" />
     <ClInclude Include="Note.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="StateMachine.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
