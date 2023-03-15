@@ -149,6 +149,8 @@
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="BarOfNotes.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="MonsterAnimation.cpp" />
     <ClCompile Include="Note.cpp" />
@@ -158,6 +160,8 @@
   <ItemGroup>
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="BarOfNotes.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="MainMenuState.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MonsterAnimation.h" />
     <ClInclude Include="Note.h" />
