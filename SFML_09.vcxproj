@@ -71,20 +71,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>F:\Programowanie\SFML-2.5.1\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\Programowanie\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\ZSP\source\repos\SFML_09\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\ZSP\source\repos\SFML_09\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>F:\Programowanie\SFML-2.5.1\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\Programowanie\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\ZSP\source\repos\SFML_09\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\ZSP\source\repos\SFML_09\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>F:\Programowanie\SFML-2.5.1\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\Programowanie\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\ZSP\source\repos\SFML_09\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\ZSP\source\repos\SFML_09\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>F:\Programowanie\SFML-2.5.1\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\Programowanie\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\ZSP\source\repos\SFML_09\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\ZSP\source\repos\SFML_09\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -150,6 +150,7 @@
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="BarOfNotes.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="MonsterAnimation.cpp" />
@@ -161,6 +162,7 @@
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="BarOfNotes.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="InputManager.h" />
     <ClInclude Include="MainMenuState.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MonsterAnimation.h" />

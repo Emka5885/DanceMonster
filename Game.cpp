@@ -1,10 +1,10 @@
 #include "Game.h"
 #include "MainMenuState.h"
 
-Game::Game(int width, int height, std::string title)
+Game::Game(std::string title)
 {
 	srand(time(NULL));
-	data->window.create(sf::VideoMode(width, height), title, sf::Style::Close | sf::Style::Titlebar);
+	data->window.create(sf::VideoMode(WIDTH, HEIGHT), title, sf::Style::Close | sf::Style::Titlebar);
 	data->machine.AddState(stateReference(new MainMenuState(data)), true);
 	this->Run();
 }

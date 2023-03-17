@@ -81,7 +81,7 @@
 
 int main()
 {
-    Game game(WIDTH, HEIGHT, "Test");
+    Game game("Test");
 
 
     return 0;
