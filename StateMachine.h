@@ -14,8 +14,15 @@ public:
 	void AddState(stateReference newState, bool isReplacing = true);
 	void RemoveState();
 
+	void ProcessStateChanges();
+
 	stateReference& GetActiveState();
 
 private:
 	std::stack<stateReference> states;
+	stateReference newState;
+
+	bool isRemoving;
+	bool isAdding;
+	bool isReplacing;
 };

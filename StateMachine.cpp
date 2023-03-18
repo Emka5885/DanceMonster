@@ -10,25 +10,20 @@ StateMachine::~StateMachine()
 
 void StateMachine::AddState(stateReference newState, bool isReplacing)
 {
-	if (!this->states.empty())
-	{
-		if (isReplacing)
-		{
-			this->states.pop();
-		}
-		else
-		{
-			this->states.top()->Pause();
-		}
-	}
+	this->isAdding = true;
+	this->isReplacing = isReplacing;
 
-	this->states.push(std::move(newState));
-	this->states.top()->Init();
+	this->newState = std::move(newState);
 }
 
 void StateMachine::RemoveState()
 {
-	if (!this->states.empty())
+	this->isRemoving = true;
+}
+
+void StateMachine::ProcessStateChanges()
+{
+	if (this->isRemoving && !this->states.empty())
 	{
 		this->states.pop();
 
@@ -36,6 +31,27 @@ void StateMachine::RemoveState()
 		{
 			this->states.top()->Resume();
 		}
+
+		this->isRemoving = false;
+	}
+
+	if (this->isAdding)
+	{
+		if (!this->states.empty())
+		{
+			if (this->isReplacing)
+			{
+				this->states.pop();
+			}
+			else
+			{
+				this->states.top()->Pause();
+			}
+		}
+
+		this->states.push(std::move(this->newState));
+		this->states.top()->Init();
+		this->isAdding = false;
 	}
 }
 

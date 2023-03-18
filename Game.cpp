@@ -18,6 +18,8 @@ void Game::Run()
 
 	while (this->data->window.isOpen())
 	{
+		this->data->machine.ProcessStateChanges();
+
 		newTime = this->clock.getElapsedTime().asSeconds();
 		frameTime = newTime - currentTime;
 

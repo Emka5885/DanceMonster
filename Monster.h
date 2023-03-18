@@ -7,7 +7,7 @@ private:
 	
 	sf::RectangleShape body;
 	std::string currentType;
-	AssetManager& assetManager;
+	AssetManager assetManager;
 	int currentFrame;
 	MonsterAnimation animation;
 	bool changeType;
