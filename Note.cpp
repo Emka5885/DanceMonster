@@ -29,6 +29,8 @@ Note::Note(AssetManager& assetManager)
 	note.setPosition(1250, 650);
 	note.setTexture(&assetManager.GetTexture(noteType));
 	note.setOrigin(note.getSize().x / 2, 0);
+
+	isChecked = false;
 }
 
 void Note::DrawArrow(sf::RenderWindow& window)
@@ -48,9 +50,13 @@ void Note::NoteMove(sf::Vector2f move)
 
 bool Note::CheckType(std::string type)
 {
-	if (type == noteType)
+	if (!isChecked)
 	{
-		return true;
+		isChecked = true;
+		if (type == noteType)
+		{
+			return true;
+		}
 	}
 	return false;
 }

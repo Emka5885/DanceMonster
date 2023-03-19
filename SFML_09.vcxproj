@@ -155,6 +155,7 @@
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="MonsterAnimation.cpp" />
+    <ClCompile Include="Music.cpp" />
     <ClCompile Include="Note.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="StateMachine.cpp" />
@@ -168,6 +169,7 @@
     <ClInclude Include="MainMenuState.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MonsterAnimation.h" />
+    <ClInclude Include="Music.h" />
     <ClInclude Include="Note.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateMachine.h" />

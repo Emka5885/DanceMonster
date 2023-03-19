@@ -27,6 +27,10 @@ AssetManager::AssetManager()
 	LoadTexture("monster_u5", "resources/monster/Up/u_monster_05.png");
 	LoadTexture("monster_u6", "resources/monster/Up/u_monster_06.png");
 	LoadTexture("monster_error", "resources/monster/monster_error.png");
+
+	LoadFont("scoreFont", "resources/fonts/NiceSugar.ttf");
+
+
 }
 
 void AssetManager::LoadTexture(std::string name, std::string fileName)

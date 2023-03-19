@@ -17,4 +17,5 @@ public:
 	void NewNote();
 	void Update(float dt);
 	bool Check(std::string noteType);
+	bool stop;
 };

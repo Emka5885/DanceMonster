@@ -2,6 +2,7 @@
 
 #include <map>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 #define RIGHT "right"
 #define LEFT "left"

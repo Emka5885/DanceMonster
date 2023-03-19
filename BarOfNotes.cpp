@@ -2,6 +2,7 @@
 
 BarOfNotes::BarOfNotes(sf::RenderWindow& window, AssetManager& assetManager) : window(window), assetManager(assetManager)
 {
+	stop = false;
 	sf::RectangleShape rect;
 	rect.setSize({ WIDTH, 120 });
 	rect.setPosition(0, HEIGHT - 160);
@@ -45,9 +46,12 @@ void BarOfNotes::NewNote()
 
 void BarOfNotes::Update(float dt)
 {
-	if (notes.back().PositionX() <= 1050)
+	if (!stop)
 	{
-		NewNote();
+		if (notes.back().PositionX() <= 1050)
+		{
+			NewNote();
+		}
 	}
 	if (notes[0].PositionX() <= -100)
 	{

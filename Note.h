@@ -20,4 +20,6 @@ public:
 	float GetSizeX();
 	void t();
 	void s();
+
+	bool isChecked;
 };

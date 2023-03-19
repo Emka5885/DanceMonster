@@ -24,4 +24,7 @@ public:
 
 	void Error(bool isWrong);
 	void Start();
+	void Stop();
+
+	bool stop;
 };
