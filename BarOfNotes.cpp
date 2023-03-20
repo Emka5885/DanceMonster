@@ -53,7 +53,7 @@ void BarOfNotes::Update(float dt)
 			NewNote();
 		}
 	}
-	if (notes[0].PositionX() <= -100)
+	if (notes[0].PositionX() <= -100 && !notes.empty())
 	{
 		notes.erase(notes.begin());
 	}

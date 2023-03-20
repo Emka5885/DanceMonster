@@ -3,7 +3,7 @@
 Monster::Monster(AssetManager& assetManager) : assetManager(assetManager)
 {
 	currentType = NORMAL;
-	newType = currentType;
+	newType = RIGHT;
 	changeType = false;
 	error = false;
 	stop = false;
@@ -32,7 +32,7 @@ void Monster::Update()
 	{
 		if (counter == randomNumber)
 		{
-			if (currentFrame != 6)
+			if (currentFrame != 6 && newType != NORMAL)
 			{
 				newType = currentType;
 				while (currentType == newType)
@@ -90,8 +90,11 @@ void Monster::Stop()
 {
 	if (changeType == true)
 	{
-		currentType = NORMAL;
-		body.setTexture(&this->assetManager.GetTexture("monster"));
-		stop = true;
+		newType = NORMAL;
+		counter = randomNumber;
+		if (currentType == NORMAL)
+		{
+			stop = true;
+		}
 	}
 }

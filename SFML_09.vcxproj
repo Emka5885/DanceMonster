@@ -71,20 +71,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\ZSP\source\repos\SFML_09\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\ZSP\source\repos\SFML_09\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\EMI\source\repos\Emka5885\SFML_09\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\EMI\source\repos\Emka5885\SFML_09\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\Users\ZSP\source\repos\SFML_09\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\ZSP\source\repos\SFML_09\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\EMI\source\repos\Emka5885\SFML_09\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\EMI\source\repos\Emka5885\SFML_09\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\ZSP\source\repos\SFML_09\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\ZSP\source\repos\SFML_09\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\EMI\source\repos\Emka5885\SFML_09\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\EMI\source\repos\Emka5885\SFML_09\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Users\ZSP\source\repos\SFML_09\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\ZSP\source\repos\SFML_09\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\EMI\source\repos\Emka5885\SFML_09\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\EMI\source\repos\Emka5885\SFML_09\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="BarOfNotes.cpp" />
+    <ClCompile Include="EndGameState.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="InputManager.cpp" />
@@ -163,6 +164,7 @@
   <ItemGroup>
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="BarOfNotes.h" />
+    <ClInclude Include="EndGameState.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="InputManager.h" />

@@ -1,4 +1,5 @@
 #include "GameState.h"
+#include "EndGameState.h"
 
 GameState::GameState(GameDataReference data) : data(data)
 {
@@ -28,13 +29,7 @@ void GameState::HandleInput()
         {
             data->window.close();
         }
-        if (clock.getElapsedTime()-sf::seconds(6) >= sf::seconds(1))//music->MusicTime())
-        {
-            std::cout << "Stop\n";
-            monster->Stop();
-            barOfNotes->stop = true;
-        }
-        else if (errorStart)
+        if (errorStart && !monster->stop)
         {
             bool isWrong = false;
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
@@ -84,6 +79,19 @@ void GameState::HandleInput()
             }
         }
     }
+}
+
+void GameState::Update(float dt)
+{
+    if (clock.getElapsedTime() >= music->MusicTime() - sf::seconds(9))
+    {
+        monster->Stop();
+    }
+    else if (clock.getElapsedTime() >= music->MusicTime() - sf::seconds(13))
+    {
+        barOfNotes->stop = true;
+        helperClock.restart();
+    }
 
     if (start && helperClock.getElapsedTime() >= sf::seconds(0.9))
     {
@@ -91,10 +99,14 @@ void GameState::HandleInput()
         start = false;
         monster->Start();
     }
-    else if (errorStop && helperClock.getElapsedTime() >= sf::seconds(3) && !monster->stop)
+    else if (errorStop && helperClock.getElapsedTime() >= sf::seconds(3) && !barOfNotes->stop)
     {
         monster->Error(false);
         errorStop = false;
+    }
+    else if (barOfNotes->stop && helperClock.getElapsedTime() >= sf::seconds(5))
+    {
+        data->machine.AddState(stateReference(new EndGameState(data, &scoreText)), true);
     }
 
     if (frameClock.getElapsedTime() >= sf::seconds(0.3) && !monster->stop)
@@ -102,10 +114,6 @@ void GameState::HandleInput()
         monster->Update();
         frameClock.restart();
     }
-}
-
-void GameState::Update(float dt)
-{
 }
 
 void GameState::Draw(float dt)
