@@ -95,6 +95,7 @@ void Monster::Stop()
 		if (currentType == NORMAL)
 		{
 			stop = true;
+			error = true;
 		}
 	}
 }

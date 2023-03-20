@@ -34,8 +34,12 @@ private:
     bool start = true;
     bool errorStart = false;
 	bool errorStop = false;
+	bool fail = false;
 
 	//int gameState;
 	int score;
 	sf::Text scoreText;
+
+	int combo;
+	sf::Color backgroundColor;
 };

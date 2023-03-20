@@ -2,6 +2,7 @@
 
 BarOfNotes::BarOfNotes(sf::RenderWindow& window, AssetManager& assetManager) : window(window), assetManager(assetManager)
 {
+	ChangeSpeed(200);
 	stop = false;
 	sf::RectangleShape rect;
 	rect.setSize({ WIDTH, 120 });
@@ -44,7 +45,7 @@ void BarOfNotes::NewNote()
 	notes.push_back(n);
 }
 
-void BarOfNotes::Update(float dt)
+void BarOfNotes::Update(float dt, bool& fail)
 {
 	if (!stop)
 	{
@@ -59,7 +60,13 @@ void BarOfNotes::Update(float dt)
 	}
 	for (int i = 0; i < notes.size(); i++)
 	{
-		notes[i].NoteMove({ dt * -SPEED, 0.0f });
+		notes[i].NoteMove({ dt * -speed, 0.0f });
+
+		if (notes[i].PositionX() <= 500 && !notes[i].isChecked)
+		{
+			notes[i].isChecked = true;
+			fail = true;
+		}
 	}
 }
 
@@ -73,10 +80,14 @@ bool BarOfNotes::Check(std::string noteType)
 			notes[i].t();
 			if (notes[i].CheckType(noteType))
 			{
-				std::cout << "Correct\n";
 				return true;
 			}
 		}
 	}
 	return false;
+}
+
+void BarOfNotes::ChangeSpeed(int newSpeed)
+{
+	speed = newSpeed;
 }

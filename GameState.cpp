@@ -10,6 +10,8 @@ void GameState::Init()
 	barOfNotes = new BarOfNotes(data->window, data->assets);
 	monster = new Monster(data->assets);
     music = new Music();
+    combo = 0;
+    backgroundColor = sf::Color(0x1A1A1Aff);
     score = 0;
     scoreText.setFont(data->assets.GetFont("scoreFont"));
     SetNewScore();
@@ -40,6 +42,7 @@ void GameState::HandleInput()
                 {
                     score++;
                     SetNewScore();
+                    combo++;
                 }
             }
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
@@ -50,6 +53,7 @@ void GameState::HandleInput()
                 {
                     score++;
                     SetNewScore();
+                    combo++;
                 }
             }
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
@@ -60,6 +64,7 @@ void GameState::HandleInput()
                 {
                     score++;
                     SetNewScore();
+                    combo++;
                 }
             }
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
@@ -70,12 +75,14 @@ void GameState::HandleInput()
                 {
                     score++;
                     SetNewScore();
+                    combo++;
                 }
             }
             if (isWrong)
             {
                 helperClock.restart();
                 errorStop = true;
+                combo = 0;
             }
         }
     }
@@ -104,7 +111,7 @@ void GameState::Update(float dt)
         monster->Error(false);
         errorStop = false;
     }
-    else if (barOfNotes->stop && helperClock.getElapsedTime() >= sf::seconds(5))
+    else if (barOfNotes->stop && helperClock.getElapsedTime() >= sf::seconds(4.2))
     {
         data->machine.AddState(stateReference(new EndGameState(data, &scoreText)), true);
     }
@@ -114,16 +121,33 @@ void GameState::Update(float dt)
         monster->Update();
         frameClock.restart();
     }
+
+    if (combo >= 10)
+    {
+        barOfNotes->ChangeSpeed(barOfNotes->speed+=18);
+        combo = 0;
+    }
+
+    barOfNotes->Update(dtClock.restart().asSeconds(), fail);
+    if (fail)
+    {
+        if (score != 0)
+        {
+            score--;
+            SetNewScore();
+        }
+        combo = 0;
+        fail = false;
+    }
 }
 
 void GameState::Draw(float dt)
 {
-	data->window.clear(sf::Color(0x1A1A1Aff));
+	data->window.clear(backgroundColor);
 
     data->window.draw(scoreText);
 	barOfNotes->DrawBar();
 	monster->DrawMonster(data->window);
-	barOfNotes->Update(dtClock.restart().asSeconds());
 
 	data->window.display();
 }

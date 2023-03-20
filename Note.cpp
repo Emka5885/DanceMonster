@@ -52,9 +52,9 @@ bool Note::CheckType(std::string type)
 {
 	if (!isChecked)
 	{
-		isChecked = true;
 		if (type == noteType)
 		{
+			isChecked = true;
 			return true;
 		}
 	}

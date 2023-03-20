@@ -15,7 +15,10 @@ public:
 
 	void DrawBar();
 	void NewNote();
-	void Update(float dt);
+	void Update(float dt, bool& fail);
 	bool Check(std::string noteType);
 	bool stop;
+
+	int speed;
+	void ChangeSpeed(int newSpeed);
 };
