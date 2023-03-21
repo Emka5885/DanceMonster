@@ -65,7 +65,7 @@ void BarOfNotes::Update(float dt, bool& fail)
 		if (notes[i].PositionX() <= 500 && !notes[i].isChecked)
 		{
 			notes[i].isChecked = true;
-			fail = true;
+			//fail = true;
 		}
 	}
 }
@@ -77,9 +77,9 @@ bool BarOfNotes::Check(std::string noteType)
 		notes[i].s();
 		if (notes[i].PositionX()-notes[i].GetSizeX()/2 >= bar[bar.size() - 2].getPosition().x && notes[i].PositionX() <= bar.back().getPosition().x - notes[i].GetSizeX()/2 + bar.back().getSize().x)
 		{
-			notes[i].t();
 			if (notes[i].CheckType(noteType))
 			{
+				notes[i].t();
 				return true;
 			}
 		}

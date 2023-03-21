@@ -96,6 +96,7 @@ void Monster::Stop()
 		{
 			stop = true;
 			error = true;
+			body.setTexture(&this->assetManager.GetTexture("monster"));
 		}
 	}
 }

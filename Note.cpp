@@ -68,7 +68,7 @@ float Note::GetSizeX()
 
 void Note::t()
 {
-	note.setFillColor(sf::Color::Red);
+	note.setFillColor(sf::Color::Green);
 }
 
 void Note::s()

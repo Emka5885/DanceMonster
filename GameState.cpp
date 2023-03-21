@@ -82,7 +82,7 @@ void GameState::HandleInput()
             {
                 helperClock.restart();
                 errorStop = true;
-                combo = 0;
+                fail = true;
             }
         }
     }
