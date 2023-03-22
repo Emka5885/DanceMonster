@@ -15,10 +15,11 @@ public:
 
 	void DrawBar();
 	void NewNote();
-	void Update(float dt, bool& fail);
+	void Update(float dt, int& combo);
 	bool Check(std::string noteType);
 	bool stop;
-
+	std::vector<Note*> notesGoodClick;
+	void IncreaseWhiteShape();
 	int speed;
 	void ChangeSpeed(int newSpeed);
 };

@@ -45,7 +45,7 @@ void BarOfNotes::NewNote()
 	notes.push_back(n);
 }
 
-void BarOfNotes::Update(float dt, bool& fail)
+void BarOfNotes::Update(float dt, int& combo)
 {
 	if (!stop)
 	{
@@ -57,16 +57,11 @@ void BarOfNotes::Update(float dt, bool& fail)
 	if (notes[0].PositionX() <= -100 && !notes.empty())
 	{
 		notes.erase(notes.begin());
+		combo = 0;
 	}
 	for (int i = 0; i < notes.size(); i++)
 	{
 		notes[i].NoteMove({ dt * -speed, 0.0f });
-
-		if (notes[i].PositionX() <= 500 && !notes[i].isChecked)
-		{
-			notes[i].isChecked = true;
-			//fail = true;
-		}
 	}
 }
 
@@ -74,17 +69,36 @@ bool BarOfNotes::Check(std::string noteType)
 {
 	for (int i = 0; i < notes.size(); i++)
 	{
-		notes[i].s();
 		if (notes[i].PositionX()-notes[i].GetSizeX()/2 >= bar[bar.size() - 2].getPosition().x && notes[i].PositionX() <= bar.back().getPosition().x - notes[i].GetSizeX()/2 + bar.back().getSize().x)
 		{
 			if (notes[i].CheckType(noteType))
 			{
-				notes[i].t();
+				notesGoodClick.push_back(&notes[i]);
 				return true;
 			}
 		}
 	}
 	return false;
+}
+
+void BarOfNotes::IncreaseWhiteShape()
+{
+	for (int j = 0; j < notesGoodClick.size(); j++)
+	{
+		notesGoodClick[j]->IncreaseWhiteShape();
+
+		if (notesGoodClick[j]->alpha >= 255)
+		{
+			for (int i = 0; i < notes.size(); i++)
+			{
+				if (&notes[i] == notesGoodClick[j])
+				{
+					notesGoodClick.erase(notesGoodClick.begin() + j);
+					notes.erase(notes.begin() + i);
+				}
+			}
+		}
+	}
 }
 
 void BarOfNotes::ChangeSpeed(int newSpeed)

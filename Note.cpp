@@ -20,15 +20,17 @@ Note::Note(AssetManager& assetManager)
 
 	if (noteType == UP || noteType == DOWN)
 	{
-		note.setSize({ 60, 104 });
+		note.setSize({ 60, 100 });
 	}
 	else
 	{
-		note.setSize({ 104, 104 });
+		note.setSize({ 104, 100 });
 	}
 	note.setPosition(1250, 650);
-	note.setTexture(&assetManager.GetTexture(noteType));
 	note.setOrigin(note.getSize().x / 2, 0);
+	whiteShape = note;
+	whiteShape.setFillColor(sf::Color(255,255,255,alpha));
+	note.setTexture(&assetManager.GetTexture(noteType));
 
 	isChecked = false;
 }
@@ -36,6 +38,7 @@ Note::Note(AssetManager& assetManager)
 void Note::DrawArrow(sf::RenderWindow& window)
 {
 	window.draw(note);
+	window.draw(whiteShape);
 }
 
 float Note::PositionX()
@@ -46,6 +49,7 @@ float Note::PositionX()
 void Note::NoteMove(sf::Vector2f move)
 {
 	note.move(move);
+	whiteShape.move(move);
 }
 
 bool Note::CheckType(std::string type)
@@ -66,13 +70,12 @@ float Note::GetSizeX()
 	return note.getSize().x;
 }
 
-void Note::t()
+void Note::IncreaseWhiteShape()
 {
-	note.setFillColor(sf::Color::Green);
-}
-
-void Note::s()
-{
-	note.setFillColor(sf::Color::White);
+	if (alpha < 255)
+	{
+		alpha+=15;
+	}
+	whiteShape.setFillColor(sf::Color(255, 255, 255, alpha));
 }
 

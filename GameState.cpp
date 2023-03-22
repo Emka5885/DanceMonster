@@ -37,51 +37,49 @@ void GameState::HandleInput()
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             {
                 isWrong = !barOfNotes->Check(LEFT);
-                monster->Error(isWrong);
                 if (!isWrong)
                 {
                     score++;
                     SetNewScore();
                     combo++;
+                    monster->Error(false);
                 }
             }
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
             {
                 isWrong = !barOfNotes->Check(RIGHT);
-                monster->Error(isWrong);
                 if (!isWrong)
                 {
                     score++;
                     SetNewScore();
                     combo++;
+                    monster->Error(false);
                 }
             }
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
             {
                 isWrong = !barOfNotes->Check(UP);
-                monster->Error(isWrong);
                 if (!isWrong)
                 {
                     score++;
                     SetNewScore();
                     combo++;
+                    monster->Error(false);
                 }
             }
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
             {
                 isWrong = !barOfNotes->Check(DOWN);
-                monster->Error(isWrong);
                 if (!isWrong)
                 {
                     score++;
                     SetNewScore();
                     combo++;
+                    monster->Error(false);
                 }
             }
             if (isWrong)
             {
-                helperClock.restart();
-                errorStop = true;
                 fail = true;
             }
         }
@@ -90,6 +88,20 @@ void GameState::HandleInput()
 
 void GameState::Update(float dt)
 {
+    if (fail)
+    {
+        if (score > 0)
+        {
+            score--;
+            SetNewScore();
+        }
+        combo = 0;
+        monster->Error(true);
+        helperClock.restart();
+        errorStop = true;
+        fail = false;
+    }
+
     if (clock.getElapsedTime() >= music->MusicTime() - sf::seconds(9))
     {
         monster->Stop();
@@ -128,17 +140,9 @@ void GameState::Update(float dt)
         combo = 0;
     }
 
-    barOfNotes->Update(dtClock.restart().asSeconds(), fail);
-    if (fail)
-    {
-        if (score != 0)
-        {
-            score--;
-            SetNewScore();
-        }
-        combo = 0;
-        fail = false;
-    }
+    barOfNotes->Update(dtClock.restart().asSeconds(), combo);
+
+    barOfNotes->IncreaseWhiteShape();
 }
 
 void GameState::Draw(float dt)

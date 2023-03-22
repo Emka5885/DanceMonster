@@ -9,6 +9,7 @@ class Note
 private:
 	std::string noteType;
 	sf::RectangleShape note;
+	sf::RectangleShape whiteShape;
 
 public:
 	Note(AssetManager& assetManager);
@@ -18,8 +19,8 @@ public:
 	void NoteMove(sf::Vector2f move);
 	bool CheckType(std::string type);
 	float GetSizeX();
-	void t();
-	void s();
+	void IncreaseWhiteShape();
+	int alpha = 0;
 
 	bool isChecked;
 };
