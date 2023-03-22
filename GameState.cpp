@@ -31,10 +31,11 @@ void GameState::HandleInput()
         {
             data->window.close();
         }
-        if (errorStart && !monster->stop)
+        if (event.type == sf::Event::KeyPressed && errorStart && !monster->stop)
         {
             bool isWrong = false;
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+            std::string arrow = data->input.checkArrow(event.key.code);
+            if (arrow == LEFT)
             {
                 isWrong = !barOfNotes->Check(LEFT);
                 if (!isWrong)
@@ -45,7 +46,7 @@ void GameState::HandleInput()
                     monster->Error(false);
                 }
             }
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+            else if (arrow == RIGHT)
             {
                 isWrong = !barOfNotes->Check(RIGHT);
                 if (!isWrong)
@@ -56,7 +57,7 @@ void GameState::HandleInput()
                     monster->Error(false);
                 }
             }
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+            else if (arrow == UP)
             {
                 isWrong = !barOfNotes->Check(UP);
                 if (!isWrong)
@@ -67,7 +68,7 @@ void GameState::HandleInput()
                     monster->Error(false);
                 }
             }
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+            else if (arrow == DOWN)
             {
                 isWrong = !barOfNotes->Check(DOWN);
                 if (!isWrong)

@@ -23,22 +23,6 @@ BarOfNotes::BarOfNotes(sf::RenderWindow& window, AssetManager& assetManager) : w
 	NewNote();
 }
 
-void BarOfNotes::DrawBar()
-{
-	for (int i = 0; i < bar.size() - 2; i++)
-	{
-		window.draw(bar[i]);
-	}
-	for (int i = 0; i < notes.size(); i++)
-	{
-		notes[i].DrawArrow(window);
-	}
-	for (int i = bar.size() - 2; i < bar.size(); i++)
-	{
-		window.draw(bar[i]);
-	}
-}
-
 void BarOfNotes::NewNote()
 {
 	Note n(assetManager);
@@ -73,7 +57,7 @@ bool BarOfNotes::Check(std::string noteType)
 		{
 			if (notes[i].CheckType(noteType))
 			{
-				notesGoodClick.push_back(&notes[i]);
+				notesGoodClick = &notes[i];
 				return true;
 			}
 		}
@@ -83,17 +67,17 @@ bool BarOfNotes::Check(std::string noteType)
 
 void BarOfNotes::IncreaseWhiteShape()
 {
-	for (int j = 0; j < notesGoodClick.size(); j++)
+	if (notesGoodClick != nullptr)
 	{
-		notesGoodClick[j]->IncreaseWhiteShape();
+		notesGoodClick->IncreaseWhiteShape(howMuchToAdd);
 
-		if (notesGoodClick[j]->alpha >= 255)
+		if (notesGoodClick->alpha >= 255)
 		{
 			for (int i = 0; i < notes.size(); i++)
 			{
-				if (&notes[i] == notesGoodClick[j])
+				if (&notes[i] == notesGoodClick)
 				{
-					notesGoodClick.erase(notesGoodClick.begin() + j);
+					notesGoodClick = nullptr;
 					notes.erase(notes.begin() + i);
 				}
 			}
@@ -104,4 +88,24 @@ void BarOfNotes::IncreaseWhiteShape()
 void BarOfNotes::ChangeSpeed(int newSpeed)
 {
 	speed = newSpeed;
+	if (howMuchToAdd <= 253)
+	{
+		howMuchToAdd += 2;
+	}
+}
+
+void BarOfNotes::DrawBar()
+{
+	for (int i = 0; i < bar.size() - 2; i++)
+	{
+		window.draw(bar[i]);
+	}
+	for (int i = 0; i < notes.size(); i++)
+	{
+		notes[i].DrawArrow(window);
+	}
+	for (int i = bar.size() - 2; i < bar.size(); i++)
+	{
+		window.draw(bar[i]);
+	}
 }

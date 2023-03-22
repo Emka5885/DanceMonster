@@ -70,11 +70,11 @@ float Note::GetSizeX()
 	return note.getSize().x;
 }
 
-void Note::IncreaseWhiteShape()
+void Note::IncreaseWhiteShape(int howMuchToAdd)
 {
 	if (alpha < 255)
 	{
-		alpha+=15;
+		alpha += howMuchToAdd;
 	}
 	whiteShape.setFillColor(sf::Color(255, 255, 255, alpha));
 }

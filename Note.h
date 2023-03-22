@@ -19,7 +19,7 @@ public:
 	void NoteMove(sf::Vector2f move);
 	bool CheckType(std::string type);
 	float GetSizeX();
-	void IncreaseWhiteShape();
+	void IncreaseWhiteShape(int howMuchToAdd);
 	int alpha = 0;
 
 	bool isChecked;

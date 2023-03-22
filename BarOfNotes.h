@@ -9,17 +9,18 @@ private:
 	sf::RenderWindow& window;
 	AssetManager& assetManager;
 	sf::Clock clock;
+	int howMuchToAdd = 15;
 
 public:
 	BarOfNotes(sf::RenderWindow& window, AssetManager& assetManager);
 
-	void DrawBar();
 	void NewNote();
 	void Update(float dt, int& combo);
 	bool Check(std::string noteType);
 	bool stop;
-	std::vector<Note*> notesGoodClick;
+	Note* notesGoodClick;
 	void IncreaseWhiteShape();
 	int speed;
 	void ChangeSpeed(int newSpeed);
+	void DrawBar();
 };

@@ -7,6 +7,7 @@ Music::Music()
 
 void Music::StartMusic()
 {
+	music.setVolume(25);
 	music.play();
 }
 
