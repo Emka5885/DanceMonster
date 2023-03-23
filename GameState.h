@@ -42,4 +42,6 @@ private:
 
 	int combo;
 	sf::Color backgroundColor;
+
+	sf::Sound* errorSound;
 };

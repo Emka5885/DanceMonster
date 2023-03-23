@@ -10,6 +10,7 @@ void GameState::Init()
 	barOfNotes = new BarOfNotes(data->window, data->assets);
 	monster = new Monster(data->assets);
     music = new Music();
+    errorSound = &data->assets.GetSound("error");
     combo = 0;
     backgroundColor = sf::Color(0x1A1A1Aff);
     score = 0;
@@ -82,6 +83,7 @@ void GameState::HandleInput()
             if (isWrong)
             {
                 fail = true;
+                errorSound->play();
             }
         }
     }

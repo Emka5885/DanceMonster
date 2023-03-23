@@ -30,7 +30,7 @@ AssetManager::AssetManager()
 
 	LoadFont("scoreFont", "resources/fonts/NiceSugar.ttf");
 
-
+	LoadSound("error", "resources/sounds/error-89206.wav");
 }
 
 void AssetManager::LoadTexture(std::string name, std::string fileName)
@@ -61,4 +61,21 @@ void AssetManager::LoadFont(std::string name, std::string fileName)
 sf::Font& AssetManager::GetFont(std::string name)
 {
 	return this->fonts.at(name);
+}
+
+void AssetManager::LoadSound(std::string name, std::string fileName)
+{
+	sf::Sound sound;
+
+	if (soundBuffer.loadFromFile(fileName))
+	{
+		sound.setBuffer(soundBuffer);
+
+		this->sounds[name] = sound;
+	}
+}
+
+sf::Sound& AssetManager::GetSound(std::string name)
+{
+	return this->sounds.at(name);
 }
