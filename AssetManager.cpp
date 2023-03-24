@@ -30,6 +30,9 @@ AssetManager::AssetManager()
 
 	LoadFont("scoreFont", "resources/fonts/NiceSugar.ttf");
 
+	LoadMusic("0", "resources/music/Luke-Bergs-Golden-State-of-Mind_MasterMP3.wav");
+	LoadMusic("1", "resources/music/stay-free-138363.wav");
+
 	LoadSound("error", "resources/sounds/error-89206.wav");
 }
 
@@ -61,6 +64,21 @@ void AssetManager::LoadFont(std::string name, std::string fileName)
 sf::Font& AssetManager::GetFont(std::string name)
 {
 	return this->fonts.at(name);
+}
+
+void AssetManager::LoadMusic(std::string name, std::string fileName)
+{
+	this->musics[name] = fileName;
+}
+
+std::string& AssetManager::GetMusic(std::string name)
+{
+	return this->musics.at(name);
+}
+
+int AssetManager::musicsSize()
+{
+	return musics.size();
 }
 
 void AssetManager::LoadSound(std::string name, std::string fileName)

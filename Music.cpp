@@ -1,8 +1,10 @@
 #include "Music.h"
 
-Music::Music()
+Music::Music(AssetManager& assetManager)
 {
-	music.openFromFile("resources/music/Luke-Bergs-Golden-State-of-Mind_MasterMP3.wav");
+	currentMusic = rand() % assetManager.musicsSize();
+
+	music.openFromFile(assetManager.GetMusic(std::to_string(currentMusic)));
 }
 
 void Music::StartMusic()

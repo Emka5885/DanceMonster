@@ -5,8 +5,10 @@ class Music
 {
 private:
 	sf::Music music;
+	int currentMusic;
+
 public:
-	Music();
+	Music(AssetManager& assetManager);
 
 	void StartMusic();
 	sf::Time MusicTime();

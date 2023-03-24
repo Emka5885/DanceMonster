@@ -9,7 +9,7 @@ void GameState::Init()
 {
 	barOfNotes = new BarOfNotes(data->window, data->assets);
 	monster = new Monster(data->assets);
-    music = new Music();
+    music = new Music(data->assets);
     errorSound = &data->assets.GetSound("error");
     combo = 0;
     backgroundColor = sf::Color(0x1A1A1Aff);
