@@ -4,6 +4,7 @@
 #include "BarOfNotes.h"
 #include "Monster.h"
 #include "Music.h"
+#include "Combo.h"
 
 class GameState :public State
 {
@@ -25,11 +26,13 @@ private:
 	BarOfNotes* barOfNotes;
 	Monster* monster;
 	Music* music;
+	Combo* combos;
 
 	sf::Clock dtClock;
 	sf::Clock clock;
 	sf::Clock frameClock;
     sf::Clock helperClock;
+	sf::Clock combosClock;
 
     bool start = true;
     bool errorStart = false;

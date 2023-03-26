@@ -10,6 +10,7 @@ void GameState::Init()
 	barOfNotes = new BarOfNotes(data->window, data->assets);
 	monster = new Monster(data->assets);
     music = new Music(data->assets);
+    combos = new Combo(data->assets);
     errorSound = &data->assets.GetSound("error");
     combo = 0;
     backgroundColor = sf::Color(0x1A1A1Aff);
@@ -20,6 +21,7 @@ void GameState::Init()
     scoreText.setPosition(50, 25);
     music->StartMusic();
     clock.restart();
+    combosClock.restart();
 }
 
 void GameState::HandleInput()
@@ -105,6 +107,12 @@ void GameState::Update(float dt)
         fail = false;
     }
 
+    if (combosClock.getElapsedTime() >= sf::seconds(0.6))
+    {
+        combos->ChangeMainShapeColor();
+        combosClock.restart();
+    }
+
     if (clock.getElapsedTime() >= music->MusicTime() - sf::seconds(9))
     {
         monster->Stop();
@@ -155,6 +163,7 @@ void GameState::Draw(float dt)
     data->window.draw(scoreText);
 	barOfNotes->DrawBar();
 	monster->DrawMonster(data->window);
+    combos->DrawColors(data->window);
 
 	data->window.display();
 }
