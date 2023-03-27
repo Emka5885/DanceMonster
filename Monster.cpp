@@ -1,6 +1,6 @@
 #include "Monster.h"
 
-Monster::Monster(AssetManager& assetManager) : assetManager(assetManager)
+Monster::Monster(AssetManager& assetManager, bool mainMonster) : assetManager(assetManager)
 {
 	currentType = NORMAL;
 	newType = RIGHT;
@@ -66,6 +66,16 @@ void Monster::Update()
 			animation.ChangeFrame(currentType, currentFrame, assetManager, body, changeType);
 		}
 	}
+}
+
+void Monster::ChangePosition(sf::Vector2f xy)
+{
+	body.setPosition(xy);
+}
+
+void Monster::ChangeScale(sf::Vector2f scale)
+{
+	body.setScale(scale);
 }
 
 void Monster::Error(bool isWrong)

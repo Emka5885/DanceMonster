@@ -8,7 +8,7 @@ GameState::GameState(GameDataReference data) : data(data)
 void GameState::Init()
 {
 	barOfNotes = new BarOfNotes(data->window, data->assets);
-	monster = new Monster(data->assets);
+	monster = new Monster(data->assets, true);
     music = new Music(data->assets);
     combos = new Combo(data->assets);
     errorSound = &data->assets.GetSound("error");
@@ -109,7 +109,7 @@ void GameState::Update(float dt)
 
     if (combosClock.getElapsedTime() >= sf::seconds(0.6))
     {
-        combos->ChangeMainShapeColor();
+        combos->ChangeColors();
         combosClock.restart();
     }
 

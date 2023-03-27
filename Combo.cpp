@@ -6,14 +6,13 @@ Combo::Combo(AssetManager& assetManage) : assetManager(assetManager)
 	mainShape.setRadius(500);
 	mainShape.setPointCount(3);
 	mainShape.setPosition( 100, -150 );
+
+	leftMonster = new Monster(assetManager, false);
+	//rightMonster = new Monster(assetManager);
+	//MonstersStart();
 }
 
-void Combo::DrawColors(sf::RenderWindow& window)
-{
-	window.draw(mainShape);
-}
-
-void Combo::ChangeMainShapeColor()
+void Combo::ChangeColors()
 {
 	if (mainShape.getFillColor() == sf::Color(25, 50, 200, 100))
 	{
@@ -31,4 +30,27 @@ void Combo::ChangeMainShapeColor()
 	{
 		mainShape.setFillColor(sf::Color(25, 50, 200, 100));
 	}
+}
+
+void Combo::MonstersStart()
+{
+	leftMonster->ChangeScale({ 0.5, 0.5 });
+	leftMonster->ChangePosition({50, 200});
+}
+
+void Combo::MonstersStop()
+{
+	
+}
+
+void Combo::DrawColors(sf::RenderWindow& window)
+{
+	window.draw(mainShape);
+	//DrawMonsters(window);
+}
+
+void Combo::DrawMonsters(sf::RenderWindow& window)
+{
+	leftMonster->DrawMonster(window);
+	//rightMonster->DrawMonster(window);
 }

@@ -18,9 +18,12 @@ private:
 	std::string newType;
 
 public:
-	Monster(AssetManager& assetManager);
+	Monster(AssetManager& assetManager, bool mainMonster);
 	void DrawMonster(sf::RenderWindow& window);
 	void Update();
+
+	void ChangePosition(sf::Vector2f xy);
+	void ChangeScale(sf::Vector2f scale);
 
 	void Error(bool isWrong);
 	void Start();
