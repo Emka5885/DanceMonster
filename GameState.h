@@ -43,6 +43,7 @@ private:
 	int score;
 	sf::Text scoreText;
 
+	int counter;
 	int combo;
 	sf::Color backgroundColor;
 

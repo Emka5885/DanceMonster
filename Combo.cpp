@@ -1,15 +1,15 @@
 #include "Combo.h"
 
-Combo::Combo(AssetManager& assetManage) : assetManager(assetManager)
+Combo::Combo(AssetManager& assetManage, Monster* mainMonster) : assetManager(assetManager), mainMonster(mainMonster)
 {
 	mainShape.setFillColor(sf::Color(25, 50, 200, 100));
 	mainShape.setRadius(500);
 	mainShape.setPointCount(3);
 	mainShape.setPosition( 100, -150 );
 
-	leftMonster = new Monster(assetManager, false);
-	//rightMonster = new Monster(assetManager);
-	//MonstersStart();
+	leftX = -100;
+	rightX = 1300;
+	moveClock.restart();
 }
 
 void Combo::ChangeColors()
@@ -32,25 +32,56 @@ void Combo::ChangeColors()
 	}
 }
 
+void Combo::UpdateMonsters(bool isCombo)
+{
+	leftMonster = mainMonster->GetBody();
+	leftMonster.setScale(0.6, 0.6);
+
+	rightMonster = leftMonster;
+	rightMonster.setScale(0.6, 0.6);
+
+	if (isCombo)
+	{
+		if (leftX < 245 && moveClock.getElapsedTime() >= sf::seconds(0.1))
+		{
+			MonstersStart();
+			moveClock.restart();
+		}
+	}
+	else
+	{
+		if (leftX > -100 && moveClock.getElapsedTime() >= sf::seconds(0.1))
+		{
+			MonstersStop();
+			moveClock.restart();
+		}
+	}
+
+	leftMonster.setPosition(leftX, 275);
+	rightMonster.setPosition(rightX, 275);
+}
+
 void Combo::MonstersStart()
 {
-	leftMonster->ChangeScale({ 0.5, 0.5 });
-	leftMonster->ChangePosition({50, 200});
+	leftX += 12;
+	rightX -= 12;
 }
 
 void Combo::MonstersStop()
 {
-	
+	leftX -= 12;
+	rightX += 12;
 }
 
 void Combo::DrawColors(sf::RenderWindow& window)
 {
-	window.draw(mainShape);
-	//DrawMonsters(window);
+	//window.draw(mainShape);
 }
 
 void Combo::DrawMonsters(sf::RenderWindow& window)
 {
-	leftMonster->DrawMonster(window);
-	//rightMonster->DrawMonster(window);
+	//UpdateMonsters(true);   //transfer later to GameState.cpp
+
+	window.draw(leftMonster);
+	window.draw(rightMonster);
 }
