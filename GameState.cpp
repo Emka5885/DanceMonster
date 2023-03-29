@@ -19,6 +19,7 @@ void GameState::Init()
     music->StartMusic();
     clock.restart();
     combosClock.restart();
+    data->widgets->SetNewTime(music->MusicTime().asSeconds()-6);
 }
 
 void GameState::HandleInput()
@@ -157,13 +158,15 @@ void GameState::Update(float dt)
     barOfNotes->Update(dtClock.restart().asSeconds(), counter);
 
     barOfNotes->IncreaseWhiteShape();
+
+    data->widgets->TimeUpdate();
 }
 
 void GameState::Draw(float dt)
 {
 	data->window.clear(backgroundColor);
 
-    data->widgets->DrawScore(data->window);
+    data->widgets->DrawWidgets(data->window);
 	barOfNotes->DrawBar();
 	monster->DrawMonster(data->window);
     //combos->DrawColors(data->window);

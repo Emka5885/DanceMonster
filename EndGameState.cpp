@@ -21,7 +21,7 @@ void EndGameState::Draw(float dt)
 {
 	data->window.clear(sf::Color(0x1A1A1Aff));
 
-	data->widgets->DrawScore(data->window);
+	data->widgets->DrawWidgets(data->window);
 
 	data->window.display();
 }
