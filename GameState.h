@@ -5,6 +5,7 @@
 #include "Monster.h"
 #include "Music.h"
 #include "Combo.h"
+#include "Widgets.h"
 
 class GameState :public State
 {
@@ -16,8 +17,6 @@ public:
 	void HandleInput();
 	void Update(float dt);
 	void Draw(float dt);
-
-	void SetNewScore();
 
 private:
 
@@ -38,10 +37,6 @@ private:
     bool errorStart = false;
 	bool errorStop = false;
 	bool fail = false;
-
-	//int gameState;
-	int score;
-	sf::Text scoreText;
 
 	int counter;
 	int combo;

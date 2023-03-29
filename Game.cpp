@@ -3,6 +3,7 @@
 
 Game::Game(std::string title)
 {
+	data->widgets = new Widgets(data->assets);
 	srand(time(NULL));
 	data->window.create(sf::VideoMode(WIDTH, HEIGHT), title, sf::Style::Close | sf::Style::Titlebar);
 	data->machine.AddState(stateReference(new MainMenuState(data)), true);

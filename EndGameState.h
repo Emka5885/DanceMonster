@@ -5,7 +5,7 @@
 class EndGameState :public State
 {
 public:
-	EndGameState(GameDataReference data, sf::Text* scoreText);
+	EndGameState(GameDataReference data);
 
 	void Init();
 	void HandleInput();
@@ -14,6 +14,4 @@ public:
 
 private:
 	GameDataReference data;
-
-	sf::Text* scoreText;
 };

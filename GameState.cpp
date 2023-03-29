@@ -16,11 +16,6 @@ void GameState::Init()
     combo = 0;
     combos->comboTime = false;
     backgroundColor = sf::Color(0x1A1A1Aff);
-    score = 0;
-    scoreText.setFont(data->assets.GetFont("scoreFont"));
-    SetNewScore();
-    scoreText.setCharacterSize(50);
-    scoreText.setPosition(50, 25);
     music->StartMusic();
     clock.restart();
     combosClock.restart();
@@ -45,8 +40,7 @@ void GameState::HandleInput()
                 isWrong = !barOfNotes->Check(LEFT);
                 if (!isWrong)
                 {
-                    score++;
-                    SetNewScore();
+                    data->widgets->SetNewScore(data->widgets->GetScore() + 1);
                     counter++;
                     combo++;
                     monster->Error(false);
@@ -57,8 +51,7 @@ void GameState::HandleInput()
                 isWrong = !barOfNotes->Check(RIGHT);
                 if (!isWrong)
                 {
-                    score++;
-                    SetNewScore();
+                    data->widgets->SetNewScore(data->widgets->GetScore() + 1);
                     counter++;
                     combo++;
                     monster->Error(false);
@@ -69,8 +62,7 @@ void GameState::HandleInput()
                 isWrong = !barOfNotes->Check(UP);
                 if (!isWrong)
                 {
-                    score++;
-                    SetNewScore();
+                    data->widgets->SetNewScore(data->widgets->GetScore() + 1);
                     counter++;
                     combo++;
                     monster->Error(false);
@@ -81,8 +73,7 @@ void GameState::HandleInput()
                 isWrong = !barOfNotes->Check(DOWN);
                 if (!isWrong)
                 {
-                    score++;
-                    SetNewScore();
+                    data->widgets->SetNewScore(data->widgets->GetScore() + 1);
                     counter++;
                     combo++;
                     monster->Error(false);
@@ -101,10 +92,9 @@ void GameState::Update(float dt)
 {
     if (fail)
     {
-        if (score > 0)
+        if (data->widgets->GetScore() > 0)
         {
-            score--;
-            SetNewScore();
+            data->widgets->SetNewScore(data->widgets->GetScore() - 1);
         }
         counter = 0;
         combo = 0;
@@ -144,7 +134,7 @@ void GameState::Update(float dt)
     }
     else if (barOfNotes->stop && helperClock.getElapsedTime() >= sf::seconds(4.2))
     {
-        data->machine.AddState(stateReference(new EndGameState(data, &scoreText)), true);
+        data->machine.AddState(stateReference(new EndGameState(data)), true);
     }
 
     if (frameClock.getElapsedTime() >= sf::seconds(0.3) && !monster->stop)
@@ -173,16 +163,11 @@ void GameState::Draw(float dt)
 {
 	data->window.clear(backgroundColor);
 
-    data->window.draw(scoreText);
+    data->widgets->DrawScore(data->window);
 	barOfNotes->DrawBar();
 	monster->DrawMonster(data->window);
     //combos->DrawColors(data->window);
     combos->DrawMonsters(data->window);
 
 	data->window.display();
-}
-
-void GameState::SetNewScore()
-{
-    scoreText.setString("score: " + std::to_string(score));
 }

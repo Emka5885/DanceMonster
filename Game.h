@@ -5,6 +5,7 @@
 #include "StateMachine.h"
 #include "AssetManager.h"
 #include "InputManager.h"
+#include "Widgets.h"
 
 struct GameData
 {
@@ -12,6 +13,7 @@ struct GameData
 	sf::RenderWindow window;
 	AssetManager assets;
 	InputManager input;
+	Widgets* widgets;
 };
 
 typedef std::shared_ptr<GameData> GameDataReference;
