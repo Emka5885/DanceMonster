@@ -8,7 +8,7 @@ InputManager::~InputManager()
 {
 }
 
-bool InputManager::isSpriteClicked(sf::Sprite object, sf::Mouse::Button button, sf::RenderWindow& window)
+bool InputManager::isButtonClicked(sf::RectangleShape object, sf::Mouse::Button button, sf::RenderWindow& window)
 {
     if (sf::Mouse::isButtonPressed(button))
     {

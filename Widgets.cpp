@@ -2,12 +2,12 @@
 
 Widgets::Widgets(AssetManager& assetManager) : assetManager(assetManager)
 {
-    scoreText.setFont(assetManager.GetFont("scoreFont"));
+    scoreText.setFont(assetManager.GetFont("standardFont"));
     SetNewScore(0);
     scoreText.setCharacterSize(50);
     SetScorePosition({ 50, 25 });
 
-    timeText.setFont(assetManager.GetFont("scoreFont"));
+    timeText.setFont(assetManager.GetFont("standardFont"));
     timeText.setCharacterSize(50);
     timeText.setPosition(900, 25);
     time = 0;

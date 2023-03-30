@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="BarOfNotes.cpp" />
+    <ClCompile Include="Buttons.cpp" />
     <ClCompile Include="Combo.cpp" />
     <ClCompile Include="EndGameState.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -166,6 +167,7 @@
   <ItemGroup>
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="BarOfNotes.h" />
+    <ClInclude Include="Buttons.h" />
     <ClInclude Include="Combo.h" />
     <ClInclude Include="EndGameState.h" />
     <ClInclude Include="Game.h" />

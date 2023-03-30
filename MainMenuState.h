@@ -1,6 +1,7 @@
 #pragma once
 #include "State.h"
 #include "Game.h"
+#include "Buttons.h"
 
 class MainMenuState :public State
 {
@@ -15,7 +16,12 @@ public:
 private:
 	GameDataReference data;
 
-	sf::Sprite playButton;
-	sf::Sprite musicButton;
-	sf::Sprite quitButton;
+	sf::RectangleShape playButton;
+	sf::RectangleShape musicButton;
+	sf::RectangleShape quitButton;
+
+	sf::Text quitText;
+
+	sf::Vector2f buttonSize;
+	Buttons* buttons;
 };

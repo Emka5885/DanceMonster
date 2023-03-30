@@ -13,6 +13,7 @@ private:
 	sf::Text timeText;
 	sf::Clock timeClock;
 
+
 public:
 	Widgets(AssetManager& assetManager);
 

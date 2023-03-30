@@ -2,6 +2,8 @@
 
 AssetManager::AssetManager()
 {
+	//LoadTexture("newGame", "resources/menu/Play.png");
+
 	LoadTexture("left", "resources/arrows/LeftArrow.png");
 	LoadTexture("right", "resources/arrows/RightArrow.png");
 	LoadTexture("down", "resources/arrows/DownArrow.png");
@@ -28,7 +30,7 @@ AssetManager::AssetManager()
 	LoadTexture("monster_u6", "resources/monster/Up/u_monster_06.png");
 	LoadTexture("monster_error", "resources/monster/monster_error.png");
 
-	LoadFont("scoreFont", "resources/fonts/NiceSugar.ttf");
+	LoadFont("standardFont", "resources/fonts/NiceSugar.ttf");
 
 	LoadMusic("0", "resources/music/Luke-Bergs-Golden-State-of-Mind_MasterMP3.wav");
 	LoadMusic("1", "resources/music/stay-free-138363.wav");
