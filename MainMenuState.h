@@ -21,6 +21,7 @@ private:
 	sf::RectangleShape quitButton;
 
 	sf::Text quitText;
+	sf::Text playText;
 
 	sf::Vector2f buttonSize;
 	Buttons* buttons;

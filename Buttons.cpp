@@ -6,13 +6,13 @@ Buttons::Buttons(AssetManager& assetManager) : assetManager(assetManager)
 
 }
 
-void Buttons::NewButton(sf::Vector2f size, sf::Vector2f position, sf::Color buttonColor, std::string text, int characterSize, sf::Color textColor, std::string buttonName)
+void Buttons::NewButton(sf::Vector2f size, sf::Vector2f position, sf::Color buttonColor, std::string text, int characterSize, sf::Color textColor, int marginLeft, int marginUp, std::string buttonName)
 {
 	newButton.setSize(size);
 	newButton.setPosition(position);
 	newButton.setFillColor(buttonColor);
 
-	buttonText.setPosition({ position.x + 12, position.y + 12 });
+	buttonText.setPosition({ position.x + marginLeft, position.y + marginUp });
 	buttonText.setCharacterSize(characterSize);
 	buttonText.setString(text);
 	buttonText.setFillColor(textColor);

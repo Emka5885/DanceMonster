@@ -85,14 +85,9 @@ int AssetManager::musicsSize()
 
 void AssetManager::LoadSound(std::string name, std::string fileName)
 {
-	sf::Sound sound;
-
-	if (soundBuffer.loadFromFile(fileName))
-	{
-		sound.setBuffer(soundBuffer);
-
-		this->sounds[name] = sound;
-	}
+	soundBuffer.loadFromFile(fileName);
+	sounds[name] = sf::Sound();
+	sounds[name].setBuffer(soundBuffer);
 }
 
 sf::Sound& AssetManager::GetSound(std::string name)
