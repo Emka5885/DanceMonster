@@ -135,6 +135,7 @@ void GameState::Update(float dt)
     }
     else if (barOfNotes->stop && helperClock.getElapsedTime() >= sf::seconds(4.2))
     {
+        data->machine.RemoveState();
         data->machine.AddState(stateReference(new EndGameState(data)), true);
     }
 

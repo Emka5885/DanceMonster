@@ -2,10 +2,10 @@
 #include "State.h"
 #include "Game.h"
 
-class EndGameState :public State
+class StatsState :public State
 {
 public:
-	EndGameState(GameDataReference data);
+	StatsState(GameDataReference data);
 
 	void Init();
 	void HandleInput();
@@ -15,11 +15,9 @@ public:
 private:
 	GameDataReference data;
 
-	sf::RectangleShape statsButton;
-	sf::RectangleShape quitButton;
+	sf::RectangleShape backButton;
 
-	sf::Text statsText;
-	sf::Text quitText;
+	sf::Text backText;
 
 	sf::Vector2f buttonSize;
 };
