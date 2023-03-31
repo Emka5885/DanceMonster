@@ -14,4 +14,8 @@ public:
 
 private:
 	GameDataReference data;
+
+	sf::RectangleShape quitButton;
+
+	sf::Text quitText;
 };

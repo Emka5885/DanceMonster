@@ -1,7 +1,6 @@
 #pragma once
 #include "State.h"
 #include "Game.h"
-#include "Buttons.h"
 
 class MainMenuState :public State
 {
@@ -24,5 +23,4 @@ private:
 	sf::Text playText;
 
 	sf::Vector2f buttonSize;
-	Buttons* buttons;
 };

@@ -11,6 +11,8 @@ void Buttons::NewButton(sf::Vector2f size, sf::Vector2f position, sf::Color butt
 	newButton.setSize(size);
 	newButton.setPosition(position);
 	newButton.setFillColor(buttonColor);
+	newButton.setOutlineThickness(4);
+	newButton.setOutlineColor(textColor);
 
 	buttonText.setPosition({ position.x + marginLeft, position.y + marginUp });
 	buttonText.setCharacterSize(characterSize);

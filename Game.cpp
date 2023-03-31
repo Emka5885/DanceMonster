@@ -4,6 +4,7 @@
 Game::Game(std::string title)
 {
 	data->widgets = new Widgets(data->assets);
+	data->buttons = new Buttons(data->assets);
 	srand(time(NULL));
 	data->window.create(sf::VideoMode(WIDTH, HEIGHT), title, sf::Style::Close | sf::Style::Titlebar);
 	data->machine.AddState(stateReference(new MainMenuState(data)), true);
@@ -35,6 +36,12 @@ void Game::Run()
 		while (accumulator >= dt)
 		{
 			this->data->machine.GetActiveState()->HandleInput();
+
+			if (!this->data->window.isOpen())
+			{
+				return;
+			}
+
 			this->data->machine.GetActiveState()->Update(dt);
 
 			accumulator -= dt;

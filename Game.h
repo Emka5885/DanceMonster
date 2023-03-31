@@ -6,6 +6,7 @@
 #include "AssetManager.h"
 #include "InputManager.h"
 #include "Widgets.h"
+#include "Buttons.h"
 
 struct GameData
 {
@@ -14,6 +15,7 @@ struct GameData
 	AssetManager assets;
 	InputManager input;
 	Widgets* widgets;
+	Buttons* buttons;
 };
 
 typedef std::shared_ptr<GameData> GameDataReference;

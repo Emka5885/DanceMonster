@@ -4,20 +4,19 @@
 
 MainMenuState::MainMenuState(GameDataReference data) : data(data)
 {
-	buttons = new Buttons(data->assets);
 }
 
 void MainMenuState::Init()
 {
 	buttonSize = { 450, 85 };
-	buttons->NewButton(buttonSize, { WIDTH / 2 - buttonSize.x / 2, HEIGHT / 3 - buttonSize.y }, sf::Color::White, "New Game", 50, sf::Color::Black, 93, 12, "play_button");
-	playButton = buttons->GetButton("play_button").first;
-	playText = buttons->GetButton("play_button").second;
+	data->buttons->NewButton(buttonSize, { WIDTH / 2 - buttonSize.x / 2, HEIGHT / 3 - buttonSize.y }, sf::Color::White, "New Game", 50, sf::Color::Black, 93, 12, "play_button");
+	playButton = data->buttons->GetButton("play_button").first;
+	playText = data->buttons->GetButton("play_button").second;
 
 	buttonSize = { 175, 85 };
-	buttons->NewButton(buttonSize, { WIDTH - 50 - buttonSize.x, HEIGHT - 50 - buttonSize.y }, sf::Color::White, "Quitt", 50, sf::Color::Black, 12, 12, "quit_button");
-	quitButton = buttons->GetButton("quit_button").first;
-	quitText = buttons->GetButton("quit_button").second;
+	data->buttons->NewButton(buttonSize, { WIDTH - 50 - buttonSize.x, HEIGHT - 50 - buttonSize.y }, sf::Color::White, "Quitt", 50, sf::Color::Black, 12, 12, "quit_button");
+	quitButton = data->buttons->GetButton("quit_button").first;
+	quitText = data->buttons->GetButton("quit_button").second;
 }
 
 void MainMenuState::HandleInput()
@@ -26,21 +25,17 @@ void MainMenuState::HandleInput()
 
 	while (data->window.pollEvent(event))
 	{
-		if (sf::Event::Closed == event.type)
+		if (sf::Event::Closed == event.type || data->input.isButtonClicked(quitButton, sf::Mouse::Left, data->window))
 		{
 			data->window.close();
+			delete data->buttons;
+			delete data->widgets;
 		}
 
 		//input, if user click a particular button
 		if (data->input.isButtonClicked(playButton, sf::Mouse::Left, data->window))
 		{
 			data->machine.AddState(stateReference(new GameState(data)), true);
-		}
-		else if (data->input.isButtonClicked(quitButton, sf::Mouse::Left, data->window))
-		{
-			data->window.close();
-			delete buttons;
-			delete data->widgets;
 		}
 	}
 }
