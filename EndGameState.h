@@ -15,11 +15,11 @@ public:
 private:
 	GameDataReference data;
 
+	sf::RectangleShape menuButton;
 	sf::RectangleShape statsButton;
-	sf::RectangleShape quitButton;
 
+	sf::Text menuText;
 	sf::Text statsText;
-	sf::Text quitText;
 
 	sf::Vector2f buttonSize;
 };

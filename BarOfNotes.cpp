@@ -88,7 +88,7 @@ void BarOfNotes::IncreaseWhiteShape()
 void BarOfNotes::ChangeSpeed(int newSpeed)
 {
 	speed = newSpeed;
-	if (howMuchToAdd <= 15)
+	if (howMuchToAdd <= 10)
 	{
 		howMuchToAdd ++;
 	}

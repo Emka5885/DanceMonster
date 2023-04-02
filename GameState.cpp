@@ -153,6 +153,7 @@ void GameState::Update(float dt)
     if (combo >= 10)
     {
         combos->comboTime = true;
+        data->machine.AddState(stateReference(new EndGameState(data)), true);
     }
     combos->UpdateMonsters(combos->comboTime);
 
@@ -167,7 +168,8 @@ void GameState::Draw(float dt)
 {
 	data->window.clear(backgroundColor);
 
-    data->widgets->DrawWidgets(data->window);
+    data->widgets->DrawScore(data->window);
+    data->widgets->DrawTime(data->window);
 	barOfNotes->DrawBar();
 	monster->DrawMonster(data->window);
     //combos->DrawColors(data->window);

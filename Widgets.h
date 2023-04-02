@@ -25,5 +25,6 @@ public:
 	void SetNewTime(int newTime);
 	void TimeUpdate();
 
-	void DrawWidgets(sf::RenderWindow& window);
+	void DrawScore(sf::RenderWindow& window);
+	void DrawTime(sf::RenderWindow& window);
 };

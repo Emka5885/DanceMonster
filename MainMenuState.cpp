@@ -20,7 +20,7 @@ void MainMenuState::Init()
 	statsText = data->buttons->GetButton("stats_button").second;
 
 	buttonSize = { 175, 85 };
-	data->buttons->NewButton(buttonSize, { WIDTH - 50 - buttonSize.x, HEIGHT - 50 - buttonSize.y }, sf::Color::White, "Quitt", 50, sf::Color::Black, 12, 12, "quit_button");
+	data->buttons->NewButton(buttonSize, { WIDTH - 50 - buttonSize.x, HEIGHT - 50 - buttonSize.y }, sf::Color::White, "Quitt", 50, sf::Color::Black, 15, 12, "quit_button");
 	quitButton = data->buttons->GetButton("quit_button").first;
 	quitText = data->buttons->GetButton("quit_button").second;
 }

@@ -51,8 +51,12 @@ void Widgets::TimeUpdate()
     }
 }
 
-void Widgets::DrawWidgets(sf::RenderWindow& window)
+void Widgets::DrawScore(sf::RenderWindow& window)
 {
     window.draw(scoreText);
+}
+
+void Widgets::DrawTime(sf::RenderWindow& window)
+{
     window.draw(timeText);
 }
