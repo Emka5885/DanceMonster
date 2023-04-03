@@ -1,6 +1,7 @@
 #include "EndGameState.h"
 #include "MainMenuState.h"
 #include "StatsState.h"
+#include <fstream>
 
 EndGameState::EndGameState(GameDataReference data) : data(data)
 {
@@ -17,6 +18,14 @@ void EndGameState::Init()
 	data->buttons->NewButton(buttonSize, { 50, HEIGHT - 50 - buttonSize.y }, sf::Color::White, "Menu", 50, sf::Color::Black, 16, 12, "menu_button");
 	menuButton = data->buttons->GetButton("menu_button").first;
 	menuText = data->buttons->GetButton("menu_button").second;
+
+	std::fstream file;
+	std::string line;
+	line = "score: " + std::to_string(data->widgets->GetScore()) + "   -   time: " + std::to_string(data->widgets->GetTime());
+	file.open("stats.txt", std::fstream::app);
+	file << line << "\n";
+	
+	file.close();
 }
 
 void EndGameState::HandleInput()

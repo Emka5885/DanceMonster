@@ -10,6 +10,7 @@ private:
 	sf::Text scoreText;
 
 	int time;
+	int musicTime;
 	sf::Text timeText;
 	sf::Clock timeClock;
 
@@ -22,7 +23,8 @@ public:
 	void SetScorePosition(sf::Vector2f newPosition);
 	sf::FloatRect GetScoreGlobalBounds();
 
-	void SetNewTime(int newTime);
+	void SetNewTime(int newTime, bool newMusic);
+	int GetTime();
 	void TimeUpdate();
 
 	void DrawScore(sf::RenderWindow& window);

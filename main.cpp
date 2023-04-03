@@ -75,14 +75,11 @@
 //    return 0;
 //}
 
-#include <iostream>
 #include "Game.h"
-#include "BarOfNotes.h"
 
 int main()
 {
     Game game("Test");
-
 
     return 0;
 }

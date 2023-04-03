@@ -34,20 +34,29 @@ sf::FloatRect Widgets::GetScoreGlobalBounds()
     return scoreText.getGlobalBounds();
 }
 
-void Widgets::SetNewTime(int newTime)
+void Widgets::SetNewTime(int newTime, bool newMusic)
 {
     timeClock.restart();
 
     time = newTime;
+    if (newMusic)
+    {
+        musicTime = time;
+    }
 
     timeText.setString("time: " + std::to_string(time) + "s");
+}
+
+int Widgets::GetTime()
+{
+    return musicTime;
 }
 
 void Widgets::TimeUpdate()
 {
     if (timeClock.getElapsedTime() >= sf::seconds(1) && time > 0)
     {
-        SetNewTime(--time);
+        SetNewTime(--time, false);
     }
 }
 

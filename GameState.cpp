@@ -19,7 +19,7 @@ void GameState::Init()
     music->StartMusic();
     clock.restart();
     combosClock.restart();
-    data->widgets->SetNewTime(music->MusicTime().asSeconds()-6);
+    data->widgets->SetNewTime(music->MusicTime().asSeconds()-6, true);
 }
 
 void GameState::HandleInput()

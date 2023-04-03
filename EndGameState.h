@@ -1,6 +1,7 @@
 #pragma once
 #include "State.h"
 #include "Game.h"
+#include "Music.h"
 
 class EndGameState :public State
 {

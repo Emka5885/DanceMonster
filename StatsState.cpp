@@ -11,6 +11,19 @@ void StatsState::Init()
 	data->buttons->NewButton(buttonSize, { 50, 50 }, sf::Color::White, "Back", 50, sf::Color::Black, 12, 12, "back_button");
 	backButton = data->buttons->GetButton("back_button").first;
 	backText = data->buttons->GetButton("back_button").second;
+
+	line.setSize({ WIDTH / 2, 50 });
+	line.setPosition({ WIDTH/4, 200 });
+	line.setFillColor(sf::Color::White);
+	line.setOutlineThickness(4);
+	line.setOutlineColor(sf::Color::Black);
+
+	lineText.setFont(data->assets.GetFont("standardFont"));
+	lineText.setCharacterSize(40);
+	lineText.setString("score: 10   -   time: 135");   //later add downloading data from a file
+	float margin = (float(line.getSize().x) - float(lineText.getLocalBounds().width)) / 2;
+	lineText.setPosition({ WIDTH/4 + margin, 200 });
+	lineText.setFillColor(sf::Color::Black);
 }
 
 void StatsState::HandleInput()
@@ -36,6 +49,7 @@ void StatsState::HandleInput()
 
 void StatsState::Update(float dt)
 {
+	
 }
 
 void StatsState::Draw(float dt)
@@ -44,6 +58,8 @@ void StatsState::Draw(float dt)
 
 	data->window.draw(backButton);
 	data->window.draw(backText);
+	data->window.draw(line);
+	data->window.draw(lineText);
 
 	data->window.display();
 }

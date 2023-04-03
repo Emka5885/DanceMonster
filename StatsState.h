@@ -20,4 +20,8 @@ private:
 	sf::Text backText;
 
 	sf::Vector2f buttonSize;
+
+	sf::RectangleShape line;
+	sf::Text lineText;
+	std::vector<std::pair<sf::RectangleShape, sf::Text>> statsLines;
 };
