@@ -1,7 +1,6 @@
 #include "EndGameState.h"
 #include "MainMenuState.h"
 #include "StatsState.h"
-#include <fstream>
 
 EndGameState::EndGameState(GameDataReference data) : data(data)
 {
@@ -21,7 +20,7 @@ void EndGameState::Init()
 
 	std::fstream file;
 	std::string line;
-	line = "score: " + std::to_string(data->widgets->GetScore()) + "   -   time: " + std::to_string(data->widgets->GetTime());
+	line = "" + std::to_string(data->widgets->GetScore()) + "-" + std::to_string(data->widgets->GetTime());
 	file.open("stats.txt", std::fstream::app);
 	file << line << "\n";
 	

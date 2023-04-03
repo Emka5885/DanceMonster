@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+#include <fstream>
 #include <string>
 #include <SFML/Graphics.hpp>
 #include "StateMachine.h"

@@ -2,6 +2,13 @@
 #include "State.h"
 #include "Game.h"
 
+struct Texts
+{
+	sf::Text scoreText;
+	sf::Text dash;
+	sf::Text timeText;
+};
+
 class StatsState :public State
 {
 public:
@@ -21,7 +28,11 @@ private:
 
 	sf::Vector2f buttonSize;
 
+	float counterLine = 0;
+	float margin;
 	sf::RectangleShape line;
-	sf::Text lineText;
-	std::vector<std::pair<sf::RectangleShape, sf::Text>> statsLines;
+	Texts lineText;
+	sf::Text statsText;
+	std::vector<std::string> statsLinesText;
+	std::vector<std::pair<sf::RectangleShape, Texts>> statsLines;
 };
