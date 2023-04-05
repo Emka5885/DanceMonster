@@ -71,20 +71,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\ZSP\source\repos\Emka5885\DanceMonster\include;C:\Users\EMI\source\repos\Emka5885\SFML_09\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\ZSP\source\repos\Emka5885\DanceMonster\lib;C:\Users\EMI\source\repos\Emka5885\SFML_09\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\EMI\source\repos\Emka5885\DanceMonster\include;C:\Users\ZSP\source\repos\Emka5885\DanceMonster\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\EMI\source\repos\Emka5885\DanceMonster\lib;C:\Users\ZSP\source\repos\Emka5885\DanceMonster\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\Users\ZSP\source\repos\Emka5885\DanceMonster\include;C:\Users\EMI\source\repos\Emka5885\SFML_09\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\ZSP\source\repos\Emka5885\DanceMonster\lib;C:\Users\EMI\source\repos\Emka5885\SFML_09\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\EMI\source\repos\Emka5885\DanceMonster\include;C:\Users\ZSP\source\repos\Emka5885\DanceMonster\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\EMI\source\repos\Emka5885\DanceMonster\lib;C:\Users\ZSP\source\repos\Emka5885\DanceMonster\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\ZSP\source\repos\Emka5885\DanceMonster\include;C:\Users\EMI\source\repos\Emka5885\SFML_09\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\ZSP\source\repos\Emka5885\DanceMonster\lib;C:\Users\EMI\source\repos\Emka5885\SFML_09\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\EMI\source\repos\Emka5885\DanceMonster\include;C:\Users\ZSP\source\repos\Emka5885\DanceMonster\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\EMI\source\repos\Emka5885\DanceMonster\lib;C:\Users\ZSP\source\repos\Emka5885\DanceMonster\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Users\ZSP\source\repos\Emka5885\DanceMonster\include;C:\Users\EMI\source\repos\Emka5885\SFML_09\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\ZSP\source\repos\Emka5885\DanceMonster\lib;C:\Users\EMI\source\repos\Emka5885\SFML_09\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\EMI\source\repos\Emka5885\DanceMonster\include;C:\Users\ZSP\source\repos\Emka5885\DanceMonster\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\EMI\source\repos\Emka5885\DanceMonster\lib;C:\Users\ZSP\source\repos\Emka5885\DanceMonster\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -161,6 +161,7 @@
     <ClCompile Include="Music.cpp" />
     <ClCompile Include="Note.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ScrollBar.cpp" />
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="StatsState.cpp" />
     <ClCompile Include="Widgets.cpp" />
@@ -179,6 +180,7 @@
     <ClInclude Include="MonsterAnimation.h" />
     <ClInclude Include="Music.h" />
     <ClInclude Include="Note.h" />
+    <ClInclude Include="ScrollBar.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="StatsState.h" />
