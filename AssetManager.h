@@ -13,6 +13,9 @@
 #define ERROR "error"
 #define WIDTH 1200
 #define HEIGHT 800
+#define SCROLLBAR_BACKGROUND_WIDTH 10
+#define SCROLLBAR_HANDLE_WIDTH 10
+
 
 class AssetManager
 {

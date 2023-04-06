@@ -108,10 +108,24 @@ void StatsState::Init()
 
 		i++;
 	}
+
+	if (i > 10)
+	{
+		scrollBar = new ScrollBar({ WIDTH / 1.30, 223 }, int(504 / (i-9)) * (i-9), i - 9, sf::Color::Black, sf::Color(0x9e9e9eff));
+		checkCounter = true;
+	}
+	else
+	{
+		scrollBar = new ScrollBar({ WIDTH / 1.30, 223 }, 504, 1, sf::Color::Black, sf::Color(0x9e9e9eff));
+		checkCounter = false;
+	}
+	counter = statsLines.size() - 1;
 }
 
 void StatsState::HandleInput()
 {
+	int oldCounter = counter;
+
 	sf::Event event;
 
 	while (data->window.pollEvent(event))
@@ -128,12 +142,35 @@ void StatsState::HandleInput()
 			data->machine.RemoveState();
 			data->machine.AddState(stateReference(new MainMenuState(data)), true);
 		}
+
+		if (checkCounter)
+		{
+			scrollBar->Update(event, counter, statsLines.size() - 1, 10);
+		}
+	}
+
+	if (counter != oldCounter)
+	{
+		Update(0);
 	}
 }
 
 void StatsState::Update(float dt)
 {
-	
+	int j = 0;
+	for (int i = counter; i >= counter - 10; i--)
+	{
+		if (i < 1)
+		{
+			break;
+		}
+		statsLines[i].first.setPosition(statsLines[i].first.getPosition().x, 225 + j * 50);
+		statsLines[i].second.scoreText.setPosition(statsLines[i].second.scoreText.getPosition().x, 225 + j * 50);
+		statsLines[i].second.dash.setPosition(statsLines[i].second.dash.getPosition().x, 225 + j * 50);
+		statsLines[i].second.timeText.setPosition(statsLines[i].second.timeText.getPosition().x, 225 + j * 50);
+
+		j++;
+	}
 }
 
 void StatsState::Draw(float dt)
@@ -143,14 +180,25 @@ void StatsState::Draw(float dt)
 	data->window.draw(backButton);
 	data->window.draw(backText);
 	data->window.draw(statsText);
-	for (int i = 0; i < statsLines.size(); i++)
+
+	data->window.draw(statsLines[0].first);
+	data->window.draw(statsLines[0].second.scoreText);
+	data->window.draw(statsLines[0].second.dash);
+	data->window.draw(statsLines[0].second.timeText);
+
+	for (int i = counter; i >= counter-9; i--)
 	{
+		if (i < 1)
+		{
+			break;
+		}
 		data->window.draw(statsLines[i].first);
 		data->window.draw(statsLines[i].second.scoreText);
 		data->window.draw(statsLines[i].second.dash);
 		data->window.draw(statsLines[i].second.timeText);
 	}
-	
+
+	scrollBar->Draw(data->window);
 
 	data->window.display();
 }

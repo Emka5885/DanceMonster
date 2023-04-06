@@ -1,6 +1,7 @@
 #pragma once
 #include "State.h"
 #include "Game.h"
+#include "ScrollBar.h"
 
 struct Texts
 {
@@ -22,12 +23,16 @@ public:
 private:
 	GameDataReference data;
 
+	ScrollBar* scrollBar;
+
 	sf::RectangleShape backButton;
 
 	sf::Text backText;
 
 	sf::Vector2f buttonSize;
 
+	bool checkCounter;
+	int counter = 0;
 	float counterLine = 0;
 	float margin;
 	sf::RectangleShape line;
