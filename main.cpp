@@ -79,7 +79,7 @@
 
 int main()
 {
-    Game game("Test");
+    Game game("Dance Monster");
 
     return 0;
 }

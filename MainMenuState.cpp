@@ -10,12 +10,12 @@ MainMenuState::MainMenuState(GameDataReference data) : data(data)
 void MainMenuState::Init()
 {
 	buttonSize = { 450, 85 };
-	data->buttons->NewButton(buttonSize, { WIDTH / 2 - buttonSize.x / 2, HEIGHT / 3 - buttonSize.y }, sf::Color::White, "New Game", 50, sf::Color::Black, 93, 12, "play_button");
+	data->buttons->NewButton(buttonSize, { WIDTH / 2 - buttonSize.x / 2, HEIGHT / 3 - buttonSize.y + 50 }, sf::Color::White, "New Game", 50, sf::Color::Black, 93, 12, "play_button");
 	playButton = data->buttons->GetButton("play_button").first;
 	playText = data->buttons->GetButton("play_button").second;
 
 	buttonSize = { 450, 85 };
-	data->buttons->NewButton(buttonSize, { WIDTH / 2 - buttonSize.x / 2, HEIGHT / 2 - buttonSize.y }, sf::Color::White, "Stats", 50, sf::Color::Black, 153, 12, "stats_button");
+	data->buttons->NewButton(buttonSize, { WIDTH / 2 - buttonSize.x / 2, HEIGHT / 2 - buttonSize.y + 50 }, sf::Color::White, "Stats", 50, sf::Color::Black, 153, 12, "stats_button");
 	statsButton = data->buttons->GetButton("stats_button").first;
 	statsText = data->buttons->GetButton("stats_button").second;
 
@@ -23,6 +23,14 @@ void MainMenuState::Init()
 	data->buttons->NewButton(buttonSize, { WIDTH - 50 - buttonSize.x, HEIGHT - 50 - buttonSize.y }, sf::Color::White, "Quitt", 50, sf::Color::Black, 15, 12, "quit_button");
 	quitButton = data->buttons->GetButton("quit_button").first;
 	quitText = data->buttons->GetButton("quit_button").second;
+
+	title.setString("Dance Monster");
+	title.setFillColor(sf::Color::White);
+	title.setOutlineColor(sf::Color::Black);
+	title.setOutlineThickness(4);
+	title.setCharacterSize(100);
+	title.setFont(data->assets.GetFont("standardFont"));
+	title.setPosition({ WIDTH / 2 - title.getGlobalBounds().width / 2, 50 });
 }
 
 void MainMenuState::HandleInput()
@@ -60,6 +68,7 @@ void MainMenuState::Draw(float dt)
 {
 	data->window.clear(sf::Color(0x1A1A1Aff));
 
+	data->window.draw(title);
 	data->window.draw(playButton);
 	data->window.draw(playText);
 	//data->window.draw(musicButton);

@@ -23,6 +23,7 @@ private:
 	sf::Text playText;
 	sf::Text statsText;
 	sf::Text quitText;
+	sf::Text title;
 
 	sf::Vector2f buttonSize;
 };
