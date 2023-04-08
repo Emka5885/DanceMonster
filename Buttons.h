@@ -15,7 +15,7 @@ private:
 public:
 	Buttons(AssetManager& assetManager);
 
-	void NewButton(sf::Vector2f size, sf::Vector2f position, sf::Color buttonColor, std::string text, int characterSize, sf::Color textColor, int marginLeft, int marginUp, std::string buttonName);
+	void NewButton(sf::Vector2f size, sf::Vector2f position, sf::Color buttonColor, std::string text, int characterSize, sf::Color textColor, std::string buttonName);
 	std::pair<sf::RectangleShape, sf::Text> GetButton(std::string buttonName);
 
 	std::map<std::string, std::pair<sf::RectangleShape, sf::Text>> buttons;

@@ -16,12 +16,13 @@ private:
 	GameDataReference data;
 
 	sf::RectangleShape playButton;
-	sf::RectangleShape musicButton;
 	sf::RectangleShape statsButton;
+	sf::RectangleShape musicButton;
 	sf::RectangleShape quitButton;
 
 	sf::Text playText;
 	sf::Text statsText;
+	sf::Text musicText;
 	sf::Text quitText;
 	sf::Text title;
 

@@ -8,7 +8,7 @@ StatsState::StatsState(GameDataReference data) : data(data)
 void StatsState::Init()
 {
 	buttonSize = { 150, 85 };
-	data->buttons->NewButton(buttonSize, { 50, 50 }, sf::Color::White, "Back", 50, sf::Color::Black, 12, 12, "back_button");
+	data->buttons->NewButton(buttonSize, { 50, 50 }, sf::Color::White, "Back", 50, sf::Color::Black, "back_button");
 	backButton = data->buttons->GetButton("back_button").first;
 	backText = data->buttons->GetButton("back_button").second;
 	

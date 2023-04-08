@@ -14,7 +14,7 @@ void EndGameState::Init()
 	//statsText = data->buttons->GetButton("stats_button").second;
 
 	buttonSize = { 175, 85 };
-	data->buttons->NewButton(buttonSize, { 50, HEIGHT - 50 - buttonSize.y }, sf::Color::White, "Menu", 50, sf::Color::Black, 16, 12, "menu_button");
+	data->buttons->NewButton(buttonSize, { 50, HEIGHT - 50 - buttonSize.y }, sf::Color::White, "Menu", 50, sf::Color::Black, "menu_button");
 	menuButton = data->buttons->GetButton("menu_button").first;
 	menuText = data->buttons->GetButton("menu_button").second;
 

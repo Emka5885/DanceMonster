@@ -159,6 +159,7 @@
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="MonsterAnimation.cpp" />
     <ClCompile Include="Music.cpp" />
+    <ClCompile Include="MusicState.cpp" />
     <ClCompile Include="Note.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ScrollBar.cpp" />
@@ -179,6 +180,7 @@
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MonsterAnimation.h" />
     <ClInclude Include="Music.h" />
+    <ClInclude Include="MusicState.h" />
     <ClInclude Include="Note.h" />
     <ClInclude Include="ScrollBar.h" />
     <ClInclude Include="State.h" />
