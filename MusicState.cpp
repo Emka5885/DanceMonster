@@ -11,6 +11,13 @@ void MusicState::Init()
 	data->buttons->NewButton(buttonSize, { 50, 50 }, sf::Color::White, "Back", 50, sf::Color::Black, "back_button");
 	backButton = data->buttons->GetButton("back_button").first;
 	backText = data->buttons->GetButton("back_button").second;
+
+	musicText.setString("MUSIC");
+	musicText.setFont(data->assets.GetFont("standardFont"));
+	musicText.setCharacterSize(80);
+	musicText.setOutlineColor(sf::Color::Black);
+	musicText.setOutlineThickness(4);
+	musicText.setPosition({ WIDTH / 2 - musicText.getGlobalBounds().width / 2, 50});
 }
 
 void MusicState::HandleInput()
@@ -44,6 +51,7 @@ void MusicState::Draw(float dt)
 
 	data->window.draw(backButton);
 	data->window.draw(backText);
+	data->window.draw(musicText);
 
 	data->window.display();
 }

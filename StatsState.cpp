@@ -15,35 +15,35 @@ void StatsState::Init()
 	statsText.setString("STATS");
 	statsText.setFont(data->assets.GetFont("standardFont"));
 	statsText.setCharacterSize(80);
-	statsText.setPosition({ 482, 40 });
 	statsText.setOutlineColor(sf::Color::Black);
 	statsText.setOutlineThickness(4);
+	statsText.setPosition({ WIDTH / 2 - statsText.getGlobalBounds().width / 2, 50 });
 
 	line.setSize({ WIDTH / 2, 50 });
 	line.setFillColor(sf::Color(0x9e9e9eff));
 	line.setOutlineThickness(4);
 	line.setOutlineColor(sf::Color::Black);
-	line.setPosition(WIDTH / 4, 165);
+	line.setPosition(WIDTH / 4, 175);
 
 	lineText.dash.setFont(data->assets.GetFont("standardFont"));
 	lineText.dash.setCharacterSize(40);
 	lineText.dash.setFillColor(sf::Color::Black);
 	lineText.dash.setString("-");
-	lineText.dash.setPosition({ WIDTH / 2 - 2, 165 });
+	lineText.dash.setPosition({ WIDTH / 2 - 2, 175 });
 
 	lineText.scoreText.setFont(data->assets.GetFont("standardFont"));
 	lineText.scoreText.setCharacterSize(40);
 	lineText.scoreText.setFillColor(sf::Color::Black);
 	lineText.scoreText.setString("score:");
 	margin = (float(line.getSize().x / 2) - float(lineText.scoreText.getLocalBounds().width)) / 2;
-	lineText.scoreText.setPosition({ WIDTH / 4 + margin, 165 });
+	lineText.scoreText.setPosition({ WIDTH / 4 + margin, 175 });
 
 	lineText.timeText.setFont(data->assets.GetFont("standardFont"));
 	lineText.timeText.setCharacterSize(40);
 	lineText.timeText.setFillColor(sf::Color::Black);
 	lineText.timeText.setString("time:");
 	margin = (float(line.getSize().x / 2) - float(lineText.timeText.getLocalBounds().width)) / 2;
-	lineText.timeText.setPosition({ WIDTH / 2 + margin, 165 });
+	lineText.timeText.setPosition({ WIDTH / 2 + margin, 175 });
 
 	statsLines.push_back(std::pair<sf::RectangleShape, Texts>());
 	statsLines.back().first = line;
@@ -70,7 +70,7 @@ void StatsState::Init()
 	while (counterLine > 0)
 	{
 		counterLine -= 50;
-		line.setPosition(WIDTH / 4, 225 + counterLine);
+		line.setPosition(WIDTH / 4, 235 + counterLine);
 
 		std::string helper = statsLinesText[i];
 		std::string sText, tText;
@@ -96,11 +96,11 @@ void StatsState::Init()
 		lineText.scoreText.setString(sText);
 		lineText.timeText.setString(tText);
 
-		lineText.dash.setPosition({ WIDTH / 2 - 2, 225 + counterLine });
+		lineText.dash.setPosition({ WIDTH / 2 - 2, 235 + counterLine });
 		margin = (float(line.getSize().x / 2) - float(lineText.scoreText.getLocalBounds().width)) / 2;
-		lineText.scoreText.setPosition({ WIDTH / 4 + margin, 225 + counterLine });
+		lineText.scoreText.setPosition({ WIDTH / 4 + margin, 235 + counterLine });
 		margin = (float(line.getSize().x / 2) - float(lineText.timeText.getLocalBounds().width)) / 2;
-		lineText.timeText.setPosition({ WIDTH / 2 + margin, 225 + counterLine });
+		lineText.timeText.setPosition({ WIDTH / 2 + margin, 235 + counterLine });
 
 		statsLines.push_back(std::pair<sf::RectangleShape, Texts>());
 		statsLines.back().first = line;
@@ -111,12 +111,12 @@ void StatsState::Init()
 
 	if (i > 10)
 	{
-		scrollBar = new ScrollBar({ WIDTH / 1.30, 223 }, int(504 / (i-9)) * (i-9), i - 9, sf::Color::Black, sf::Color(0x9e9e9eff));
+		scrollBar = new ScrollBar({ WIDTH / 1.30, 233 }, int(504 / (i-9)) * (i-9), i - 9, sf::Color::Black, sf::Color(0x9e9e9eff));
 		checkCounter = true;
 	}
 	else
 	{
-		scrollBar = new ScrollBar({ WIDTH / 1.30, 223 }, 504, 1, sf::Color::Black, sf::Color(0x9e9e9eff));
+		scrollBar = new ScrollBar({ WIDTH / 1.30, 233 }, 504, 1, sf::Color::Black, sf::Color(0x9e9e9eff));
 		checkCounter = false;
 	}
 	counter = statsLines.size() - 1;
@@ -151,11 +151,15 @@ void StatsState::HandleInput()
 
 	if (counter != oldCounter)
 	{
-		Update(0);
+		UpdateStats();
 	}
 }
 
 void StatsState::Update(float dt)
+{
+}
+
+void StatsState::UpdateStats()
 {
 	int j = 0;
 	for (int i = counter; i >= counter - 10; i--)
@@ -164,10 +168,10 @@ void StatsState::Update(float dt)
 		{
 			break;
 		}
-		statsLines[i].first.setPosition(statsLines[i].first.getPosition().x, 225 + j * 50);
-		statsLines[i].second.scoreText.setPosition(statsLines[i].second.scoreText.getPosition().x, 225 + j * 50);
+		statsLines[i].first.setPosition(statsLines[i].first.getPosition().x, 235 + j * 50);
+		statsLines[i].second.scoreText.setPosition(statsLines[i].second.scoreText.getPosition().x, 235 + j * 50);
 		statsLines[i].second.dash.setPosition(statsLines[i].second.dash.getPosition().x, 225 + j * 50);
-		statsLines[i].second.timeText.setPosition(statsLines[i].second.timeText.getPosition().x, 225 + j * 50);
+		statsLines[i].second.timeText.setPosition(statsLines[i].second.timeText.getPosition().x, 235 + j * 50);
 
 		j++;
 	}

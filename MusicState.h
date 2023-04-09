@@ -18,6 +18,7 @@ private:
 	sf::RectangleShape backButton;
 
 	sf::Text backText;
+	sf::Text musicText;
 
 	sf::Vector2f buttonSize;
 };

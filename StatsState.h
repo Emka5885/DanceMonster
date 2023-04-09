@@ -18,6 +18,7 @@ public:
 	void Init();
 	void HandleInput();
 	void Update(float dt);
+	void UpdateStats();
 	void Draw(float dt);
 
 private:
@@ -28,6 +29,7 @@ private:
 	sf::RectangleShape backButton;
 
 	sf::Text backText;
+	sf::Text statsText;
 
 	sf::Vector2f buttonSize;
 
@@ -37,7 +39,6 @@ private:
 	float margin;
 	sf::RectangleShape line;
 	Texts lineText;
-	sf::Text statsText;
 	std::vector<std::string> statsLinesText;
 	std::vector<std::pair<sf::RectangleShape, Texts>> statsLines;
 };
