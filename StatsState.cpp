@@ -111,12 +111,12 @@ void StatsState::Init()
 
 	if (i > 10)
 	{
-		scrollBar = new ScrollBar({ WIDTH / 1.30, 233 }, int(504 / (i-9)) * (i-9), i - 9, sf::Color::Black, sf::Color(0x9e9e9eff));
+		scrollBar = new ScrollBar({ WIDTH / 1.30, 233 }, int(504 / (i-9)) * (i-9), i - 9, sf::Color::Black, sf::Color(0x9e9e9eff), "vertically", data->window);
 		checkCounter = true;
 	}
 	else
 	{
-		scrollBar = new ScrollBar({ WIDTH / 1.30, 233 }, 504, 1, sf::Color::Black, sf::Color(0x9e9e9eff));
+		scrollBar = new ScrollBar({ WIDTH / 1.30, 233 }, 504, 1, sf::Color::Black, sf::Color(0x9e9e9eff), "vertically", data->window);
 		checkCounter = false;
 	}
 	counter = statsLines.size() - 1;
@@ -161,7 +161,7 @@ void StatsState::Update(float dt)
 
 void StatsState::UpdateStats()
 {
-	int j = 0;
+	float j = 0;
 	for (int i = counter; i >= counter - 10; i--)
 	{
 		if (i < 1)
@@ -202,7 +202,7 @@ void StatsState::Draw(float dt)
 		data->window.draw(statsLines[i].second.timeText);
 	}
 
-	scrollBar->Draw(data->window);
+	scrollBar->Draw();
 
 	data->window.display();
 }

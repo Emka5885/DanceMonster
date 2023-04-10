@@ -18,6 +18,10 @@ void MusicState::Init()
 	musicText.setOutlineColor(sf::Color::Black);
 	musicText.setOutlineThickness(4);
 	musicText.setPosition({ WIDTH / 2 - musicText.getGlobalBounds().width / 2, 50});
+
+	CreateMusicOptionsButtons();
+
+	counter = 0;
 }
 
 void MusicState::HandleInput()
@@ -39,6 +43,8 @@ void MusicState::HandleInput()
 			data->machine.AddState(stateReference(new MainMenuState(data)), true);
 		}
 	}
+	s->Update(event, counter, 101, 1);
+	std::cout << counter << "\n";
 }
 
 void MusicState::Update(float dt)
@@ -52,6 +58,26 @@ void MusicState::Draw(float dt)
 	data->window.draw(backButton);
 	data->window.draw(backText);
 	data->window.draw(musicText);
+	data->window.draw(menu);
+	data->window.draw(menuText);
+	s->Draw();
 
 	data->window.display();
+}
+
+void MusicState::CreateMusicOptionsButtons()
+{
+	menu.setSize({ WIDTH / 2, 50 });
+	menu.setFillColor(sf::Color(0x9e9e9eff));
+	menu.setOutlineThickness(4);
+	menu.setOutlineColor(sf::Color::Black);
+	menu.setPosition(WIDTH / 4, 175);
+
+	menuText.setFont(data->assets.GetFont("standardFont"));
+	menuText.setCharacterSize(40);
+	menuText.setFillColor(sf::Color::Black);
+	menuText.setString("menu:");
+	menuText.setPosition({ WIDTH / 4 + 10, 175 });
+
+	s = new ScrollBar({ WIDTH / 2, 250 }, WIDTH / 4, 101, sf::Color::Black, sf::Color(0x9e9e9eff), "horizontal", data->window);
 }
