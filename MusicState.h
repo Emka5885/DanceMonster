@@ -7,6 +7,7 @@ class MusicState :public State
 {
 public:
 	MusicState(GameDataReference data);
+	void Save();
 
 	void Init();
 	void HandleInput();
@@ -14,23 +15,25 @@ public:
 	void Draw(float dt);
 
 	void CreateMusicOptionsButtons();
+	void MusicOptionsPushBack(bool ScrollBar);
 
 private:
 	GameDataReference data;
 
 	sf::RectangleShape backButton;
 
-	sf::RectangleShape menu;
+	sf::RectangleShape shape;
 
 	sf::Text backText;
 	sf::Text musicText;
 
-	sf::Text menuText;
+	sf::Text text;
 
 	sf::Vector2f buttonSize;
 
-	std::vector<std::pair<std::pair<sf::RectangleShape, sf::Text>, ScrollBar>> musicOptionsButtons;
+	std::pair<std::pair<sf::RectangleShape, sf::Text>, bool> helper;
+	std::vector<std::pair<std::pair<sf::RectangleShape, sf::Text>, bool>> musicOptions;
+	std::vector<ScrollBar> musicScrollBars;
+	std::vector<int> musicOptionsFromFile;
 	ScrollBar* s;
-
-	int counter;
 };

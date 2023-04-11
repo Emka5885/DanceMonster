@@ -1,7 +1,7 @@
 #include "ScrollBar.h"
 
 
-ScrollBar::ScrollBar(sf::Vector2f position, float height, int howManyOptions, sf::Color backgroundColor, sf::Color handleColor, std::string type, sf::RenderWindow& window) : type(type), window(window)
+ScrollBar::ScrollBar(sf::Vector2f position, float height, int howManyOptions, sf::Color backgroundColor, sf::Color handleColor, std::string type, sf::RenderWindow& window, int& counter) : type(type), window(window), counter(counter)
 {
 	scrollbarBackground.setFillColor(backgroundColor);
 	scrollbarBackground.setOutlineColor(sf::Color::Black);
@@ -23,18 +23,18 @@ ScrollBar::ScrollBar(sf::Vector2f position, float height, int howManyOptions, sf
 	}
 	else
 	{
-		scrollbarBackground.setSize({ height , SCROLLBAR_BACKGROUND / 2});
+		scrollbarBackground.setSize({ height , SCROLLBAR_BACKGROUND / 3});
 
 		scrollbarHandle.setSize({ handleHight, SCROLLBAR_HANDLE + 20});
 
-		scrollbarHandle.setPosition(position.x, position.y + ((SCROLLBAR_BACKGROUND - SCROLLBAR_HANDLE) / 2) - (10 + SCROLLBAR_BACKGROUND / 4));
+		scrollbarHandle.setPosition(position.x + height * (counter * 0.01) - handleHight / 2, position.y - (10 + SCROLLBAR_BACKGROUND / 3));
 
 		scrollbarHandle.setOutlineColor(sf::Color::Black);
 		scrollbarHandle.setOutlineThickness(2);
 	}
 }
 
-void ScrollBar::Update(sf::Event event, int& counter, int maxCounter, int minCounter)
+void ScrollBar::Update(sf::Event event, int maxCounter, int minCounter)
 {
 	if (type == "vertically")
 	{
@@ -82,7 +82,8 @@ void ScrollBar::Update(sf::Event event, int& counter, int maxCounter, int minCou
 				sf::Vector2f mousePos = window.mapPixelToCoords(sf::Vector2i(event.mouseMove.x, event.mouseMove.y));
 				float newHandleOffset = mousePos.x - scrollbarBackground.getPosition().x - dragOffset.x;
 				newHandleOffset = std::max(0.0f, std::min(newHandleOffset, maxHandleOffset));
-				counter = minCounter + std::round((newHandleOffset / maxHandleOffset) * (maxCounter - minCounter)) - 1;
+				counter = (minCounter + std::round((newHandleOffset / maxHandleOffset) * (maxCounter - minCounter)) - 1) * 2;
+				//std::cout << "\nd" << counter << "d\n";
 				scrollbarHandle.setPosition(scrollbarBackground.getPosition().x + newHandleOffset, scrollbarHandle.getPosition().y);
 			}
 		}

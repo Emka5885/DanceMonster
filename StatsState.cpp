@@ -111,12 +111,12 @@ void StatsState::Init()
 
 	if (i > 10)
 	{
-		scrollBar = new ScrollBar({ WIDTH / 1.30, 233 }, int(504 / (i-9)) * (i-9), i - 9, sf::Color::Black, sf::Color(0x9e9e9eff), "vertically", data->window);
+		scrollBar = new ScrollBar({ WIDTH / 1.30, 233 }, int(504 / (i-9)) * (i-9), i - 9, sf::Color::Black, sf::Color(0x9e9e9eff), "vertically", data->window, counter);
 		checkCounter = true;
 	}
 	else
 	{
-		scrollBar = new ScrollBar({ WIDTH / 1.30, 233 }, 504, 1, sf::Color::Black, sf::Color(0x9e9e9eff), "vertically", data->window);
+		scrollBar = new ScrollBar({ WIDTH / 1.30, 233 }, 504, 1, sf::Color::Black, sf::Color(0x9e9e9eff), "vertically", data->window, counter);
 		checkCounter = false;
 	}
 	counter = statsLines.size() - 1;
@@ -145,7 +145,7 @@ void StatsState::HandleInput()
 
 		if (checkCounter)
 		{
-			scrollBar->Update(event, counter, statsLines.size() - 1, 10);
+			scrollBar->Update(event, statsLines.size() - 1, 10);
 		}
 	}
 

@@ -20,11 +20,13 @@ private:
 	bool isDragging;
 	sf::Vector2f dragOffset;
 
+	int& counter;
+
 public:
 
-	ScrollBar(sf::Vector2f position, float height, int howManyOptions, sf::Color backgroundColor, sf::Color handleColor, std::string type, sf::RenderWindow& window);
+	ScrollBar(sf::Vector2f position, float height, int howManyOptions, sf::Color backgroundColor, sf::Color handleColor, std::string type, sf::RenderWindow& window, int& counter);
 
-	void Update(sf::Event event, int& counter, int maxCounter, int minCounter);
+	void Update(sf::Event event, int maxCounter, int minCounter);
 
 	void Draw();
 };
