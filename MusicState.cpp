@@ -8,10 +8,10 @@ MusicState::MusicState(GameDataReference data) : data(data)
 void MusicState::Save()
 {
 	std::fstream file;
-	file.open("musicOptions.txt");
+	file.open("musicOptions.txt", std::ios::out);
 	if (file.is_open())
 	{
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < 5; i++)
 		{
 			file << musicOptionsFromFile[i] << "\n";
 			//std::cout << "d" << musicOptionsFromFile[i];
@@ -23,9 +23,9 @@ void MusicState::Save()
 
 void MusicState::Init()
 {
-	std::cout << "dziala\n";
+	//std::cout << "dziala\n";
 	std::fstream file;
-	file.open("musicOptions.txt");
+	file.open("musicOptions.txt", std::ios::in);
 	if (file.is_open())
 	{
 		std::string helperLine;
@@ -39,6 +39,11 @@ void MusicState::Init()
 		}
 		file.close();
 	}
+
+	/*for (int i = 0; i < 5; i++)
+	{
+		std::cout << "e " << musicOptionsFromFile[i];
+	}*/
 
 	buttonSize = { 150, 85 };
 	data->buttons->NewButton(buttonSize, { 50, 50 }, sf::Color::White, "Back", 50, sf::Color::Black, "back_button");
@@ -77,7 +82,7 @@ void MusicState::HandleInput()
 	}
 	for (int i = 0; i < musicScrollBars.size(); i++)
 	{
-		musicScrollBars[i].Update(event, 51, 1);
+		musicScrollBars[i].Update(event, 50, 1);
 	}
 }
 
@@ -125,7 +130,6 @@ void MusicState::CreateMusicOptionsButtons()
 	MusicOptionsPushBack(false);
 
 
-
 	shape.setFillColor(sf::Color::White);
 	shape.setPosition(WIDTH / 4, 235);
 
@@ -133,10 +137,59 @@ void MusicState::CreateMusicOptionsButtons()
 	text.setCharacterSize(30);
 	text.setPosition({ WIDTH / 4 + 10, 245 });
 
-	s = new ScrollBar({ WIDTH / 2 + 25, 260 }, WIDTH / 5, 51, sf::Color::Black, sf::Color(0x9e9e9eff), "horizontal", data->window, musicOptionsFromFile[0]);
+	s = new ScrollBar({ WIDTH / 2 + 25, 260 }, WIDTH / 5, 50, sf::Color::Black, sf::Color(0x9e9e9eff), "horizontal", data->window, musicOptionsFromFile[0]);
 
 	MusicOptionsPushBack(true);
 
+	shape.setPosition(WIDTH / 4, 285);
+
+	text.setString("background music:");
+	text.setPosition({ WIDTH / 4 + 10, 295 });
+
+	s = new ScrollBar({ WIDTH / 2 + 25, 310 }, WIDTH / 5, 50, sf::Color::Black, sf::Color(0x9e9e9eff), "horizontal", data->window, musicOptionsFromFile[1]);
+
+	MusicOptionsPushBack(true);
+
+
+
+	shape.setFillColor(sf::Color(0x9e9e9eff));
+	shape.setPosition(WIDTH / 4, 350);
+
+	text.setCharacterSize(40);
+	text.setString("game:");
+	text.setPosition({ WIDTH / 4 + 10, 350 });
+
+	MusicOptionsPushBack(false);
+
+
+	shape.setFillColor(sf::Color::White);
+	shape.setPosition(WIDTH / 4, 410);
+
+	text.setString("error sound:");
+	text.setCharacterSize(30);
+	text.setPosition({ WIDTH / 4 + 10, 420 });
+
+	s = new ScrollBar({ WIDTH / 2 + 25, 435 }, WIDTH / 5, 50, sf::Color::Black, sf::Color(0x9e9e9eff), "horizontal", data->window, musicOptionsFromFile[2]);
+
+	MusicOptionsPushBack(true);
+
+	shape.setPosition(WIDTH / 4, 460);
+
+	text.setString("background music:");
+	text.setPosition({ WIDTH / 4 + 10, 470 });
+
+	s = new ScrollBar({ WIDTH / 2 + 25, 485 }, WIDTH / 5, 50, sf::Color::Black, sf::Color(0x9e9e9eff), "horizontal", data->window, musicOptionsFromFile[3]);
+
+	MusicOptionsPushBack(true);
+
+	shape.setPosition(WIDTH / 4, 510);
+
+	text.setString("combo time:");
+	text.setPosition({ WIDTH / 4 + 10, 520 });
+
+	s = new ScrollBar({ WIDTH / 2 + 25, 535 }, WIDTH / 5, 50, sf::Color::Black, sf::Color(0x9e9e9eff), "horizontal", data->window, musicOptionsFromFile[4]);
+
+	MusicOptionsPushBack(true);
 }
 
 void MusicState::MusicOptionsPushBack(bool ScrollBar)

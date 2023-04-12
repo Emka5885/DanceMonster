@@ -7,17 +7,17 @@ private:
 	sf::RectangleShape scrollbarBackground;
 	sf::RectangleShape scrollbarHandle;
 
-	float maxHandleOffset;
-	float scrollAmount;
-	float currentHandleOffset;
-	float newHandleOffset;
-	float handleHight;
+	float maxHandleOffset = 0;
+	float scrollAmount = 0;
+	float currentHandleOffset = 0;
+	float newHandleOffset = 0;
+	float handleHight = 0;
 
 	std::string type;
 
 	sf::RenderWindow& window;
 
-	bool isDragging;
+	bool isDragging = false;
 	sf::Vector2f dragOffset;
 
 	int& counter;

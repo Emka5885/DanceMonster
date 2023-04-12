@@ -82,7 +82,11 @@ void ScrollBar::Update(sf::Event event, int maxCounter, int minCounter)
 				sf::Vector2f mousePos = window.mapPixelToCoords(sf::Vector2i(event.mouseMove.x, event.mouseMove.y));
 				float newHandleOffset = mousePos.x - scrollbarBackground.getPosition().x - dragOffset.x;
 				newHandleOffset = std::max(0.0f, std::min(newHandleOffset, maxHandleOffset));
-				counter = (minCounter + std::round((newHandleOffset / maxHandleOffset) * (maxCounter - minCounter)) - 1) * 2;
+				counter = (minCounter + std::round((newHandleOffset / maxHandleOffset) * (maxCounter - minCounter))) * 2;
+				if (counter - 2 == 0)
+				{
+					counter = 1;
+				}
 				//std::cout << "\nd" << counter << "d\n";
 				scrollbarHandle.setPosition(scrollbarBackground.getPosition().x + newHandleOffset, scrollbarHandle.getPosition().y);
 			}
