@@ -17,12 +17,12 @@ private:
 
 	sf::RectangleShape playButton;
 	sf::RectangleShape statsButton;
-	sf::RectangleShape musicButton;
+	sf::RectangleShape optionsButton;
 	sf::RectangleShape quitButton;
 
 	sf::Text playText;
 	sf::Text statsText;
-	sf::Text musicText;
+	sf::Text optionsText;
 	sf::Text quitText;
 	sf::Text title;
 

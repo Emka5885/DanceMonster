@@ -1,11 +1,11 @@
-#include "MusicState.h"
+#include "OptionsState.h"
 #include "MainMenuState.h"
 
-MusicState::MusicState(GameDataReference data) : data(data)
+OptionsState::OptionsState(GameDataReference data) : data(data)
 {
 }
 
-void MusicState::Save()
+void OptionsState::Save()
 {
 	std::fstream file;
 	file.open("musicOptions.txt", std::ios::out);
@@ -16,12 +16,24 @@ void MusicState::Save()
 			file << musicOptionsFromFile[i] << "\n";
 			//std::cout << "d" << musicOptionsFromFile[i];
 		}
+		for (int i = 0; i < 2; i++)
+		{
+			if (optionsFromFile[i])
+			{
+				file << "true\n";
+			}
+			else
+			{
+				file << "false\n";
+			}
+			//std::cout << "d" << musicOptionsFromFile[i];
+		}
 
 		file.close();
 	}
 }
 
-void MusicState::Init()
+void OptionsState::Init()
 {
 	//std::cout << "dziala\n";
 	std::fstream file;
@@ -31,10 +43,18 @@ void MusicState::Init()
 		std::string helperLine;
 		while (file >> helperLine)
 		{
-			if (!helperLine.empty())
+			if (std::isdigit(helperLine[0]))
 			{
 				//std::cout << helperLine << "\n";
 				musicOptionsFromFile.push_back(std::stoi(helperLine));
+			}
+			else if (helperLine == "true")
+			{
+				optionsFromFile.push_back(true);
+			}
+			else if (helperLine == "false")
+			{
+				optionsFromFile.push_back(false);
 			}
 		}
 		file.close();
@@ -50,17 +70,17 @@ void MusicState::Init()
 	backButton = data->buttons->GetButton("back_button").first;
 	backText = data->buttons->GetButton("back_button").second;
 
-	musicText.setString("MUSIC");
-	musicText.setFont(data->assets.GetFont("standardFont"));
-	musicText.setCharacterSize(80);
-	musicText.setOutlineColor(sf::Color::Black);
-	musicText.setOutlineThickness(4);
-	musicText.setPosition({ WIDTH / 2 - musicText.getGlobalBounds().width / 2, 50});
+	optionsText.setString("OPTIONS");
+	optionsText.setFont(data->assets.GetFont("standardFont"));
+	optionsText.setCharacterSize(80);
+	optionsText.setOutlineColor(sf::Color::Black);
+	optionsText.setOutlineThickness(4);
+	optionsText.setPosition({ WIDTH / 2 - optionsText.getGlobalBounds().width / 2, 50});
 
 	CreateMusicOptionsButtons();
 }
 
-void MusicState::HandleInput()
+void OptionsState::HandleInput()
 {
 	sf::Event event;
 
@@ -80,32 +100,32 @@ void MusicState::HandleInput()
 			data->machine.AddState(stateReference(new MainMenuState(data)), true);
 		}
 	}
-	for (int i = 0; i < musicScrollBars.size(); i++)
+	for (int i = 0; i < scrollBars.size(); i++)
 	{
-		musicScrollBars[i].Update(event, 50, 1);
+		scrollBars[i].Update(event, 50, 1);
 	}
 }
 
-void MusicState::Update(float dt)
+void OptionsState::Update(float dt)
 {
 }
 
-void MusicState::Draw(float dt)
+void OptionsState::Draw(float dt)
 {
 	data->window.clear(sf::Color(0x1A1A1Aff));
 
 	data->window.draw(backButton);
 	data->window.draw(backText);
-	data->window.draw(musicText);
+	data->window.draw(optionsText);
 
 	int j = 0;
-	for (int i = 0; i < musicOptions.size(); i++)
+	for (int i = 0; i < options.size(); i++)
 	{
-		data->window.draw(musicOptions[i].first.first);
-		data->window.draw(musicOptions[i].first.second);
-		if (musicOptions[i].second)
+		data->window.draw(options[i].first.first);
+		data->window.draw(options[i].first.second);
+		if (options[i].second)
 		{
-			musicScrollBars[j].Draw();
+			scrollBars[j].Draw();
 			j++;
 		}
 	}
@@ -113,7 +133,7 @@ void MusicState::Draw(float dt)
 	data->window.display();
 }
 
-void MusicState::CreateMusicOptionsButtons()
+void OptionsState::CreateMusicOptionsButtons()
 {
 	shape.setSize({ WIDTH / 2, 50 });
 	shape.setFillColor(sf::Color(0x9e9e9eff));
@@ -124,7 +144,7 @@ void MusicState::CreateMusicOptionsButtons()
 	text.setFont(data->assets.GetFont("standardFont"));
 	text.setCharacterSize(40);
 	text.setFillColor(sf::Color::Black);
-	text.setString("menu:");
+	text.setString("audio - menu:");
 	text.setPosition({ WIDTH / 4 + 10, 175 });
 
 	MusicOptionsPushBack(false);
@@ -156,7 +176,7 @@ void MusicState::CreateMusicOptionsButtons()
 	shape.setPosition(WIDTH / 4, 350);
 
 	text.setCharacterSize(40);
-	text.setString("game:");
+	text.setString("audio - game:");
 	text.setPosition({ WIDTH / 4 + 10, 350 });
 
 	MusicOptionsPushBack(false);
@@ -190,17 +210,45 @@ void MusicState::CreateMusicOptionsButtons()
 	s = new ScrollBar({ WIDTH / 2 + 25, 535 }, WIDTH / 5, 50, sf::Color::Black, sf::Color(0x9e9e9eff), "horizontal", data->window, musicOptionsFromFile[4]);
 
 	MusicOptionsPushBack(true);
+
+
+
+	shape.setFillColor(sf::Color(0x9e9e9eff));
+	shape.setPosition(WIDTH / 4, 575);
+
+	text.setCharacterSize(40);
+	text.setString("visual effects:");
+	text.setPosition({ WIDTH / 4 + 10, 575 });
+
+	MusicOptionsPushBack(false);
+
+
+	shape.setFillColor(sf::Color::White);
+	shape.setPosition(WIDTH / 4, 635);
+
+	text.setString("combo time:");
+	text.setCharacterSize(30);
+	text.setPosition({ WIDTH / 4 + 10, 645 });
+
+	MusicOptionsPushBack(false);
+
+	shape.setPosition(WIDTH / 4, 685);
+
+	text.setString("combo counter:");
+	text.setPosition({ WIDTH / 4 + 10, 695 });
+
+	MusicOptionsPushBack(false);
 }
 
-void MusicState::MusicOptionsPushBack(bool ScrollBar)
+void OptionsState::MusicOptionsPushBack(bool ScrollBar)
 {
-	musicOptions.push_back(helper);
-	musicOptions.back().first.first = shape;
-	musicOptions.back().first.second = text;
-	musicOptions.back().second = ScrollBar;
+	options.push_back(helper);
+	options.back().first.first = shape;
+	options.back().first.second = text;
+	options.back().second = ScrollBar;
 
 	if (ScrollBar)
 	{
-		musicScrollBars.push_back(*s);
+		scrollBars.push_back(*s);
 	}
 }

@@ -3,10 +3,10 @@
 #include "Game.h"
 #include "ScrollBar.h"
 
-class MusicState :public State
+class OptionsState :public State
 {
 public:
-	MusicState(GameDataReference data);
+	OptionsState(GameDataReference data);
 	void Save();
 
 	void Init();
@@ -25,15 +25,16 @@ private:
 	sf::RectangleShape shape;
 
 	sf::Text backText;
-	sf::Text musicText;
+	sf::Text optionsText;
 
 	sf::Text text;
 
 	sf::Vector2f buttonSize;
 
 	std::pair<std::pair<sf::RectangleShape, sf::Text>, bool> helper;
-	std::vector<std::pair<std::pair<sf::RectangleShape, sf::Text>, bool>> musicOptions;
-	std::vector<ScrollBar> musicScrollBars;
+	std::vector<std::pair<std::pair<sf::RectangleShape, sf::Text>, bool>> options;
+	std::vector<ScrollBar> scrollBars;
 	std::vector<int> musicOptionsFromFile;
+	std::vector<bool> optionsFromFile;
 	ScrollBar* s;
 };

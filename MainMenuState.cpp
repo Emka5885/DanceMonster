@@ -1,7 +1,7 @@
 #include "MainMenuState.h"
 #include "GameState.h"
 #include "StatsState.h"
-#include "MusicState.h"
+#include "OptionsState.h"
 #include <iostream>
 
 MainMenuState::MainMenuState(GameDataReference data) : data(data)
@@ -19,9 +19,9 @@ void MainMenuState::Init()
 	statsButton = data->buttons->GetButton("stats_button").first;
 	statsText = data->buttons->GetButton("stats_button").second;
 
-	data->buttons->NewButton(buttonSize, { WIDTH / 2 - buttonSize.x / 2, HEIGHT / 3 + 250 - buttonSize.y + 50 }, sf::Color::White, "Music", 50, sf::Color::Black, "music_button");
-	musicButton = data->buttons->GetButton("music_button").first;
-	musicText = data->buttons->GetButton("music_button").second;
+	data->buttons->NewButton(buttonSize, { WIDTH / 2 - buttonSize.x / 2, HEIGHT / 3 + 250 - buttonSize.y + 50 }, sf::Color::White, "Options", 50, sf::Color::Black, "options_button");
+	optionsButton = data->buttons->GetButton("options_button").first;
+	optionsText = data->buttons->GetButton("options_button").second;
 
 	buttonSize = { 175, 85 };
 	data->buttons->NewButton(buttonSize, { WIDTH - 50 - buttonSize.x, HEIGHT - 50 - buttonSize.y }, sf::Color::White, "Quitt", 50, sf::Color::Black, "quit_button");
@@ -61,10 +61,10 @@ void MainMenuState::HandleInput()
 			data->machine.RemoveState();
 			data->machine.AddState(stateReference(new StatsState(data)), true);
 		}
-		else if (data->input.isButtonClicked(musicButton, sf::Mouse::Left, data->window))
+		else if (data->input.isButtonClicked(optionsButton, sf::Mouse::Left, data->window))
 		{
 			data->machine.RemoveState();
-			data->machine.AddState(stateReference(new MusicState(data)), true);
+			data->machine.AddState(stateReference(new OptionsState(data)), true);
 		}
 	}
 }
@@ -80,8 +80,8 @@ void MainMenuState::Draw(float dt)
 	data->window.draw(title);
 	data->window.draw(playButton);
 	data->window.draw(playText);
-	data->window.draw(musicButton);
-	data->window.draw(musicText);
+	data->window.draw(optionsButton);
+	data->window.draw(optionsText);
 	data->window.draw(statsButton);
 	data->window.draw(statsText);
 	data->window.draw(quitButton);
