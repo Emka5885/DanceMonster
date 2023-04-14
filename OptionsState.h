@@ -16,6 +16,7 @@ public:
 
 	void CreateMusicOptionsButtons();
 	void MusicOptionsPushBack(bool ScrollBar);
+	void OptionsPushBack();
 
 private:
 	GameDataReference data;
@@ -23,9 +24,13 @@ private:
 	sf::RectangleShape backButton;
 
 	sf::RectangleShape shape;
+	sf::RectangleShape onShape;
+	sf::RectangleShape offShape;
 
 	sf::Text backText;
 	sf::Text optionsText;
+	sf::Text onText;
+	sf::Text offText;
 
 	sf::Text text;
 
@@ -36,5 +41,7 @@ private:
 	std::vector<ScrollBar> scrollBars;
 	std::vector<int> musicOptionsFromFile;
 	std::vector<bool> optionsFromFile;
+	std::pair<std::pair<sf::RectangleShape, sf::Text>, std::pair<sf::RectangleShape, sf::Text>> helper2;
+	std::vector<std::pair<std::pair<sf::RectangleShape, sf::Text>, std::pair<sf::RectangleShape, sf::Text>>> OnOffButtons;
 	ScrollBar* s;
 };

@@ -99,6 +99,22 @@ void OptionsState::HandleInput()
 			data->machine.RemoveState();
 			data->machine.AddState(stateReference(new MainMenuState(data)), true);
 		}
+
+		for (int i = 0; i < OnOffButtons.size(); i++)
+		{
+			if (data->input.isButtonClicked(OnOffButtons[i].first.first, sf::Mouse::Left, data->window))
+			{
+				OnOffButtons[i].first.first.setFillColor(sf::Color(0x9e9e9eff));
+				OnOffButtons[i].second.first.setFillColor(sf::Color::White);
+				optionsFromFile[i] = true;
+			}
+			else if (data->input.isButtonClicked(OnOffButtons[i].second.first, sf::Mouse::Left, data->window))
+			{
+				OnOffButtons[i].first.first.setFillColor(sf::Color::White);
+				OnOffButtons[i].second.first.setFillColor(sf::Color(0x9e9e9eff));
+				optionsFromFile[i] = false;
+			}
+		}
 	}
 	for (int i = 0; i < scrollBars.size(); i++)
 	{
@@ -128,6 +144,13 @@ void OptionsState::Draw(float dt)
 			scrollBars[j].Draw();
 			j++;
 		}
+	}
+	for (int i = 0; i < OnOffButtons.size(); i++)
+	{
+		data->window.draw(OnOffButtons[i].first.first);
+		data->window.draw(OnOffButtons[i].first.second);
+		data->window.draw(OnOffButtons[i].second.first);
+		data->window.draw(OnOffButtons[i].second.second);
 	}
 
 	data->window.display();
@@ -230,14 +253,60 @@ void OptionsState::CreateMusicOptionsButtons()
 	text.setCharacterSize(30);
 	text.setPosition({ WIDTH / 4 + 10, 645 });
 
+	onShape.setOutlineColor(sf::Color::Black);
+	onShape.setOutlineThickness(2);
+	onShape.setSize({ WIDTH / 10, 30 });
+	offShape = onShape;
+	onShape.setPosition({ WIDTH / 2 + 25, 643 });
+	offShape.setPosition({ WIDTH / 2 + WIDTH / 8 - 2, 643 });
+
+	if (optionsFromFile[0])
+	{
+		onShape.setFillColor(sf::Color(0x9e9e9eff));
+		offShape.setFillColor(sf::Color::White);
+	}
+	else
+	{
+		onShape.setFillColor(sf::Color::White);
+		offShape.setFillColor(sf::Color(0x9e9e9eff));
+	}
+
+	onText.setFont(data->assets.GetFont("standardFont"));
+	onText.setCharacterSize(25);
+	onText.setFillColor(sf::Color::Black);
+	offText = onText;
+	onText.setString("On");
+	onText.setPosition({ WIDTH / 2 + 25 + ((float(onShape.getSize().x) - float(onText.getLocalBounds().width)) / 2), onShape.getPosition().y });
+	offText.setString("Off");
+	offText.setPosition({ WIDTH / 2 + WIDTH / 8 - 2 + ((float(offShape.getSize().x) - float(offText.getLocalBounds().width)) / 2), offShape.getPosition().y });
+
 	MusicOptionsPushBack(false);
+	OptionsPushBack();
 
 	shape.setPosition(WIDTH / 4, 685);
 
 	text.setString("combo counter:");
 	text.setPosition({ WIDTH / 4 + 10, 695 });
 
+	onShape.setPosition({ WIDTH / 2 + 25, 693 });
+	offShape.setPosition({ WIDTH / 2 + WIDTH / 8 - 2, 693 });
+
+	if (optionsFromFile[1])
+	{
+		onShape.setFillColor(sf::Color(0x9e9e9eff));
+		offShape.setFillColor(sf::Color::White);
+	}
+	else
+	{
+		onShape.setFillColor(sf::Color::White);
+		offShape.setFillColor(sf::Color(0x9e9e9eff));
+	}
+
+	onText.setPosition({ WIDTH / 2 + 25 + ((float(onShape.getSize().x) - float(onText.getLocalBounds().width)) / 2), onShape.getPosition().y });
+	offText.setPosition({ WIDTH / 2 + WIDTH / 8 - 2 + ((float(offShape.getSize().x) - float(offText.getLocalBounds().width)) / 2), offShape.getPosition().y });
+
 	MusicOptionsPushBack(false);
+	OptionsPushBack();
 }
 
 void OptionsState::MusicOptionsPushBack(bool ScrollBar)
@@ -251,4 +320,13 @@ void OptionsState::MusicOptionsPushBack(bool ScrollBar)
 	{
 		scrollBars.push_back(*s);
 	}
+}
+
+void OptionsState::OptionsPushBack()
+{
+	OnOffButtons.push_back(helper2);
+	OnOffButtons.back().first.first = onShape;
+	OnOffButtons.back().first.second = onText;
+	OnOffButtons.back().second.first = offShape;
+	OnOffButtons.back().second.second = offText;
 }
