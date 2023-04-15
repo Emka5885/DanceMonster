@@ -1,7 +1,7 @@
 #include "OptionsState.h"
 #include "MainMenuState.h"
 
-OptionsState::OptionsState(GameDataReference data) : data(data)
+OptionsState::OptionsState(GameDataReference data, sf::Sound menuSound) : data(data), menuSound(menuSound)
 {
 }
 
@@ -95,6 +95,7 @@ void OptionsState::HandleInput()
 
 		if (data->input.isButtonClicked(backButton, sf::Mouse::Left, data->window))
 		{
+			menuSound.play();
 			Save();
 			data->machine.RemoveState();
 			data->machine.AddState(stateReference(new MainMenuState(data)), true);
@@ -104,12 +105,14 @@ void OptionsState::HandleInput()
 		{
 			if (data->input.isButtonClicked(OnOffButtons[i].first.first, sf::Mouse::Left, data->window))
 			{
+				menuSound.play();
 				OnOffButtons[i].first.first.setFillColor(sf::Color(0x9e9e9eff));
 				OnOffButtons[i].second.first.setFillColor(sf::Color::White);
 				optionsFromFile[i] = true;
 			}
 			else if (data->input.isButtonClicked(OnOffButtons[i].second.first, sf::Mouse::Left, data->window))
 			{
+				menuSound.play();
 				OnOffButtons[i].first.first.setFillColor(sf::Color::White);
 				OnOffButtons[i].second.first.setFillColor(sf::Color(0x9e9e9eff));
 				optionsFromFile[i] = false;
@@ -120,6 +123,7 @@ void OptionsState::HandleInput()
 	{
 		scrollBars[i].Update(event, 50, 1);
 	}
+	menuSound.setVolume(musicOptionsFromFile[0]);
 }
 
 void OptionsState::Update(float dt)

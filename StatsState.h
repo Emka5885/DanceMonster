@@ -13,7 +13,7 @@ struct Texts
 class StatsState :public State
 {
 public:
-	StatsState(GameDataReference data);
+	StatsState(GameDataReference data, sf::Sound menuSound);
 
 	void Init();
 	void HandleInput();
@@ -23,6 +23,7 @@ public:
 
 private:
 	GameDataReference data;
+	sf::Sound menuSound;
 
 	ScrollBar* scrollBar;
 

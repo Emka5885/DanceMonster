@@ -27,4 +27,9 @@ private:
 	sf::Text title;
 
 	sf::Vector2f buttonSize;
+
+	sf::SoundBuffer menuSoundBuffer;
+	sf::Sound menuSound;
+
+	std::vector<int> musicOptionsFromFile;
 };

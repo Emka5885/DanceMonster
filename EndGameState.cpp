@@ -45,11 +45,11 @@ void EndGameState::HandleInput()
 			data->machine.RemoveState();
 			data->machine.AddState(stateReference(new MainMenuState(data)), true);
 		}
-		else if (data->input.isButtonClicked(statsButton, sf::Mouse::Left, data->window))
+		/*else if (data->input.isButtonClicked(statsButton, sf::Mouse::Left, data->window))
 		{
 			data->machine.RemoveState();
 			data->machine.AddState(stateReference(new StatsState(data)), true);
-		}
+		}*/
 	}
 }
 

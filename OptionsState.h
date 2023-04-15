@@ -6,7 +6,7 @@
 class OptionsState :public State
 {
 public:
-	OptionsState(GameDataReference data);
+	OptionsState(GameDataReference data, sf::Sound menuSound);
 	void Save();
 
 	void Init();
@@ -20,6 +20,7 @@ public:
 
 private:
 	GameDataReference data;
+	sf::Sound menuSound;
 
 	sf::RectangleShape backButton;
 
