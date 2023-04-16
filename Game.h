@@ -33,4 +33,12 @@ private:
 	GameDataReference data = std::make_shared<GameData>();
 
 	void Run();
+
+	std::vector<int> musicOptionsFromFile;
+	
+	sf::SoundBuffer menuSoundBuffer;
+	sf::Sound menuSound;
+
+	sf::Music backgroundMusic;
+	bool startBackgroundMusic = true;
 };

@@ -1,7 +1,7 @@
 #include "GameState.h"
 #include "EndGameState.h"
 
-GameState::GameState(GameDataReference data) : data(data)
+GameState::GameState(GameDataReference data, sf::Sound* menuSound, sf::Music* menuBackgroundMusic) : data(data), menuSound(menuSound), menuBackgroundMusic(menuBackgroundMusic)
 {
 }
 
@@ -136,7 +136,7 @@ void GameState::Update(float dt)
     else if (barOfNotes->stop && helperClock.getElapsedTime() >= sf::seconds(4.2))
     {
         data->machine.RemoveState();
-        data->machine.AddState(stateReference(new EndGameState(data)), true);
+        data->machine.AddState(stateReference(new EndGameState(data, menuSound, menuBackgroundMusic)), true);
     }
 
     if (frameClock.getElapsedTime() >= sf::seconds(0.3) && !monster->stop)
@@ -153,7 +153,7 @@ void GameState::Update(float dt)
     if (combo >= 10)
     {
         combos->comboTime = true;
-        data->machine.AddState(stateReference(new EndGameState(data)), true);
+        data->machine.AddState(stateReference(new EndGameState(data, menuSound, menuBackgroundMusic)), true);
     }
     combos->UpdateMonsters(combos->comboTime);
 

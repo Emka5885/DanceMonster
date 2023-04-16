@@ -5,7 +5,7 @@
 class MainMenuState :public State
 {
 public:
-	MainMenuState(GameDataReference data);
+	MainMenuState(GameDataReference data, sf::Sound* menuSound, sf::Music* backgroundMusic);
 
 	void Init();
 	void HandleInput();
@@ -14,6 +14,8 @@ public:
 
 private:
 	GameDataReference data;
+	sf::Sound* menuSound;
+	sf::Music* backgroundMusic;
 
 	sf::RectangleShape playButton;
 	sf::RectangleShape statsButton;
@@ -27,9 +29,6 @@ private:
 	sf::Text title;
 
 	sf::Vector2f buttonSize;
-
-	sf::SoundBuffer menuSoundBuffer;
-	sf::Sound menuSound;
 
 	std::vector<int> musicOptionsFromFile;
 };

@@ -2,7 +2,7 @@
 #include "MainMenuState.h"
 #include "StatsState.h"
 
-EndGameState::EndGameState(GameDataReference data) : data(data)
+EndGameState::EndGameState(GameDataReference data, sf::Sound* menuSound, sf::Music* backgroundMusic) : data(data), menuSound(menuSound), backgroundMusic(backgroundMusic)
 {
 }
 
@@ -42,14 +42,16 @@ void EndGameState::HandleInput()
 
 		if (data->input.isButtonClicked(menuButton, sf::Mouse::Left, data->window))
 		{
+			menuSound->play();
 			data->machine.RemoveState();
-			data->machine.AddState(stateReference(new MainMenuState(data)), true);
+			data->machine.AddState(stateReference(new MainMenuState(data, menuSound, backgroundMusic)), true);
 		}
-		/*else if (data->input.isButtonClicked(statsButton, sf::Mouse::Left, data->window))
+		else if (data->input.isButtonClicked(statsButton, sf::Mouse::Left, data->window))
 		{
+			menuSound->play();
 			data->machine.RemoveState();
-			data->machine.AddState(stateReference(new StatsState(data)), true);
-		}*/
+			data->machine.AddState(stateReference(new StatsState(data, menuSound, backgroundMusic)), true);
+		}
 	}
 }
 

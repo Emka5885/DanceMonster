@@ -4,7 +4,7 @@
 #include "OptionsState.h"
 #include <iostream>
 
-MainMenuState::MainMenuState(GameDataReference data) : data(data)
+MainMenuState::MainMenuState(GameDataReference data, sf::Sound* menuSound, sf::Music* backgroundMusic) : data(data), menuSound(menuSound), backgroundMusic(backgroundMusic)
 {
 }
 
@@ -35,29 +35,6 @@ void MainMenuState::Init()
 	title.setCharacterSize(100);
 	title.setFont(data->assets.GetFont("standardFont"));
 	title.setPosition({ WIDTH / 2 - title.getGlobalBounds().width / 2, 50 });
-
-	if (!menuSoundBuffer.loadFromFile("resources/sounds/menu-button.wav"))
-	{
-		std::cout << "Error sound - menu button" << std::endl;
-	}
-	menuSound.setBuffer(menuSoundBuffer);
-
-	std::fstream file;
-	file.open("musicOptions.txt", std::ios::in);
-	if (file.is_open())
-	{
-		std::string helperLine;
-		while (file >> helperLine)
-		{
-			if (std::isdigit(helperLine[0]))
-			{
-				musicOptionsFromFile.push_back(std::stoi(helperLine));
-			}
-		}
-		file.close();
-	}
-
-	menuSound.setVolume(musicOptionsFromFile[0]);
 }
 
 void MainMenuState::HandleInput()
@@ -76,21 +53,24 @@ void MainMenuState::HandleInput()
 		//input, if user click a particular button
 		if (data->input.isButtonClicked(playButton, sf::Mouse::Left, data->window))
 		{
-			menuSound.play();
+			menuSound->play();
+			//backgroundMusic.stop();
 			data->machine.RemoveState();
-			data->machine.AddState(stateReference(new GameState(data)), true);
+			data->machine.AddState(stateReference(new GameState(data, menuSound, backgroundMusic)), true, true);
 		}
 		else if (data->input.isButtonClicked(statsButton, sf::Mouse::Left, data->window))
 		{
-			menuSound.play();
+			menuSound->play();
+			//backgroundMusic.stop();
 			data->machine.RemoveState();
-			data->machine.AddState(stateReference(new StatsState(data, menuSound)), true);
+			data->machine.AddState(stateReference(new StatsState(data, menuSound, backgroundMusic)), true);
 		}
 		else if (data->input.isButtonClicked(optionsButton, sf::Mouse::Left, data->window))
 		{
-			menuSound.play();
+			menuSound->play();
+			//backgroundMusic->pause();
 			data->machine.RemoveState();
-			data->machine.AddState(stateReference(new OptionsState(data, menuSound)), true);
+			data->machine.AddState(stateReference(new OptionsState(data, menuSound, backgroundMusic)), true);
 		}
 	}
 }

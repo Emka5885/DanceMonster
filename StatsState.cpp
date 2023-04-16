@@ -1,7 +1,7 @@
 #include "StatsState.h"
 #include "MainMenuState.h"
 
-StatsState::StatsState(GameDataReference data, sf::Sound menuSound) : data(data), menuSound(menuSound)
+StatsState::StatsState(GameDataReference data, sf::Sound* menuSound, sf::Music* backgroundMusic) : data(data), menuSound(menuSound), backgroundMusic(backgroundMusic)
 {
 }
 
@@ -139,9 +139,9 @@ void StatsState::HandleInput()
 
 		if (data->input.isButtonClicked(backButton, sf::Mouse::Left, data->window))
 		{
-			menuSound.play();
+			menuSound->play();
 			data->machine.RemoveState();
-			data->machine.AddState(stateReference(new MainMenuState(data)), true);
+			data->machine.AddState(stateReference(new MainMenuState(data, menuSound, backgroundMusic)), true);
 		}
 
 		if (checkCounter)

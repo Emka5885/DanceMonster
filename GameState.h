@@ -10,7 +10,7 @@
 class GameState :public State
 {
 public:
-	GameState(GameDataReference data);
+	GameState(GameDataReference data, sf::Sound* menuSound, sf::Music* menuBackgroundMusic);
 
 	void Init();
 
@@ -21,6 +21,8 @@ public:
 private:
 
 	GameDataReference data;
+	sf::Sound* menuSound;
+	sf::Music* menuBackgroundMusic;
 
 	BarOfNotes* barOfNotes;
 	Monster* monster;

@@ -6,7 +6,7 @@
 class EndGameState :public State
 {
 public:
-	EndGameState(GameDataReference data);
+	EndGameState(GameDataReference data, sf::Sound* menuSound, sf::Music* backgroundMusic);
 
 	void Init();
 	void HandleInput();
@@ -15,6 +15,8 @@ public:
 
 private:
 	GameDataReference data;
+	sf::Sound* menuSound;
+	sf::Music* backgroundMusic;
 
 	sf::RectangleShape menuButton;
 	sf::RectangleShape statsButton;

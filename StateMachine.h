@@ -11,12 +11,14 @@ public:
 	StateMachine();
 	~StateMachine();
 
-	void AddState(stateReference newState, bool isReplacing = true);
+	void AddState(stateReference newState, bool isReplacing = true, bool isGameState = false);
 	void RemoveState();
 
 	void ProcessStateChanges();
 
 	stateReference& GetActiveState();
+
+	bool hasMenuBackgroundMusic();
 
 private:
 	std::stack<stateReference> states;
@@ -25,4 +27,6 @@ private:
 	bool isRemoving;
 	bool isAdding;
 	bool isReplacing;
+
+	bool menuBackgroundMusic = true;
 };

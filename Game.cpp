@@ -7,7 +7,7 @@ Game::Game(std::string title)
 	data->buttons = new Buttons(data->assets);
 	srand(time(NULL));
 	data->window.create(sf::VideoMode(WIDTH, HEIGHT), title, sf::Style::Close | sf::Style::Titlebar);
-	data->machine.AddState(stateReference(new MainMenuState(data)), true);
+	data->machine.AddState(stateReference(new MainMenuState(data, &menuSound, &backgroundMusic)), true);
 	this->Run();
 }
 
@@ -48,5 +48,45 @@ void Game::Run()
 		}
 		interpolation = accumulator / dt;
 		this->data->machine.GetActiveState()->Draw(interpolation);
+
+		if (startBackgroundMusic && this->data->machine.hasMenuBackgroundMusic())
+		{
+			std::fstream file;
+			file.open("musicOptions.txt", std::ios::in);
+			if (file.is_open())
+			{
+				std::string helperLine;
+				while (file >> helperLine)
+				{
+					if (std::isdigit(helperLine[0]))
+					{
+						musicOptionsFromFile.push_back(std::stoi(helperLine));
+					}
+				}
+				file.close();
+			}
+
+			if (!backgroundMusic.openFromFile("resources/music/menu-53679.wav"))
+			{
+				std::cout << "Error - menu background music" << std::endl;
+			}
+			backgroundMusic.setLoop(true);
+			backgroundMusic.setVolume(musicOptionsFromFile[1]);
+			backgroundMusic.play();
+
+			if (!menuSoundBuffer.loadFromFile("resources/sounds/menu-button.wav"))
+			{
+				std::cout << "Error sound - menu button" << std::endl;
+			}
+			menuSound.setBuffer(menuSoundBuffer);
+			menuSound.setVolume(musicOptionsFromFile[0]);
+
+			startBackgroundMusic = false;
+		}
+		else if (!this->data->machine.hasMenuBackgroundMusic())
+		{
+			backgroundMusic.stop();
+			startBackgroundMusic = true;
+		}
 	}
 }

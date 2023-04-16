@@ -1,7 +1,7 @@
 #include "OptionsState.h"
 #include "MainMenuState.h"
 
-OptionsState::OptionsState(GameDataReference data, sf::Sound menuSound) : data(data), menuSound(menuSound)
+OptionsState::OptionsState(GameDataReference data, sf::Sound* menuSound, sf::Music* backgroundMusic) : data(data), menuSound(menuSound), backgroundMusic(backgroundMusic)
 {
 }
 
@@ -95,24 +95,24 @@ void OptionsState::HandleInput()
 
 		if (data->input.isButtonClicked(backButton, sf::Mouse::Left, data->window))
 		{
-			menuSound.play();
+			menuSound->play();
 			Save();
 			data->machine.RemoveState();
-			data->machine.AddState(stateReference(new MainMenuState(data)), true);
+			data->machine.AddState(stateReference(new MainMenuState(data, menuSound, backgroundMusic)), true);
 		}
 
 		for (int i = 0; i < OnOffButtons.size(); i++)
 		{
 			if (data->input.isButtonClicked(OnOffButtons[i].first.first, sf::Mouse::Left, data->window))
 			{
-				menuSound.play();
+				menuSound->play();
 				OnOffButtons[i].first.first.setFillColor(sf::Color(0x9e9e9eff));
 				OnOffButtons[i].second.first.setFillColor(sf::Color::White);
 				optionsFromFile[i] = true;
 			}
 			else if (data->input.isButtonClicked(OnOffButtons[i].second.first, sf::Mouse::Left, data->window))
 			{
-				menuSound.play();
+				menuSound->play();
 				OnOffButtons[i].first.first.setFillColor(sf::Color::White);
 				OnOffButtons[i].second.first.setFillColor(sf::Color(0x9e9e9eff));
 				optionsFromFile[i] = false;
@@ -123,7 +123,8 @@ void OptionsState::HandleInput()
 	{
 		scrollBars[i].Update(event, 50, 1);
 	}
-	menuSound.setVolume(musicOptionsFromFile[0]);
+	menuSound->setVolume(musicOptionsFromFile[0]);
+	backgroundMusic->setVolume(musicOptionsFromFile[1]);
 }
 
 void OptionsState::Update(float dt)

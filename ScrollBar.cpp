@@ -9,9 +9,9 @@ ScrollBar::ScrollBar(sf::Vector2f position, float height, int howManyOptions, sf
 	scrollbarBackground.setPosition(position);
 
 	scrollbarHandle.setFillColor(handleColor);
-	maxHandleOffset = height - handleHight;
 
 	handleHight = int(height / howManyOptions);
+	maxHandleOffset = height - handleHight;
 
 	if (type == "vertically")
 	{

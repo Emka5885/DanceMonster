@@ -8,8 +8,17 @@ StateMachine::~StateMachine()
 {
 }
 
-void StateMachine::AddState(stateReference newState, bool isReplacing)
+void StateMachine::AddState(stateReference newState, bool isReplacing, bool isGameState)
 {
+	if (isGameState == true)
+	{
+		menuBackgroundMusic = false;
+	}
+	else
+	{
+		menuBackgroundMusic = true;
+	}
+
 	this->isAdding = true;
 	this->isReplacing = isReplacing;
 
@@ -58,4 +67,9 @@ void StateMachine::ProcessStateChanges()
 stateReference& StateMachine::GetActiveState()
 {
 	return this->states.top();
+}
+
+bool StateMachine::hasMenuBackgroundMusic()
+{
+	return menuBackgroundMusic;
 }
