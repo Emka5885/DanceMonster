@@ -153,7 +153,7 @@ void GameState::Update(float dt)
     if (combo >= 10)
     {
         combos->comboTime = true;
-        data->machine.AddState(stateReference(new EndGameState(data, menuSound, menuBackgroundMusic)), true);
+        //data->machine.AddState(stateReference(new EndGameState(data, menuSound, menuBackgroundMusic)), true);
     }
     combos->UpdateMonsters(combos->comboTime);
 

@@ -1,5 +1,5 @@
 #include "MainMenuState.h"
-#include "GameState.h"
+#include "StartState.h"
 #include "StatsState.h"
 #include "OptionsState.h"
 #include <iostream>
@@ -54,21 +54,18 @@ void MainMenuState::HandleInput()
 		if (data->input.isButtonClicked(playButton, sf::Mouse::Left, data->window))
 		{
 			menuSound->play();
-			//backgroundMusic.stop();
 			data->machine.RemoveState();
-			data->machine.AddState(stateReference(new GameState(data, menuSound, backgroundMusic)), true, true);
+			data->machine.AddState(stateReference(new StartState(data, menuSound, backgroundMusic)), true, true);
 		}
 		else if (data->input.isButtonClicked(statsButton, sf::Mouse::Left, data->window))
 		{
 			menuSound->play();
-			//backgroundMusic.stop();
 			data->machine.RemoveState();
 			data->machine.AddState(stateReference(new StatsState(data, menuSound, backgroundMusic)), true);
 		}
 		else if (data->input.isButtonClicked(optionsButton, sf::Mouse::Left, data->window))
 		{
 			menuSound->play();
-			//backgroundMusic->pause();
 			data->machine.RemoveState();
 			data->machine.AddState(stateReference(new OptionsState(data, menuSound, backgroundMusic)), true);
 		}
