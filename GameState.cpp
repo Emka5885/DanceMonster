@@ -20,6 +20,25 @@ void GameState::Init()
     clock.restart();
     combosClock.restart();
     data->widgets->SetNewTime(music->MusicTime().asSeconds()-6, true);
+
+    std::fstream file;
+    file.open("musicOptions.txt", std::ios::in);
+    if (file.is_open())
+    {
+        std::string helperLine;
+        while (file >> helperLine)
+        {
+            if (helperLine == "true")
+            {
+                optionsFromFile.push_back(true);
+            }
+            else if (helperLine == "false")
+            {
+                optionsFromFile.push_back(false);
+            }
+        }
+        file.close();
+    }
 }
 
 void GameState::HandleInput()
@@ -150,7 +169,7 @@ void GameState::Update(float dt)
         barOfNotes->ChangeSpeed(barOfNotes->speed+=18);
         counter = 0;
     }
-    if (combo >= 10)
+    if (combo >= 10 && optionsFromFile[0])
     {
         combos->comboTime = true;
         //data->machine.AddState(stateReference(new EndGameState(data, menuSound, menuBackgroundMusic)), true);

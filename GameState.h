@@ -45,4 +45,6 @@ private:
 	sf::Color backgroundColor;
 
 	sf::Sound* errorSound;
+
+	std::vector<bool> optionsFromFile;
 };
