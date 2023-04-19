@@ -33,13 +33,8 @@ public:
 	std::string& GetMusic(std::string name);
 	int musicsSize();
 
-	void LoadSound(std::string name, std::string fileName);
-	sf::Sound& GetSound(std::string name);
-
 private:
 	std::map<std::string, sf::Texture> textures;
 	std::map<std::string, sf::Font> fonts;
 	std::map<std::string, std::string> musics;
-	std::map<std::string, sf::Sound> sounds;
-	sf::SoundBuffer soundBuffer;
 };

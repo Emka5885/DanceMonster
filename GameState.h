@@ -44,7 +44,11 @@ private:
 	int combo;
 	sf::Color backgroundColor;
 
-	sf::Sound* errorSound;
+	sf::SoundBuffer errorSoundBuffer;
+	sf::SoundBuffer comboSoundBuffer;
+	sf::Sound errorSound;
+	sf::Sound comboSound;
+	bool playComboSound = false;
 
 	std::vector<bool> optionsFromFile;
 	std::vector<int> musicOptionsFromFile;

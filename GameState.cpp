@@ -40,11 +40,23 @@ void GameState::Init()
         file.close();
     }
 
+    if (!errorSoundBuffer.loadFromFile("resources/sounds/error-89206.wav"))
+    {
+        std::cout << "Error sound - error sound in game" << std::endl;
+    }
+    if (!comboSoundBuffer.loadFromFile("resources/sounds/combo.wav"))
+    {
+        std::cout << "Error sound - combo time" << std::endl;
+    }
+
+    errorSound.setBuffer(errorSoundBuffer);
+    errorSound.setVolume(musicOptionsFromFile[2]);
+    comboSound.setBuffer(comboSoundBuffer);
+    comboSound.setVolume(musicOptionsFromFile[4]);
+
     music = new Music(data->assets, musicOptionsFromFile[3]);
     music->StartMusic();
     data->widgets->SetNewTime(music->MusicTime().asSeconds() - 6, true);
-    errorSound = &data->assets.GetSound("error");
-    errorSound->setVolume(musicOptionsFromFile[2]);
 }
 
 void GameState::HandleInput()
@@ -108,7 +120,7 @@ void GameState::HandleInput()
             if (isWrong)
             {
                 fail = true;
-                errorSound->play();
+                errorSound.play();
             }
         }
     }
@@ -174,6 +186,16 @@ void GameState::Update(float dt)
     {
         barOfNotes->ChangeSpeed(barOfNotes->speed+=18);
         counter = 0;
+    }
+
+    if (combo == 9)
+    {
+        playComboSound = true;
+    }
+    else if (combo == 10 && playComboSound)
+    {
+        playComboSound = false;
+        comboSound.play();
     }
     if (combo >= 10 && optionsFromFile[0])
     {

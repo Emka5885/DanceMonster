@@ -34,8 +34,6 @@ AssetManager::AssetManager()
 
 	LoadMusic("0", "resources/music/Luke-Bergs-Golden-State-of-Mind_MasterMP3.wav");
 	LoadMusic("1", "resources/music/stay-free-138363.wav");
-
-	LoadSound("error", "resources/sounds/error-89206.wav");
 }
 
 void AssetManager::LoadTexture(std::string name, std::string fileName)
@@ -81,16 +79,4 @@ std::string& AssetManager::GetMusic(std::string name)
 int AssetManager::musicsSize()
 {
 	return musics.size();
-}
-
-void AssetManager::LoadSound(std::string name, std::string fileName)
-{
-	soundBuffer.loadFromFile(fileName);
-	sounds[name] = sf::Sound();
-	sounds[name].setBuffer(soundBuffer);
-}
-
-sf::Sound& AssetManager::GetSound(std::string name)
-{
-	return this->sounds.at(name);
 }
