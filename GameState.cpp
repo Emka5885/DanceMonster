@@ -10,7 +10,6 @@ void GameState::Init()
 	barOfNotes = new BarOfNotes(data->window, data->assets);
 	monster = new Monster(data->assets);
     combos = new Combo(data->assets, monster);
-    errorSound = &data->assets.GetSound("error");
     counter = 0;
     combo = 0;
     combos->comboTime = false;
@@ -44,6 +43,8 @@ void GameState::Init()
     music = new Music(data->assets, musicOptionsFromFile[3]);
     music->StartMusic();
     data->widgets->SetNewTime(music->MusicTime().asSeconds() - 6, true);
+    errorSound = &data->assets.GetSound("error");
+    errorSound->setVolume(musicOptionsFromFile[2]);
 }
 
 void GameState::HandleInput()
