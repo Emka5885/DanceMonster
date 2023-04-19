@@ -39,6 +39,7 @@ private:
     bool errorStart = false;
 	bool errorStop = false;
 	bool fail = false;
+	bool canCheckArrow = true;
 
 	int counter;
 	int combo;

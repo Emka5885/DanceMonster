@@ -9,7 +9,7 @@ private:
 	sf::RenderWindow& window;
 	AssetManager& assetManager;
 	sf::Clock clock;
-	int howMuchToAdd = 15;
+	int howMuchToAdd = 10;
 
 public:
 	BarOfNotes(sf::RenderWindow& window, AssetManager& assetManager);

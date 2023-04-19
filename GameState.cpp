@@ -69,8 +69,9 @@ void GameState::HandleInput()
         {
             data->window.close();
         }
-        if (event.type == sf::Event::KeyPressed && errorStart && !monster->stop)
+        if (event.type == sf::Event::KeyPressed && errorStart && !monster->stop && canCheckArrow)
         {
+            canCheckArrow = false;
             bool isWrong = false;
             std::string arrow = data->input.checkArrow(event.key.code);
             if (arrow == LEFT)
@@ -122,6 +123,10 @@ void GameState::HandleInput()
                 fail = true;
                 errorSound.play();
             }
+        }
+        else if (event.type == sf::Event::KeyReleased && !canCheckArrow)
+        {
+            canCheckArrow = true;
         }
     }
 }
@@ -184,7 +189,7 @@ void GameState::Update(float dt)
 
     if (counter >= 10)
     {
-        barOfNotes->ChangeSpeed(barOfNotes->speed+=18);
+        barOfNotes->ChangeSpeed(barOfNotes->speed+=15);
         counter = 0;
     }
 

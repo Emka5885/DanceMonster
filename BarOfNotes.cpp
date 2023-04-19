@@ -57,6 +57,17 @@ bool BarOfNotes::Check(std::string noteType)
 		{
 			if (notes[i].CheckType(noteType))
 			{
+				if (notesGoodClick != nullptr)
+				{
+					for (int i = 0; i < notes.size(); i++)
+					{
+						if (&notes[i] == notesGoodClick)
+						{
+							notesGoodClick = nullptr;
+							notes.erase(notes.begin() + i);
+						}
+					}
+				}
 				notesGoodClick = &notes[i];
 				return true;
 			}
@@ -87,10 +98,13 @@ void BarOfNotes::IncreaseWhiteShape()
 
 void BarOfNotes::ChangeSpeed(int newSpeed)
 {
-	speed = newSpeed;
-	if (howMuchToAdd <= 10)
+	if (newSpeed < 350)
 	{
-		howMuchToAdd ++;
+		speed = newSpeed;
+		if (howMuchToAdd <= 255)
+		{
+			howMuchToAdd+=5;
+		}
 	}
 }
 
