@@ -8,8 +8,9 @@ private:
 	int currentMusic;
 
 public:
-	Music(AssetManager& assetManager);
+	Music(AssetManager& assetManager, int num);
 
 	void StartMusic();
 	sf::Time MusicTime();
+	void SetMusicVolume(int num);
 };

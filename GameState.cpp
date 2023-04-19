@@ -9,17 +9,14 @@ void GameState::Init()
 {
 	barOfNotes = new BarOfNotes(data->window, data->assets);
 	monster = new Monster(data->assets);
-    music = new Music(data->assets);
     combos = new Combo(data->assets, monster);
     errorSound = &data->assets.GetSound("error");
     counter = 0;
     combo = 0;
     combos->comboTime = false;
     backgroundColor = sf::Color(0x1A1A1Aff);
-    music->StartMusic();
     clock.restart();
     combosClock.restart();
-    data->widgets->SetNewTime(music->MusicTime().asSeconds()-6, true);
 
     std::fstream file;
     file.open("musicOptions.txt", std::ios::in);
@@ -28,7 +25,11 @@ void GameState::Init()
         std::string helperLine;
         while (file >> helperLine)
         {
-            if (helperLine == "true")
+            if (std::isdigit(helperLine[0]))
+            {
+                musicOptionsFromFile.push_back(std::stoi(helperLine));
+            }
+            else if (helperLine == "true")
             {
                 optionsFromFile.push_back(true);
             }
@@ -39,6 +40,10 @@ void GameState::Init()
         }
         file.close();
     }
+
+    music = new Music(data->assets, musicOptionsFromFile[3]);
+    music->StartMusic();
+    data->widgets->SetNewTime(music->MusicTime().asSeconds() - 6, true);
 }
 
 void GameState::HandleInput()

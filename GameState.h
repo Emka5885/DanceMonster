@@ -47,4 +47,5 @@ private:
 	sf::Sound* errorSound;
 
 	std::vector<bool> optionsFromFile;
+	std::vector<int> musicOptionsFromFile;
 };
