@@ -43,6 +43,9 @@ private:
 
 	int counter;
 	int combo;
+	sf::Text comboText;
+	sf::Clock comboClock;
+	int helperCombo = 0;
 	sf::Color backgroundColor;
 
 	sf::SoundBuffer errorSoundBuffer;

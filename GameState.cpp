@@ -57,6 +57,10 @@ void GameState::Init()
     music = new Music(data->assets, musicOptionsFromFile[3]);
     music->StartMusic();
     data->widgets->SetNewTime(music->MusicTime().asSeconds() - 6, true);
+
+    comboText.setFont(data->assets.GetFont("standardFont"));
+    comboText.setString("0");
+    comboText.setCharacterSize(20);
 }
 
 void GameState::HandleInput()
@@ -214,6 +218,14 @@ void GameState::Update(float dt)
     barOfNotes->IncreaseWhiteShape();
 
     data->widgets->TimeUpdate();
+
+    if (combo % 10 == 0 && helperCombo != combo)
+    {
+        comboText.setString("combo x" + std::to_string(combo));
+        comboText.setPosition({ WIDTH - 25 - comboText.getGlobalBounds().width, HEIGHT - 200 });
+        helperCombo = combo;
+        comboClock.restart();
+    }
 }
 
 void GameState::Draw(float dt)
@@ -226,6 +238,10 @@ void GameState::Draw(float dt)
 	monster->DrawMonster(data->window);
     //combos->DrawColors(data->window);
     combos->DrawMonsters(data->window);
+    if (combo != 0 && comboClock.getElapsedTime() <= sf::seconds(2.2))
+    {
+        data->window.draw(comboText);
+    }
 
 	data->window.display();
 }
