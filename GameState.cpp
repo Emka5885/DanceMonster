@@ -177,7 +177,7 @@ void GameState::Update(float dt)
         helperClock.restart();
     }
 
-    if (start && helperClock.getElapsedTime() >= sf::seconds(0.9))
+    if (start && helperClock.getElapsedTime() >= sf::seconds(2.5))
     {
         errorStart = true;
         start = false;

@@ -34,6 +34,11 @@ AssetManager::AssetManager()
 
 	LoadMusic("0", "resources/music/Luke-Bergs-Golden-State-of-Mind_MasterMP3.wav");
 	LoadMusic("1", "resources/music/stay-free-138363.wav");
+	LoadMusic("2", "resources/music/love-song-10539.wav");
+	LoadMusic("3", "resources/music/they-know-me-141176.wav");
+	LoadMusic("4", "resources/music/silly-dancer-141104.wav");
+	LoadMusic("5", "resources/music/lady-of-the-80x27s-128379.wav");
+	LoadMusic("6", "resources/music/fun-summer-edm-142026.wav");
 }
 
 void AssetManager::LoadTexture(std::string name, std::string fileName)
