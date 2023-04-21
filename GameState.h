@@ -14,6 +14,8 @@ public:
 
 	void Init();
 
+	void AddPoints();
+
 	void HandleInput();
 	void Update(float dt);
 	void Draw(float dt);
@@ -45,8 +47,11 @@ private:
 	int combo;
 	sf::Text comboText;
 	sf::Clock comboClock;
+	bool comboCounter;
 	int helperCombo = 0;
 	sf::Color backgroundColor;
+
+	sf::Text pointsText;
 
 	sf::SoundBuffer errorSoundBuffer;
 	sf::SoundBuffer comboSoundBuffer;

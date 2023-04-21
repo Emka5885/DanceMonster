@@ -59,8 +59,28 @@ void GameState::Init()
     data->widgets->SetNewTime(music->MusicTime().asSeconds() - 6, true);
 
     comboText.setFont(data->assets.GetFont("standardFont"));
-    comboText.setString("0");
+    comboText.setString("score: x1");
     comboText.setCharacterSize(20);
+
+    pointsText = comboText;
+    pointsText.setPosition({ 50, 85 });
+
+    comboCounter = optionsFromFile[1];
+}
+
+void GameState::AddPoints()
+{
+    if (combo < 10)
+    {
+        data->widgets->SetNewScore(data->widgets->GetScore() + 1);
+    }
+    else
+    {
+        data->widgets->SetNewScore(data->widgets->GetScore() + 1 + 1 * combo / 10);
+    }
+    counter++;
+    combo++;
+    monster->Error(false);
 }
 
 void GameState::HandleInput()
@@ -83,10 +103,7 @@ void GameState::HandleInput()
                 isWrong = !barOfNotes->Check(LEFT);
                 if (!isWrong)
                 {
-                    data->widgets->SetNewScore(data->widgets->GetScore() + 1);
-                    counter++;
-                    combo++;
-                    monster->Error(false);
+                    AddPoints();
                 }
             }
             else if (arrow == RIGHT)
@@ -94,10 +111,7 @@ void GameState::HandleInput()
                 isWrong = !barOfNotes->Check(RIGHT);
                 if (!isWrong)
                 {
-                    data->widgets->SetNewScore(data->widgets->GetScore() + 1);
-                    counter++;
-                    combo++;
-                    monster->Error(false);
+                    AddPoints();
                 }
             }
             else if (arrow == UP)
@@ -105,10 +119,7 @@ void GameState::HandleInput()
                 isWrong = !barOfNotes->Check(UP);
                 if (!isWrong)
                 {
-                    data->widgets->SetNewScore(data->widgets->GetScore() + 1);
-                    counter++;
-                    combo++;
-                    monster->Error(false);
+                    AddPoints();
                 }
             }
             else if (arrow == DOWN)
@@ -116,10 +127,7 @@ void GameState::HandleInput()
                 isWrong = !barOfNotes->Check(DOWN);
                 if (!isWrong)
                 {
-                    data->widgets->SetNewScore(data->widgets->GetScore() + 1);
-                    counter++;
-                    combo++;
-                    monster->Error(false);
+                    AddPoints();
                 }
             }
             if (isWrong)
@@ -219,9 +227,13 @@ void GameState::Update(float dt)
 
     data->widgets->TimeUpdate();
 
-    if (combo % 10 == 0 && helperCombo != combo)
+    if (combo % 10 == 0)
     {
-        comboText.setString("combo x" + std::to_string(combo));
+        pointsText.setString("score: x" + std::to_string(1 + combo / 10));
+    }
+    if (combo % 10 == 0 && helperCombo != combo && comboCounter)
+    {
+        comboText.setString("combo: " + std::to_string(combo));
         comboText.setPosition({ WIDTH - 25 - comboText.getGlobalBounds().width, HEIGHT - 200 });
         helperCombo = combo;
         comboClock.restart();
@@ -238,10 +250,11 @@ void GameState::Draw(float dt)
 	monster->DrawMonster(data->window);
     //combos->DrawColors(data->window);
     combos->DrawMonsters(data->window);
-    if (combo != 0 && comboClock.getElapsedTime() <= sf::seconds(2.2))
+    if (helperCombo != 0 && comboClock.getElapsedTime() <= sf::seconds(2.2) && comboCounter)
     {
         data->window.draw(comboText);
     }
+    data->window.draw(pointsText);
 
 	data->window.display();
 }
