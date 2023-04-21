@@ -7,6 +7,7 @@ GameState::GameState(GameDataReference data, sf::Sound* menuSound, sf::Music* me
 
 void GameState::Init()
 {
+    data->widgets = new Widgets(data->assets);
 	barOfNotes = new BarOfNotes(data->window, data->assets);
 	monster = new Monster(data->assets);
     combos = new Combo(data->assets, monster);
