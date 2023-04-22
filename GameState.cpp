@@ -94,6 +94,12 @@ void GameState::HandleInput()
         {
             data->window.close();
         }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
+        {
+            music->StopMusic();
+            data->machine.RemoveState();
+            data->machine.AddState(stateReference(new EndGameState(data, menuSound, menuBackgroundMusic, maxCombo, optionsFromFile[1])), true);
+        }
         if (event.type == sf::Event::KeyPressed && errorStart && !monster->stop && canCheckArrow)
         {
             canCheckArrow = false;
@@ -173,6 +179,8 @@ void GameState::Update(float dt)
     }
     else if (clock.getElapsedTime() >= music->MusicTime() - sf::seconds(13))
     {
+        combos->comboTime = false;
+        stopCombo = true;
         barOfNotes->stop = true;
         helperClock.restart();
     }
@@ -191,7 +199,7 @@ void GameState::Update(float dt)
     else if (barOfNotes->stop && helperClock.getElapsedTime() >= sf::seconds(4.2))
     {
         data->machine.RemoveState();
-        data->machine.AddState(stateReference(new EndGameState(data, menuSound, menuBackgroundMusic, maxCombo)), true);
+        data->machine.AddState(stateReference(new EndGameState(data, menuSound, menuBackgroundMusic, maxCombo, optionsFromFile[1])), true);
     }
 
     if (frameClock.getElapsedTime() >= sf::seconds(0.3) && !monster->stop)
@@ -215,7 +223,7 @@ void GameState::Update(float dt)
         playComboSound = false;
         comboSound.play();
     }
-    if (combo >= 10 && optionsFromFile[0])
+    if (combo >= 10 && optionsFromFile[0] && !stopCombo)
     {
         combos->comboTime = true;
         //data->machine.AddState(stateReference(new EndGameState(data, menuSound, menuBackgroundMusic)), true);

@@ -23,3 +23,8 @@ void Music::SetMusicVolume(int num)
 {
 	music.setVolume(num);
 }
+
+void Music::StopMusic()
+{
+	music.stop();
+}

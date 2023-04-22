@@ -171,7 +171,7 @@ void StatsState::UpdateStats()
 		}
 		statsLines[i].first.setPosition(statsLines[i].first.getPosition().x, 235 + j * 50);
 		statsLines[i].second.scoreText.setPosition(statsLines[i].second.scoreText.getPosition().x, 235 + j * 50);
-		statsLines[i].second.dash.setPosition(statsLines[i].second.dash.getPosition().x, 225 + j * 50);
+		statsLines[i].second.dash.setPosition(statsLines[i].second.dash.getPosition().x, 235 + j * 50);
 		statsLines[i].second.timeText.setPosition(statsLines[i].second.timeText.getPosition().x, 235 + j * 50);
 
 		j++;

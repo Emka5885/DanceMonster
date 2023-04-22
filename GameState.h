@@ -43,6 +43,7 @@ private:
 	bool fail = false;
 	bool canCheckArrow = true;
 
+	bool stopCombo = false;
 	int maxCombo = 0;
 	int counter;
 	int combo;
