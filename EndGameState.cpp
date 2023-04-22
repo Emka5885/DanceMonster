@@ -2,21 +2,33 @@
 #include "MainMenuState.h"
 #include "StatsState.h"
 
-EndGameState::EndGameState(GameDataReference data, sf::Sound* menuSound, sf::Music* backgroundMusic) : data(data), menuSound(menuSound), backgroundMusic(backgroundMusic)
+EndGameState::EndGameState(GameDataReference data, sf::Sound* menuSound, sf::Music* backgroundMusic, int combo) : data(data), menuSound(menuSound), backgroundMusic(backgroundMusic), combo(combo)
 {
 }
 
 void EndGameState::Init()
 {
-	data->widgets->SetScorePosition({ (WIDTH / 2) - (data->widgets->GetScoreGlobalBounds().width / 2), (HEIGHT / 2) - (data->widgets->GetScoreGlobalBounds().height / 2) });
+	monster = new Monster(data->assets);
+	combos = new Combo(data->assets, monster);
+	invisible.setFillColor(sf::Color(0x1A1A1Aff));
+	invisible.setPosition({ 400, 200 });
+	invisible.setSize({ 400,400 });
 
-	//statsButton = data->buttons->GetButton("stats_button").first;
-	//statsText = data->buttons->GetButton("stats_button").second;
+	data->widgets->SetScorePosition({ leftText, (HEIGHT / 2) + 50 - (data->widgets->GetScoreGlobalBounds().height / 2) });
+	comboText = data->widgets->GetScoreText();
+	comboText.setPosition({ rightText, (HEIGHT / 2) + 150 - (data->widgets->GetScoreGlobalBounds().height / 2) });
+	comboText.setString("max combo: " + std::to_string(combo));
 
 	buttonSize = { 175, 85 };
 	data->buttons->NewButton(buttonSize, { 50, HEIGHT - 50 - buttonSize.y }, sf::Color::White, "Menu", 50, sf::Color::Black, "menu_button");
 	menuButton = data->buttons->GetButton("menu_button").first;
 	menuText = data->buttons->GetButton("menu_button").second;
+
+	statsButton = data->buttons->GetButton("stats_button").first;
+	statsText = data->buttons->GetButton("stats_button").second;
+	statsButton.setSize(buttonSize);
+	statsButton.setPosition({ WIDTH - 50 - statsButton.getGlobalBounds().width, HEIGHT - 50 - statsButton.getGlobalBounds().height });
+	statsText.setPosition(statsButton.getPosition().x + 15, statsButton.getPosition().y + 10);
 
 	std::fstream file;
 	std::string line;
@@ -57,16 +69,43 @@ void EndGameState::HandleInput()
 
 void EndGameState::Update(float dt)
 {
+	if (leftText < (WIDTH / 2) - (data->widgets->GetScoreGlobalBounds().width / 2))
+	{
+		leftText += 3;
+		data->widgets->SetScorePosition({ leftText, (HEIGHT / 2) + 50 - (data->widgets->GetScoreGlobalBounds().height / 2) });
+	}
+	if (rightText > WIDTH - (WIDTH / 2) - comboText.getGlobalBounds().width / 2)
+	{
+		rightText -= 3;
+		comboText.setPosition({ rightText, (HEIGHT / 2) + 150 - (data->widgets->GetScoreGlobalBounds().height / 2) });
+	}
+
+	if (start)
+	{
+		start = false;
+		monster->Start();
+		frameClock.restart();
+	}
+
+	if (frameClock.getElapsedTime() >= sf::seconds(0.3) && !monster->stop)
+	{
+		monster->Update();
+		frameClock.restart();
+	}
+	combos->UpdateMonsters(true);
 }
 
 void EndGameState::Draw(float dt)
 {
 	data->window.clear(sf::Color(0x1A1A1Aff));
 
+	monster->DrawMonster(data->window);
+	data->window.draw(invisible);
+	combos->DrawMonsters(data->window);
 	data->widgets->DrawScore(data->window);
-	//data->window.draw(statsButton);
-	//data->window.draw(statsText);
-
+	data->window.draw(comboText);
+	data->window.draw(statsButton);
+	data->window.draw(statsText);
 	data->window.draw(menuButton);
 	data->window.draw(menuText);
 

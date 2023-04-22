@@ -20,6 +20,7 @@ public:
 
 	void SetNewScore(int newScore);
 	int GetScore();
+	sf::Text GetScoreText();
 	void SetScorePosition(sf::Vector2f newPosition);
 	sf::FloatRect GetScoreGlobalBounds();
 

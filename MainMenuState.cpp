@@ -3,6 +3,7 @@
 #include "StatsState.h"
 #include "OptionsState.h"
 #include <iostream>
+#include "EndGameState.h"
 
 MainMenuState::MainMenuState(GameDataReference data, sf::Sound* menuSound, sf::Music* backgroundMusic) : data(data), menuSound(menuSound), backgroundMusic(backgroundMusic)
 {
@@ -55,7 +56,8 @@ void MainMenuState::HandleInput()
 		{
 			menuSound->play();
 			data->machine.RemoveState();
-			data->machine.AddState(stateReference(new StartState(data, menuSound, backgroundMusic)), true, true);
+			//data->machine.AddState(stateReference(new StartState(data, menuSound, backgroundMusic)), true, true);
+			data->machine.AddState(stateReference(new EndGameState(data, menuSound, backgroundMusic, 100)), true);
 		}
 		else if (data->input.isButtonClicked(statsButton, sf::Mouse::Left, data->window))
 		{

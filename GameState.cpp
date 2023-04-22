@@ -191,7 +191,7 @@ void GameState::Update(float dt)
     else if (barOfNotes->stop && helperClock.getElapsedTime() >= sf::seconds(4.2))
     {
         data->machine.RemoveState();
-        data->machine.AddState(stateReference(new EndGameState(data, menuSound, menuBackgroundMusic)), true);
+        data->machine.AddState(stateReference(new EndGameState(data, menuSound, menuBackgroundMusic, maxCombo)), true);
     }
 
     if (frameClock.getElapsedTime() >= sf::seconds(0.3) && !monster->stop)
@@ -230,6 +230,10 @@ void GameState::Update(float dt)
 
     if (combo % 10 == 0)
     {
+        if (maxCombo < combo)
+        {
+            maxCombo = combo;
+        }
         pointsText.setString("score: x" + std::to_string(1 + combo / 10));
     }
     if (combo % 10 == 0 && helperCombo != combo && comboCounter)

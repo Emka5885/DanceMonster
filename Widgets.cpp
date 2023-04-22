@@ -24,6 +24,11 @@ int Widgets::GetScore()
     return score;
 }
 
+sf::Text Widgets::GetScoreText()
+{
+    return scoreText;
+}
+
 void Widgets::SetScorePosition(sf::Vector2f newPosition)
 {
     scoreText.setPosition(newPosition);

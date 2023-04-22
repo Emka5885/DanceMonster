@@ -43,6 +43,7 @@ private:
 	bool fail = false;
 	bool canCheckArrow = true;
 
+	int maxCombo = 0;
 	int counter;
 	int combo;
 	sf::Text comboText;
