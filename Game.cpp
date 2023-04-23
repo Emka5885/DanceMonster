@@ -51,7 +51,6 @@ void Game::Run()
 
 		if (startBackgroundMusic && this->data->machine.hasMenuBackgroundMusic())
 		{
-			std::fstream file;
 			file.open("musicOptions.txt", std::ios::in);
 			if (file.is_open())
 			{

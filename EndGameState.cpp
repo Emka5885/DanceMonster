@@ -5,12 +5,12 @@
 
 EndGameState::EndGameState(GameDataReference data, sf::Sound* menuSound, sf::Music* backgroundMusic, int combo, bool onMaxCombo) : data(data), menuSound(menuSound), backgroundMusic(backgroundMusic), combo(combo), onMaxCombo(onMaxCombo)
 {
+	monster = new Monster(data->assets);
+	combos = new Combo(data->assets, monster);
 }
 
 void EndGameState::Init()
 {
-	monster = new Monster(data->assets);
-	combos = new Combo(data->assets, monster);
 	invisible.setFillColor(sf::Color(0x1A1A1Aff));
 	invisible.setPosition({ 400, 200 });
 	invisible.setSize({ 400,400 });

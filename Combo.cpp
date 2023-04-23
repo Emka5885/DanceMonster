@@ -2,6 +2,7 @@
 
 Combo::Combo(AssetManager& assetManage, Monster* mainMonster) : assetManager(assetManager), mainMonster(mainMonster)
 {
+	comboTime = false;
 	mainShape.setFillColor(sf::Color(25, 50, 200, 100));
 	mainShape.setRadius(500);
 	mainShape.setPointCount(3);

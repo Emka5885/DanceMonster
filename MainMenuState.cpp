@@ -51,7 +51,6 @@ void MainMenuState::HandleInput()
 			delete data->widgets;
 		}
 
-		//input, if user click a particular button
 		if (data->input.isButtonClicked(playButton, sf::Mouse::Left, data->window))
 		{
 			menuSound->play();

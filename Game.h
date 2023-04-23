@@ -27,6 +27,8 @@ public:
 	Game(std::string title);
 
 private:
+	std::fstream file;
+
 	const float dt = 1.0f / 60.0f;
 	sf::Clock clock;
 

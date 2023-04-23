@@ -87,7 +87,6 @@ void ScrollBar::Update(sf::Event event, int maxCounter, int minCounter)
 				{
 					counter = 1;
 				}
-				//std::cout << "\nd" << counter << "d\n";
 				scrollbarHandle.setPosition(scrollbarBackground.getPosition().x + newHandleOffset, scrollbarHandle.getPosition().y);
 			}
 		}

@@ -3,6 +3,7 @@
 
 OptionsState::OptionsState(GameDataReference data, sf::Sound* menuSound, sf::Music* backgroundMusic) : data(data), menuSound(menuSound), backgroundMusic(backgroundMusic)
 {
+	s = nullptr;
 }
 
 void OptionsState::Save()

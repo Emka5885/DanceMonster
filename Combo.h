@@ -6,9 +6,6 @@ class Combo
 {
 private:
 	AssetManager assetManager;
-	sf::CircleShape mainShape;
-	//Monster* leftMonster;
-	//Monster* rightMonster;
 	sf::RectangleShape leftMonster;
 	sf::RectangleShape rightMonster;
 	int leftX;
@@ -19,13 +16,11 @@ private:
 public:
 	Combo(AssetManager& assetManage, Monster* mainMonster);
 
-	void ChangeColors();
 	void UpdateMonsters(bool isCombo);
 
 	void MonstersStart();
 	void MonstersStop();
 
-	void DrawColors(sf::RenderWindow& window);
 	void DrawMonsters(sf::RenderWindow& window);
 
 	bool comboTime;

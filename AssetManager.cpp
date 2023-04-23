@@ -2,8 +2,6 @@
 
 AssetManager::AssetManager()
 {
-	//LoadTexture("newGame", "resources/menu/Play.png");
-
 	LoadTexture("left", "resources/arrows/LeftArrow.png");
 	LoadTexture("right", "resources/arrows/RightArrow.png");
 	LoadTexture("down", "resources/arrows/DownArrow.png");

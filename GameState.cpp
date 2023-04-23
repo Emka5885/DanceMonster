@@ -3,18 +3,20 @@
 
 GameState::GameState(GameDataReference data, sf::Sound* menuSound, sf::Music* menuBackgroundMusic) : data(data), menuSound(menuSound), menuBackgroundMusic(menuBackgroundMusic)
 {
-}
-
-void GameState::Init()
-{
     data->widgets = new Widgets(data->assets);
-	barOfNotes = new BarOfNotes(data->window, data->assets);
-	monster = new Monster(data->assets);
+    barOfNotes = new BarOfNotes(data->window, data->assets);
+    monster = new Monster(data->assets);
     combos = new Combo(data->assets, monster);
     counter = 0;
     combo = 0;
     combos->comboTime = false;
     backgroundColor = sf::Color(0x1A1A1Aff);
+    music = nullptr;
+    comboCounter = true;
+}
+
+void GameState::Init()
+{
     clock.restart();
     combosClock.restart();
 
