@@ -171,7 +171,6 @@ void GameState::Update(float dt)
 
     if (combosClock.getElapsedTime() >= sf::seconds(0.6))
     {
-        //combos->ChangeColors();
         combosClock.restart();
     }
 
@@ -228,7 +227,6 @@ void GameState::Update(float dt)
     if (combo >= 10 && optionsFromFile[0] && !stopCombo)
     {
         combos->comboTime = true;
-        //data->machine.AddState(stateReference(new EndGameState(data, menuSound, menuBackgroundMusic)), true);
     }
     combos->UpdateMonsters(combos->comboTime);
 
@@ -263,7 +261,6 @@ void GameState::Draw(float dt)
     data->widgets->DrawTime(data->window);
 	barOfNotes->DrawBar();
 	monster->DrawMonster(data->window);
-    //combos->DrawColors(data->window);
     combos->DrawMonsters(data->window);
     if (helperCombo != 0 && comboClock.getElapsedTime() <= sf::seconds(2.2) && comboCounter)
     {

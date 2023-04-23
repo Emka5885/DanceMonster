@@ -15,7 +15,6 @@ void OptionsState::Save()
 		for (int i = 0; i < 5; i++)
 		{
 			file << musicOptionsFromFile[i] << "\n";
-			//std::cout << "d" << musicOptionsFromFile[i];
 		}
 		for (int i = 0; i < 2; i++)
 		{
@@ -27,7 +26,6 @@ void OptionsState::Save()
 			{
 				file << "false\n";
 			}
-			//std::cout << "d" << musicOptionsFromFile[i];
 		}
 
 		file.close();
@@ -36,7 +34,6 @@ void OptionsState::Save()
 
 void OptionsState::Init()
 {
-	//std::cout << "dziala\n";
 	std::fstream file;
 	file.open("musicOptions.txt", std::ios::in);
 	if (file.is_open())
@@ -46,7 +43,6 @@ void OptionsState::Init()
 		{
 			if (std::isdigit(helperLine[0]))
 			{
-				//std::cout << helperLine << "\n";
 				musicOptionsFromFile.push_back(std::stoi(helperLine));
 			}
 			else if (helperLine == "true")
@@ -60,11 +56,6 @@ void OptionsState::Init()
 		}
 		file.close();
 	}
-
-	/*for (int i = 0; i < 5; i++)
-	{
-		std::cout << "e " << musicOptionsFromFile[i];
-	}*/
 
 	buttonSize = { 150, 85 };
 	data->buttons->NewButton(buttonSize, { 50, 50 }, sf::Color::White, "Back", 50, sf::Color::Black, "back_button");
