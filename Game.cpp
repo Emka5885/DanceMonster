@@ -7,6 +7,13 @@ Game::Game(std::string title)
 	data->buttons = new Buttons(data->assets);
 	srand(time(NULL));
 	data->window.create(sf::VideoMode(WIDTH, HEIGHT), title, sf::Style::Close | sf::Style::Titlebar);
+
+	if (!image.loadFromFile("resources/monster/monster_icon.png"))
+	{
+		std::cout << "Error - icon.\n";
+	}
+	data->window.setIcon(image.getSize().x, image.getSize().y, image.getPixelsPtr());
+
 	data->machine.AddState(stateReference(new MainMenuState(data, &menuSound, &backgroundMusic)), true);
 	this->Run();
 }

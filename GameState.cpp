@@ -45,11 +45,11 @@ void GameState::Init()
 
     if (!errorSoundBuffer.loadFromFile("resources/sounds/error-89206.wav"))
     {
-        std::cout << "Error sound - error sound in game" << std::endl;
+        std::cout << "Error sound - error sound in game.\n" << std::endl;
     }
     if (!comboSoundBuffer.loadFromFile("resources/sounds/combo.wav"))
     {
-        std::cout << "Error sound - combo time" << std::endl;
+        std::cout << "Error sound - combo time.\n" << std::endl;
     }
 
     errorSound.setBuffer(errorSoundBuffer);
