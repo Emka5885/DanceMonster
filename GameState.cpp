@@ -267,6 +267,7 @@ void GameState::Draw(float dt)
         data->window.draw(comboText);
     }
     data->window.draw(pointsText);
+    data->window.draw(data->name);
 
 	data->window.display();
 }

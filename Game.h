@@ -17,6 +17,7 @@ struct GameData
 	InputManager input;
 	Widgets* widgets;
 	Buttons* buttons;
+	sf::Text name;
 };
 
 typedef std::shared_ptr<GameData> GameDataReference;

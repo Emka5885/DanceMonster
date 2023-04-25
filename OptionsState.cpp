@@ -149,6 +149,7 @@ void OptionsState::Draw(float dt)
 		data->window.draw(OnOffButtons[i].second.first);
 		data->window.draw(OnOffButtons[i].second.second);
 	}
+	data->window.draw(data->name);
 
 	data->window.display();
 }

@@ -14,6 +14,12 @@ Game::Game(std::string title)
 	}
 	data->window.setIcon(image.getSize().x, image.getSize().y, image.getPixelsPtr());
 
+	data->name.setFont(data->assets.GetFont("nameFont"));
+	data->name.setCharacterSize(15);
+	data->name.setFillColor(sf::Color::Black);
+	data->name.setString("© Emilia Masiak");
+	data->name.setPosition(WIDTH - 10 - data->name.getGlobalBounds().width, HEIGHT - 10 - data->name.getGlobalBounds().height);
+
 	data->machine.AddState(stateReference(new MainMenuState(data, &menuSound, &backgroundMusic)), true);
 	this->Run();
 }

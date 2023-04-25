@@ -126,6 +126,7 @@ void EndGameState::Draw(float dt)
 	data->window.draw(menuText);
 	data->window.draw(newGameButton);
 	data->window.draw(newGameText);
+	data->window.draw(data->name);
 
 	data->window.display();
 }

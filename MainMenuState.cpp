@@ -89,6 +89,7 @@ void MainMenuState::Draw(float dt)
 	data->window.draw(statsText);
 	data->window.draw(quitButton);
 	data->window.draw(quitText);
+	data->window.draw(data->name);
 
 	data->window.display();
 }

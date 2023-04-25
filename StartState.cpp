@@ -67,6 +67,7 @@ void StartState::Draw(float dt)
 	{
 		data->window.draw(counter);
 	}
+	data->window.draw(data->name);
 
 	data->window.display();
 }

@@ -204,6 +204,7 @@ void StatsState::Draw(float dt)
 	}
 
 	scrollBar->Draw();
+	data->window.draw(data->name);
 
 	data->window.display();
 }

@@ -29,6 +29,7 @@ AssetManager::AssetManager()
 	LoadTexture("monster_error", "resources/monster/monster_error.png");
 
 	LoadFont("standardFont", "resources/fonts/NiceSugar.ttf");
+	LoadFont("nameFont", "resources/fonts/MilkyNice.ttf");
 
 	LoadMusic("0", "resources/music/Luke-Bergs-Golden-State-of-Mind_MasterMP3.wav");
 	LoadMusic("1", "resources/music/stay-free-138363.wav");
