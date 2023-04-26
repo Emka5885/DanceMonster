@@ -45,5 +45,5 @@ private:
 	std::vector<bool> optionsFromFile;
 	std::pair<std::pair<sf::RectangleShape, sf::Text>, std::pair<sf::RectangleShape, sf::Text>> helper2;
 	std::vector<std::pair<std::pair<sf::RectangleShape, sf::Text>, std::pair<sf::RectangleShape, sf::Text>>> OnOffButtons;
-	ScrollBar* s;
+	ScrollBar* scrollBar;
 };

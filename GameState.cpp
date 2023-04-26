@@ -7,12 +7,8 @@ GameState::GameState(GameDataReference data, sf::Sound* menuSound, sf::Music* me
     barOfNotes = new BarOfNotes(data->window, data->assets);
     monster = new Monster(data->assets);
     combos = new Combo(data->assets, monster);
-    counter = 0;
-    combo = 0;
     combos->comboTime = false;
-    backgroundColor = sf::Color(0x1A1A1Aff);
     music = nullptr;
-    comboCounter = true;
 }
 
 void GameState::Init()
@@ -106,40 +102,12 @@ void GameState::HandleInput()
         {
             canCheckArrow = false;
             bool isWrong = false;
-            std::string arrow = data->input.checkArrow(event.key.code);
-            if (arrow == LEFT)
+            isWrong = !barOfNotes->Check(data->input.checkArrow(event.key.code));
+            if (!isWrong)
             {
-                isWrong = !barOfNotes->Check(LEFT);
-                if (!isWrong)
-                {
-                    AddPoints();
-                }
+                AddPoints();
             }
-            else if (arrow == RIGHT)
-            {
-                isWrong = !barOfNotes->Check(RIGHT);
-                if (!isWrong)
-                {
-                    AddPoints();
-                }
-            }
-            else if (arrow == UP)
-            {
-                isWrong = !barOfNotes->Check(UP);
-                if (!isWrong)
-                {
-                    AddPoints();
-                }
-            }
-            else if (arrow == DOWN)
-            {
-                isWrong = !barOfNotes->Check(DOWN);
-                if (!isWrong)
-                {
-                    AddPoints();
-                }
-            }
-            if (isWrong)
+            else
             {
                 fail = true;
                 errorSound.play();

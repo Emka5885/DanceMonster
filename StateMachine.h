@@ -24,9 +24,9 @@ private:
 	std::stack<stateReference> states;
 	stateReference newState;
 
-	bool isRemoving;
-	bool isAdding;
-	bool isReplacing;
+	bool isRemoving = false;
+	bool isAdding = false;
+	bool isReplacing = false;
 
 	bool menuBackgroundMusic = true;
 };

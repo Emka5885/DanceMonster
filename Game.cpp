@@ -1,7 +1,11 @@
 #include "Game.h"
 #include "MainMenuState.h"
 
-Game::Game(std::string title)
+Game::Game(std::string title) : title(title)
+{
+}
+
+void Game::Init()
 {
 	data->widgets = new Widgets(data->assets);
 	data->buttons = new Buttons(data->assets);
@@ -21,8 +25,8 @@ Game::Game(std::string title)
 	data->name.setPosition(WIDTH - 10 - data->name.getGlobalBounds().width, HEIGHT - 10 - data->name.getGlobalBounds().height);
 
 	data->machine.AddState(stateReference(new MainMenuState(data, &menuSound, &backgroundMusic)), true);
-	this->Run();
 }
+
 
 void Game::Run()
 {

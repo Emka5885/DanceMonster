@@ -35,10 +35,9 @@ private:
 
 	sf::Vector2f buttonSize;
 
-	bool checkCounter;
+	bool checkCounter = false;
 	int counter = 0;
 	float counterLine = 0;
-	float margin;
 	sf::RectangleShape line;
 	Texts lineText;
 	std::vector<std::string> statsLinesText;

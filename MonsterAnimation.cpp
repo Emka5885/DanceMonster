@@ -12,24 +12,24 @@ void MonsterAnimation::ChangeFrame(std::string& currentType, int& frame, AssetMa
 		{
 		case 0:
 			frame = 1;
-			body.setTexture(&assetManager.GetTexture("monster_r1"));
+			body.setTexture(assetManager.GetTexture("monster_r1"));
 			break;
 		case 1:
 			frame = 2;
-			body.setTexture(&assetManager.GetTexture("monster_r2"));
+			body.setTexture(assetManager.GetTexture("monster_r2"));
 			break;
 		case 2:
 			frame = 3;
-			body.setTexture(&assetManager.GetTexture("monster_r3"));
+			body.setTexture(assetManager.GetTexture("monster_r3"));
 			break;
 		case 3:
 			frame = 4;
-			body.setTexture(&assetManager.GetTexture("monster_r4"));
+			body.setTexture(assetManager.GetTexture("monster_r4"));
 			change = true;
 			break;
 		case 4:
 			frame = 1;
-			body.setTexture(&assetManager.GetTexture("monster_r1"));
+			body.setTexture(assetManager.GetTexture("monster_r1"));
 			change = false;
 			break;
 		}
@@ -40,24 +40,24 @@ void MonsterAnimation::ChangeFrame(std::string& currentType, int& frame, AssetMa
 		{
 		case 0:
 			frame = 1;
-			body.setTexture(&assetManager.GetTexture("monster_l1"));
+			body.setTexture(assetManager.GetTexture("monster_l1"));
 			break;
 		case 1:
 			frame = 2;
-			body.setTexture(&assetManager.GetTexture("monster_l2"));
+			body.setTexture(assetManager.GetTexture("monster_l2"));
 			break;
 		case 2:
 			frame = 3;
-			body.setTexture(&assetManager.GetTexture("monster_l3"));
+			body.setTexture(assetManager.GetTexture("monster_l3"));
 			break;
 		case 3:
 			frame = 4;
-			body.setTexture(&assetManager.GetTexture("monster_l2"));
+			body.setTexture(assetManager.GetTexture("monster_l2"));
 			change = true;
 			break;
 		case 4:
 			frame = 1;
-			body.setTexture(&assetManager.GetTexture("monster_l1"));
+			body.setTexture(assetManager.GetTexture("monster_l1"));
 			change = false;
 			break;
 		}
@@ -68,24 +68,24 @@ void MonsterAnimation::ChangeFrame(std::string& currentType, int& frame, AssetMa
 		{
 		case 0:
 			frame = 1;
-			body.setTexture(&assetManager.GetTexture("monster_d1"));
+			body.setTexture(assetManager.GetTexture("monster_d1"));
 			break;
 		case 1:
 			frame = 2;
-			body.setTexture(&assetManager.GetTexture("monster_d2"));
+			body.setTexture(assetManager.GetTexture("monster_d2"));
 			change = false;
 			break;
 		case 2:
 			frame = 3;
-			body.setTexture(&assetManager.GetTexture("monster_d3"));
+			body.setTexture(assetManager.GetTexture("monster_d3"));
 			break;
 		case 3:
 			frame = 4;
-			body.setTexture(&assetManager.GetTexture("monster_d4"));
+			body.setTexture(assetManager.GetTexture("monster_d4"));
 			break;
 		case 4:
 			frame = 1;
-			body.setTexture(&assetManager.GetTexture("monster_d5"));
+			body.setTexture(assetManager.GetTexture("monster_d5"));
 			change = true;
 			break;
 		}
@@ -96,24 +96,24 @@ void MonsterAnimation::ChangeFrame(std::string& currentType, int& frame, AssetMa
 		{
 		case 0:
 			frame = 1;
-			body.setTexture(&assetManager.GetTexture("monster_u1"));
+			body.setTexture(assetManager.GetTexture("monster_u1"));
 			break;
 		case 1:
 			frame = 2;
-			body.setTexture(&assetManager.GetTexture("monster_u2"));
+			body.setTexture(assetManager.GetTexture("monster_u2"));
 			change = false;
 			break;
 		case 2:
 			frame = 3;
-			body.setTexture(&assetManager.GetTexture("monster_u3"));
+			body.setTexture(assetManager.GetTexture("monster_u3"));
 			break;
 		case 3:
 			frame = 4;
-			body.setTexture(&assetManager.GetTexture("monster_u4"));
+			body.setTexture(assetManager.GetTexture("monster_u4"));
 			break;
 		case 4:
 			frame = 1;
-			body.setTexture(&assetManager.GetTexture("monster_u5"));
+			body.setTexture(assetManager.GetTexture("monster_u5"));
 			change = true;
 			break;
 		}
@@ -124,7 +124,7 @@ void MonsterAnimation::ChangeType(std::string& currentType, std::string type, in
 {
 	if (currentType != NORMAL)
 	{
-		body.setTexture(&assetManager.GetTexture("monster"));
+		body.setTexture(assetManager.GetTexture("monster"));
 		currentType = type;
 		change = false;
 		frame = 0;

@@ -30,7 +30,7 @@ Note::Note(AssetManager& assetManager)
 	note.setOrigin(note.getSize().x / 2, 0);
 	whiteShape = note;
 	whiteShape.setFillColor(sf::Color(255,255,255,alpha));
-	note.setTexture(&assetManager.GetTexture(noteType));
+	note.setTexture(assetManager.GetTexture(noteType));
 
 	isChecked = false;
 }
@@ -52,7 +52,7 @@ void Note::NoteMove(sf::Vector2f move)
 	whiteShape.move(move);
 }
 
-bool Note::CheckType(std::string type)
+bool Note::CheckType(std::string& type)
 {
 	if (!isChecked)
 	{

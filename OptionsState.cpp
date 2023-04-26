@@ -3,7 +3,7 @@
 
 OptionsState::OptionsState(GameDataReference data, sf::Sound* menuSound, sf::Music* backgroundMusic) : data(data), menuSound(menuSound), backgroundMusic(backgroundMusic)
 {
-	s = nullptr;
+	scrollBar = nullptr;
 }
 
 void OptionsState::Save()
@@ -178,7 +178,7 @@ void OptionsState::CreateMusicOptionsButtons()
 	text.setCharacterSize(30);
 	text.setPosition({ WIDTH / 4 + 10, 245 });
 
-	s = new ScrollBar({ WIDTH / 2 + 25, 260 }, WIDTH / 5, 50, sf::Color::Black, sf::Color(0x9e9e9eff), "horizontal", data->window, musicOptionsFromFile[0]);
+	scrollBar = new ScrollBar({ WIDTH / 2 + 25, 260 }, WIDTH / 5, 50, sf::Color::Black, sf::Color(0x9e9e9eff), "horizontal", data->window, musicOptionsFromFile[0]);
 
 	MusicOptionsPushBack(true);
 
@@ -187,7 +187,7 @@ void OptionsState::CreateMusicOptionsButtons()
 	text.setString("background music:");
 	text.setPosition({ WIDTH / 4 + 10, 295 });
 
-	s = new ScrollBar({ WIDTH / 2 + 25, 310 }, WIDTH / 5, 50, sf::Color::Black, sf::Color(0x9e9e9eff), "horizontal", data->window, musicOptionsFromFile[1]);
+	scrollBar = new ScrollBar({ WIDTH / 2 + 25, 310 }, WIDTH / 5, 50, sf::Color::Black, sf::Color(0x9e9e9eff), "horizontal", data->window, musicOptionsFromFile[1]);
 
 	MusicOptionsPushBack(true);
 
@@ -210,7 +210,7 @@ void OptionsState::CreateMusicOptionsButtons()
 	text.setCharacterSize(30);
 	text.setPosition({ WIDTH / 4 + 10, 420 });
 
-	s = new ScrollBar({ WIDTH / 2 + 25, 435 }, WIDTH / 5, 50, sf::Color::Black, sf::Color(0x9e9e9eff), "horizontal", data->window, musicOptionsFromFile[2]);
+	scrollBar = new ScrollBar({ WIDTH / 2 + 25, 435 }, WIDTH / 5, 50, sf::Color::Black, sf::Color(0x9e9e9eff), "horizontal", data->window, musicOptionsFromFile[2]);
 
 	MusicOptionsPushBack(true);
 
@@ -219,7 +219,7 @@ void OptionsState::CreateMusicOptionsButtons()
 	text.setString("background music:");
 	text.setPosition({ WIDTH / 4 + 10, 470 });
 
-	s = new ScrollBar({ WIDTH / 2 + 25, 485 }, WIDTH / 5, 50, sf::Color::Black, sf::Color(0x9e9e9eff), "horizontal", data->window, musicOptionsFromFile[3]);
+	scrollBar = new ScrollBar({ WIDTH / 2 + 25, 485 }, WIDTH / 5, 50, sf::Color::Black, sf::Color(0x9e9e9eff), "horizontal", data->window, musicOptionsFromFile[3]);
 
 	MusicOptionsPushBack(true);
 
@@ -228,7 +228,7 @@ void OptionsState::CreateMusicOptionsButtons()
 	text.setString("combo time:");
 	text.setPosition({ WIDTH / 4 + 10, 520 });
 
-	s = new ScrollBar({ WIDTH / 2 + 25, 535 }, WIDTH / 5, 50, sf::Color::Black, sf::Color(0x9e9e9eff), "horizontal", data->window, musicOptionsFromFile[4]);
+	scrollBar = new ScrollBar({ WIDTH / 2 + 25, 535 }, WIDTH / 5, 50, sf::Color::Black, sf::Color(0x9e9e9eff), "horizontal", data->window, musicOptionsFromFile[4]);
 
 	MusicOptionsPushBack(true);
 
@@ -316,7 +316,7 @@ void OptionsState::MusicOptionsPushBack(bool ScrollBar)
 
 	if (ScrollBar)
 	{
-		scrollBars.push_back(*s);
+		scrollBars.push_back(*scrollBar);
 	}
 }
 

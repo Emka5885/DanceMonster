@@ -45,13 +45,13 @@ private:
 
 	bool stopCombo = false;
 	int maxCombo = 0;
-	int counter;
-	int combo;
+	int counter = 0;
+	int combo = 0;
 	sf::Text comboText;
 	sf::Clock comboClock;
-	bool comboCounter;
+	bool comboCounter = true;
 	int helperCombo = 0;
-	sf::Color backgroundColor;
+	sf::Color backgroundColor = sf::Color(0x1A1A1Aff);
 
 	sf::Text pointsText;
 

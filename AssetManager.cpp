@@ -50,9 +50,9 @@ void AssetManager::LoadTexture(std::string name, std::string fileName)
 	}
 }
 
-sf::Texture& AssetManager::GetTexture(std::string name)
+sf::Texture* AssetManager::GetTexture(std::string name)
 {
-	return this->textures.at(name);
+	return &this->textures.at(name);
 }
 
 void AssetManager::LoadFont(std::string name, std::string fileName)

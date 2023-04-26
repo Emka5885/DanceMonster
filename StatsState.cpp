@@ -3,10 +3,13 @@
 
 StatsState::StatsState(GameDataReference data, sf::Sound* menuSound, sf::Music* backgroundMusic) : data(data), menuSound(menuSound), backgroundMusic(backgroundMusic)
 {
+	scrollBar = nullptr;
 }
 
 void StatsState::Init()
 {
+	float margin;
+
 	buttonSize = { 150, 85 };
 	data->buttons->NewButton(buttonSize, { 50, 50 }, sf::Color::White, "Back", 50, sf::Color::Black, "back_button");
 	backButton = data->buttons->GetButton("back_button").first;
@@ -117,7 +120,6 @@ void StatsState::Init()
 	else
 	{
 		scrollBar = new ScrollBar({ WIDTH / 1.30, 233 }, 504, 1, sf::Color::Black, sf::Color(0x9e9e9eff), "vertically", data->window, counter);
-		checkCounter = false;
 	}
 	counter = statsLines.size() - 1;
 }

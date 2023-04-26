@@ -14,7 +14,7 @@ Monster::Monster(AssetManager& assetManager) : assetManager(assetManager)
 	body.setSize({306, 306 });
 	body.setOrigin(body.getSize().x / 2, body.getSize().y / 2);
 	body.setPosition({ WIDTH / 2, HEIGHT / 2 - 50 });
-	body.setTexture(&this->assetManager.GetTexture("monster"));
+	body.setTexture(assetManager.GetTexture("monster"));
 }
 
 void Monster::DrawMonster(sf::RenderWindow& window)
@@ -77,7 +77,7 @@ void Monster::Error(bool isWrong)
 {
 	if (isWrong)
 	{
-		body.setTexture(&this->assetManager.GetTexture("monster_error"));
+		body.setTexture(assetManager.GetTexture("monster_error"));
 		error = true;
 	}
 	else
@@ -101,7 +101,7 @@ void Monster::Stop()
 		{
 			stop = true;
 			error = true;
-			body.setTexture(&this->assetManager.GetTexture("monster"));
+			body.setTexture(assetManager.GetTexture("monster"));
 		}
 	}
 }
