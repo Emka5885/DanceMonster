@@ -55,11 +55,11 @@ void StartState::HandleInput()
 	}
 }
 
-void StartState::Update(float dt)
+void StartState::Update()
 {
 }
 
-void StartState::Draw(float dt)
+void StartState::Draw()
 {
 	data->window.clear(sf::Color(0x1A1A1Aff));
 

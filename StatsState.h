@@ -17,9 +17,9 @@ public:
 
 	void Init();
 	void HandleInput();
-	void Update(float dt);
+	void Update();
 	void UpdateStats();
-	void Draw(float dt);
+	void Draw();
 
 private:
 	GameDataReference data;

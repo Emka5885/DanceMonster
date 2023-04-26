@@ -80,7 +80,7 @@ void EndGameState::HandleInput()
 	}
 }
 
-void EndGameState::Update(float dt)
+void EndGameState::Update()
 {
 	if (leftText < (WIDTH / 2) - (data->widgets->GetScoreGlobalBounds().width / 2))
 	{
@@ -108,7 +108,7 @@ void EndGameState::Update(float dt)
 	combos->UpdateMonsters(true);
 }
 
-void EndGameState::Draw(float dt)
+void EndGameState::Draw()
 {
 	data->window.clear(sf::Color(0x1A1A1Aff));
 

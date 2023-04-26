@@ -156,7 +156,7 @@ void StatsState::HandleInput()
 	}
 }
 
-void StatsState::Update(float dt)
+void StatsState::Update()
 {
 }
 
@@ -178,7 +178,7 @@ void StatsState::UpdateStats()
 	}
 }
 
-void StatsState::Draw(float dt)
+void StatsState::Draw()
 {
 	data->window.clear(sf::Color(0x1A1A1Aff));
 

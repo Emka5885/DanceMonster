@@ -26,7 +26,7 @@ Game::Game(std::string title)
 
 void Game::Run()
 {
-	float newTime, frameTime, interpolation;
+	float newTime, frameTime;
 
 	float currentTime = this->clock.getElapsedTime().asSeconds();
 	float accumulator = 0.0f;
@@ -55,12 +55,11 @@ void Game::Run()
 				return;
 			}
 
-			this->data->machine.GetActiveState()->Update(dt);
+			this->data->machine.GetActiveState()->Update();
 
 			accumulator -= dt;
 		}
-		interpolation = accumulator / dt;
-		this->data->machine.GetActiveState()->Draw(interpolation);
+		this->data->machine.GetActiveState()->Draw();
 
 		if (startBackgroundMusic && this->data->machine.hasMenuBackgroundMusic())
 		{

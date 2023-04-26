@@ -152,7 +152,7 @@ void GameState::HandleInput()
     }
 }
 
-void GameState::Update(float dt)
+void GameState::Update()
 {
     if (fail)
     {
@@ -253,7 +253,7 @@ void GameState::Update(float dt)
     }
 }
 
-void GameState::Draw(float dt)
+void GameState::Draw()
 {
 	data->window.clear(backgroundColor);
 

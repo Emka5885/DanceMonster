@@ -119,11 +119,11 @@ void OptionsState::HandleInput()
 	backgroundMusic->setVolume(musicOptionsFromFile[1]);
 }
 
-void OptionsState::Update(float dt)
+void OptionsState::Update()
 {
 }
 
-void OptionsState::Draw(float dt)
+void OptionsState::Draw()
 {
 	data->window.clear(sf::Color(0x1A1A1Aff));
 

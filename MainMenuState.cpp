@@ -72,11 +72,11 @@ void MainMenuState::HandleInput()
 	}
 }
 
-void MainMenuState::Update(float dt)
+void MainMenuState::Update()
 {
 }
 
-void MainMenuState::Draw(float dt)
+void MainMenuState::Draw()
 {
 	data->window.clear(sf::Color(0x1A1A1Aff));
 

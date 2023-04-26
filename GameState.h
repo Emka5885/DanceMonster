@@ -17,8 +17,8 @@ public:
 	void AddPoints();
 
 	void HandleInput();
-	void Update(float dt);
-	void Draw(float dt);
+	void Update();
+	void Draw();
 
 private:
 

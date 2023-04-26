@@ -9,8 +9,8 @@ public:
 
 	void Init();
 	void HandleInput();
-	void Update(float dt);
-	void Draw(float dt);
+	void Update();
+	void Draw();
 
 private:
 	GameDataReference data;
