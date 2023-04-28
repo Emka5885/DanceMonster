@@ -14,4 +14,5 @@ public:
 	sf::Time MusicTime();
 	void SetMusicVolume(int num);
 	void StopMusic();
+	int CurrentMusic();
 };

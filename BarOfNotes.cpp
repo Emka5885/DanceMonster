@@ -29,7 +29,7 @@ void BarOfNotes::NewNote()
 	notes.push_back(n);
 }
 
-void BarOfNotes::Update(float dt, int& combo)
+void BarOfNotes::Update(float dt, int& combo, int&counter, int currentMusic)
 {
 	if (!stop)
 	{
@@ -38,15 +38,37 @@ void BarOfNotes::Update(float dt, int& combo)
 			NewNote();
 		}
 	}
-	if (notes[0].PositionX() <= -100 && !notes.empty())
+	if (notes[0].PositionX() <= -150 && !notes.empty())
 	{
 		notes.erase(notes.begin());
 		combo = 0;
+		counter = 0;
 	}
-	for (int i = 0; i < notes.size(); i++)
+
+	switch (currentMusic)
 	{
-		notes[i].NoteMove({ dt * -speed, 0.0f });
+	case 0:
+		break;
+	case 1:
+		break;
+	case 2:
+		break;
+	case 3:
+		break;
+	case 4:
+		break;
+	case 5:
+		break;
+	case 6:
+
+		for (int i = 0; i < notes.size(); i++)
+		{
+			notes[i].NoteMove({ dt * -speed, 0.0f });
+		}
+
+		break;
 	}
+	
 }
 
 bool BarOfNotes::Check(std::string noteType)

@@ -177,11 +177,11 @@ void GameState::Update()
         frameClock.restart();
     }
 
-    if (counter >= 10)
+    /*if (counter >= 10)
     {
         barOfNotes->ChangeSpeed(barOfNotes->speed+=15);
         counter = 0;
-    }
+    }*/
 
     if (combo == 9)
     {
@@ -198,7 +198,7 @@ void GameState::Update()
     }
     combos->UpdateMonsters(combos->comboTime);
 
-    barOfNotes->Update(dtClock.restart().asSeconds(), counter);
+    barOfNotes->Update(dtClock.restart().asSeconds(), combo, counter, music->CurrentMusic());
 
     barOfNotes->IncreaseWhiteShape();
 

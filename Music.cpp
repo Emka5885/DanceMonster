@@ -2,7 +2,7 @@
 
 Music::Music(AssetManager& assetManager, int num)
 {
-	currentMusic = rand() % assetManager.musicsSize();
+	currentMusic = 6;//rand() % assetManager.musicsSize();
 
 	music.openFromFile(assetManager.GetMusic(std::to_string(currentMusic)));
 
@@ -27,4 +27,9 @@ void Music::SetMusicVolume(int num)
 void Music::StopMusic()
 {
 	music.stop();
+}
+
+int Music::CurrentMusic()
+{
+	return currentMusic;
 }
