@@ -2,6 +2,7 @@
 
 BarOfNotes::BarOfNotes(sf::RenderWindow& window, AssetManager& assetManager) : window(window), assetManager(assetManager)
 {
+	helper = -1;
 	ChangeSpeed(200);
 	stop = false;
 	sf::RectangleShape rect;
@@ -29,7 +30,7 @@ void BarOfNotes::NewNote()
 	notes.push_back(n);
 }
 
-void BarOfNotes::Update(float dt, int& combo, int&counter, int currentMusic)
+void BarOfNotes::Update(float dt, int& combo, int&counter)
 {
 	if (!stop)
 	{
@@ -38,37 +39,18 @@ void BarOfNotes::Update(float dt, int& combo, int&counter, int currentMusic)
 			NewNote();
 		}
 	}
-	if (notes[0].PositionX() <= -150 && !notes.empty())
+	if (notes[0].PositionX() <= -speed && !notes.empty())
 	{
 		notes.erase(notes.begin());
+		helper--;
 		combo = 0;
 		counter = 0;
 	}
 
-	switch (currentMusic)
+	for (int i = 0; i < notes.size(); i++)
 	{
-	case 0:
-		break;
-	case 1:
-		break;
-	case 2:
-		break;
-	case 3:
-		break;
-	case 4:
-		break;
-	case 5:
-		break;
-	case 6:
-
-		for (int i = 0; i < notes.size(); i++)
-		{
-			notes[i].NoteMove({ dt * -speed, 0.0f });
-		}
-
-		break;
+		notes[i].NoteMove({ dt * -speed, 0.0f });
 	}
-	
 }
 
 bool BarOfNotes::Check(std::string noteType)
@@ -79,18 +61,10 @@ bool BarOfNotes::Check(std::string noteType)
 		{
 			if (notes[i].CheckType(noteType))
 			{
-				if (notesGoodClick != nullptr)
+				if (helper < 0)
 				{
-					for (int i = 0; i < notes.size(); i++)
-					{
-						if (&notes[i] == notesGoodClick)
-						{
-							notesGoodClick = nullptr;
-							notes.erase(notes.begin() + i);
-						}
-					}
+					helper = i;
 				}
-				notesGoodClick = &notes[i];
 				return true;
 			}
 		}
@@ -100,20 +74,14 @@ bool BarOfNotes::Check(std::string noteType)
 
 void BarOfNotes::IncreaseWhiteShape()
 {
-	if (notesGoodClick != nullptr)
+	if (helper >= 0)
 	{
-		notesGoodClick->IncreaseWhiteShape(howMuchToAdd);
+		notes[helper].IncreaseWhiteShape(howMuchToAdd);
 
-		if (notesGoodClick->alpha >= 255)
+		if (notes[helper].alpha >= 255)
 		{
-			for (int i = 0; i < notes.size(); i++)
-			{
-				if (&notes[i] == notesGoodClick)
-				{
-					notesGoodClick = nullptr;
-					notes.erase(notes.begin() + i);
-				}
-			}
+			notes.erase(notes.begin() + helper);
+			helper = -1;
 		}
 	}
 }

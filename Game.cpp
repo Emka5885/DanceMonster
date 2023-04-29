@@ -11,7 +11,6 @@ void Game::Init()
 	data->buttons = new Buttons(data->assets);
 	srand(time(NULL));
 	data->window.create(sf::VideoMode(WIDTH, HEIGHT), title, sf::Style::Close | sf::Style::Titlebar);
-	data->window.setFramerateLimit(60);
 
 	if (!image.loadFromFile("resources/monster/monster_icon.png"))
 	{
