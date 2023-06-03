@@ -30,7 +30,7 @@ void BarOfNotes::NewNote()
 	notes.push_back(n);
 }
 
-void BarOfNotes::Update(float dt, int& combo, int&counter)
+void BarOfNotes::Update(float dt)
 {
 	if (!stop)
 	{
@@ -43,8 +43,6 @@ void BarOfNotes::Update(float dt, int& combo, int&counter)
 	{
 		notes.erase(notes.begin());
 		helper--;
-		combo = 0;
-		counter = 0;
 	}
 
 	for (int i = 0; i < notes.size(); i++)

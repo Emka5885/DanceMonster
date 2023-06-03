@@ -16,7 +16,7 @@ public:
 
 	int helper;
 	void NewNote();
-	void Update(float dt, int& combo, int& counter);
+	void Update(float dt);
 	bool Check(std::string noteType);
 	bool stop;
 	void IncreaseWhiteShape();

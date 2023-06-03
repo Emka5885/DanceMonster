@@ -79,6 +79,7 @@ void GameState::AddPoints()
     }
     counter++;
     combo++;
+    std::cout << counter << "\n";
     monster->Error(false);
 }
 
@@ -198,7 +199,7 @@ void GameState::Update()
     }
     combos->UpdateMonsters(combos->comboTime);
 
-    barOfNotes->Update(dtClock.restart().asSeconds(), combo, counter);
+    barOfNotes->Update(dtClock.restart().asSeconds());
 
     barOfNotes->IncreaseWhiteShape();
 
