@@ -79,7 +79,6 @@ void GameState::AddPoints()
     }
     counter++;
     combo++;
-    std::cout << counter << "\n";
     monster->Error(false);
 }
 

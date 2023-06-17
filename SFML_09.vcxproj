@@ -147,51 +147,51 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AssetManager.cpp" />
-    <ClCompile Include="BarOfNotes.cpp" />
-    <ClCompile Include="Buttons.cpp" />
-    <ClCompile Include="Combo.cpp" />
-    <ClCompile Include="EndGameState.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameState.cpp" />
-    <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="MainMenuState.cpp" />
-    <ClCompile Include="Monster.cpp" />
-    <ClCompile Include="MonsterAnimation.cpp" />
-    <ClCompile Include="Music.cpp" />
-    <ClCompile Include="OptionsState.cpp" />
-    <ClCompile Include="Note.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="ScrollBar.cpp" />
-    <ClCompile Include="StartState.cpp" />
-    <ClCompile Include="StateMachine.cpp" />
-    <ClCompile Include="StatsState.cpp" />
-    <ClCompile Include="Widgets.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="AssetManager.h" />
-    <ClInclude Include="BarOfNotes.h" />
-    <ClInclude Include="Buttons.h" />
-    <ClInclude Include="Combo.h" />
-    <ClInclude Include="EndGameState.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="GameState.h" />
-    <ClInclude Include="InputManager.h" />
-    <ClInclude Include="MainMenuState.h" />
-    <ClInclude Include="Monster.h" />
-    <ClInclude Include="MonsterAnimation.h" />
-    <ClInclude Include="Music.h" />
-    <ClInclude Include="OptionsState.h" />
-    <ClInclude Include="Note.h" />
-    <ClInclude Include="ScrollBar.h" />
-    <ClInclude Include="StartState.h" />
-    <ClInclude Include="State.h" />
-    <ClInclude Include="StateMachine.h" />
-    <ClInclude Include="StatsState.h" />
-    <ClInclude Include="Widgets.h" />
-  </ItemGroup>
-  <ItemGroup>
     <Text Include="stats.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="sources\AssetManager.h" />
+    <ClInclude Include="sources\BarOfNotes.h" />
+    <ClInclude Include="sources\Buttons.h" />
+    <ClInclude Include="sources\Combo.h" />
+    <ClInclude Include="sources\EndGameState.h" />
+    <ClInclude Include="sources\Game.h" />
+    <ClInclude Include="sources\GameState.h" />
+    <ClInclude Include="sources\InputManager.h" />
+    <ClInclude Include="sources\MainMenuState.h" />
+    <ClInclude Include="sources\Monster.h" />
+    <ClInclude Include="sources\MonsterAnimation.h" />
+    <ClInclude Include="sources\Music.h" />
+    <ClInclude Include="sources\Note.h" />
+    <ClInclude Include="sources\OptionsState.h" />
+    <ClInclude Include="sources\ScrollBar.h" />
+    <ClInclude Include="sources\StartState.h" />
+    <ClInclude Include="sources\State.h" />
+    <ClInclude Include="sources\StateMachine.h" />
+    <ClInclude Include="sources\StatsState.h" />
+    <ClInclude Include="sources\Widgets.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="sources\AssetManager.cpp" />
+    <ClCompile Include="sources\BarOfNotes.cpp" />
+    <ClCompile Include="sources\Buttons.cpp" />
+    <ClCompile Include="sources\Combo.cpp" />
+    <ClCompile Include="sources\EndGameState.cpp" />
+    <ClCompile Include="sources\Game.cpp" />
+    <ClCompile Include="sources\GameState.cpp" />
+    <ClCompile Include="sources\InputManager.cpp" />
+    <ClCompile Include="sources\main.cpp" />
+    <ClCompile Include="sources\MainMenuState.cpp" />
+    <ClCompile Include="sources\Monster.cpp" />
+    <ClCompile Include="sources\MonsterAnimation.cpp" />
+    <ClCompile Include="sources\Music.cpp" />
+    <ClCompile Include="sources\Note.cpp" />
+    <ClCompile Include="sources\OptionsState.cpp" />
+    <ClCompile Include="sources\ScrollBar.cpp" />
+    <ClCompile Include="sources\StartState.cpp" />
+    <ClCompile Include="sources\StateMachine.cpp" />
+    <ClCompile Include="sources\StatsState.cpp" />
+    <ClCompile Include="sources\Widgets.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
